@@ -1,8 +1,20 @@
 <main class="flex justify-center focussed-container">
-  <div>
+  <div class="w-full">
     <header>
       <%= embed_svg "logo-full-faded", class: "focussed-container-logo" %>
       <h1 class="focussed-container-title">Create your account</h1>
     </header>
+    <div class="focussed-container-body">
+      <div class="box box--spacious sm:max-w-sm mx-auto">
+        <div class="box-body">
+          <form>
+            <div class="form-group">
+              <label for="email" class="form-label">Full name</label>
+              <input type="text" id="email" class="form-control input-block">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </main>

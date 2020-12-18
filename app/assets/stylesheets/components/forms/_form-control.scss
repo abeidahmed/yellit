@@ -1,0 +1,34 @@
+.form-control {
+  padding: 5px 12px;
+  font-size: $body-font-size;
+  line-height: 20px;
+  color: $gray-900;
+  vertical-align: middle;
+  background-color: $white;
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  border: $border;
+  border-radius: $border-radius;
+  outline: none;
+  box-shadow: $box-shadow-inset;
+
+  &:focus {
+    border-color: $border-blue;
+    outline: none;
+    box-shadow: $box-shadow-focus;
+  }
+}
+
+// Full-width inputs
+.input-block {
+  display: block;
+  width: 100%;
+}
+
+// Form label
+.form-label {
+  font-weight: $font-weight-bold;
+  margin-bottom: 8px;
+  display: inline-block;
+  font-size: $body-font-size;
+}
