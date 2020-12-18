@@ -1,0 +1,13 @@
+$box-padding-spacious: 24px;
+
+.box {
+  background-color: $white;
+  border: $border;
+  border-radius: $border-radius;
+}
+
+.box--spacious {
+  .box-body {
+    padding: $box-padding-spacious;
+  }
+}
