@@ -1,0 +1,16 @@
+.w-full {
+  width: 100% !important;
+}
+
+// Max widths
+@each $breakpoint in map-keys($breakpoints) {
+  $bp-sort: breakpoint-infix($breakpoint);
+
+  @include breakpoint($breakpoint) {
+    @each $prop, $value in $max-widths {
+      .#{$bp-sort}max-w-#{$prop} {
+        max-width: $value !important;
+      }
+    }
+  }
+}
