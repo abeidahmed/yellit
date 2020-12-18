@@ -1,0 +1,7 @@
+@mixin h1-responsive($important: false) {
+  font-size: $h1-size-mobile is-important($important);
+
+  @include breakpoint(md) {
+    font-size: $h1-size is-important($important);
+  }
+}

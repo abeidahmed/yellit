@@ -1,0 +1,16 @@
+.focussed-container {
+  background-color: $gray-000;
+  min-height: 100vh;
+  padding: 64px 16px;
+
+  &-title {
+    @include h1-responsive;
+    margin-top: 8px;
+    font-weight: $font-weight-bold;
+    text-align: center;
+  }
+
+  &-logo {
+    margin: 0 auto;
+  }
+}
