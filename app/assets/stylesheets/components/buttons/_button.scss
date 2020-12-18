@@ -1,0 +1,59 @@
+.btn {
+  position: relative;
+  display: inline-block;
+  padding: 5px 16px;
+  font-size: $body-font-size;
+  font-weight: $font-weight-semibold;
+  line-height: 20px;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid;
+  border-radius: $border-radius;
+  appearance: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+// Default button
+.btn {
+  $bg-default: $gray-000;
+  $bg-hover: #f3f4f6; // custom gray
+  $bg-active: darken($bg-hover, 2%);
+  $bg-disabled: $bg-default;
+  $border-color-button: $gray-200;
+
+  color: $gray-900;
+  background-color: $bg-default;
+  border-color: $border-color-button;
+
+  &:hover,
+  &.hover {
+    background-color: $bg-hover;
+    transition-duration: 0.1s;
+  }
+
+  &:active,
+  &.selected {
+    background-color: $bg-active;
+    box-shadow: $box-shadow-inset;
+    transition: none;
+  }
+
+  &:disabled,
+  &.disabled {
+    color: $gray-400;
+    background-color: $bg-disabled;
+    border-color: $border-color-button;
+  }
+
+  &:focus,
+  &.focus {
+    outline: 1px dotted transparent; // Support Firfox custom colors
+    outline-offset: 2px;
+    box-shadow: $box-shadow-focus;
+  }
+}
