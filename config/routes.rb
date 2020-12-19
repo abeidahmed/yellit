@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
     scope "/settings/:id" do
       root "projects#edit"
+      resource :public_feeds, only: %i(edit)
     end
   end
 end

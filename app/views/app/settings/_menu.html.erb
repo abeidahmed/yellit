@@ -1,12 +1,12 @@
 <nav class="menu border-0">
-  <a href="#" class="menu-item border-0" aria-current="page">
+  <%= link_to app_root_path, class: "menu-item border-0", aria: { current: "page" } do %>
     <%= octicon "gear" %>
     General
-  </a>
-  <a href="#" class="menu-item border-0">
+  <% end %>
+  <%= link_to edit_app_public_feeds_path, class: "menu-item border-0" do %>
     <%= octicon "milestone" %>
     Public feed
-  </a>
+  <% end %>
   <a href="#" class="menu-item border-0">
     <%= octicon "people" %>
     Team members
