@@ -1,0 +1,8 @@
+.menu-item[aria-current]:not([aria-current='false']) {
+  cursor: pointer;
+  font-weight: $font-weight-semibold;
+
+  .octicon {
+    color: $gray-500;
+  }
+}

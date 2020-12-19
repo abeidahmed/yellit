@@ -1,0 +1,6 @@
+<%= render Containers::SettingComponent.new do |component| %>
+  <% component.with(:body) do %>
+    <%= render "edit_project" %>
+    <%= render "danger_zone" %>
+  <% end %>
+<% end %>

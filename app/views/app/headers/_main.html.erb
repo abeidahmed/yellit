@@ -1,0 +1,56 @@
+<header data-controller="toggle" data-toggle-toggle-class="d-none">
+  <div class="Header flex-justify-between px-3 px-sm-4 px-lg-5">
+    <div class="d-flex">
+      <div class="Header-item">
+        <a href="#" class="d-flex flex-items-center">
+          <%= embed_svg "logo-full-white" %>
+        </a>
+      </div>
+      <nav class="d-none d-md-flex flex-items-center ml-6">
+        <a href="#" class="Header-link">Posts</a>
+        <a href="#" class="Header-link ml-4">Subscribers</a>
+        <a href="#" class="Header-link ml-4">Settings</a>
+      </nav>
+    </div>
+    <div class="d-md-none">
+      <button data-action="click->toggle#toggle" type="button" class="close-button Header-link">
+        <%= octicon "three-bars", height: 24 %>
+      </button>
+    </div>
+    <div class="d-none d-md-flex flex-items-center">
+      <div class="d-flex">
+        <button class="close-button Header-link">
+          <%= octicon "plus" %>
+        </button>
+        <button class="close-button Header-link ml-3">
+          <%= octicon "note" %>
+        </button>
+      </div>
+      <div class="ml-4 d-flex flex-items-center flex-justify-center">
+        <button class="close-button">
+          <img class="avatar avatar-4 circle" alt="jonrohan" src="https://github.com/jonrohan.png?v=3&s=40" />
+        </button>
+      </div>
+    </div>
+  </div>
+  <div data-toggle-target="content" class="d-none bg-gray-dark py-1 d-md-none px-3 px-sm-4">
+    <nav>
+      <a href="#" class="Header-link d-block py-2">Posts</a>
+      <a href="#" class="Header-link d-block py-2">Subscribers</a>
+      <a href="#" class="Header-link d-block py-2">Settings</a>
+    </nav>
+    <hr class="border-white-fade-15">
+    <div>
+      <div>
+        <a href="#" class="d-flex flex-items-center Header-link">
+          <img class="avatar avatar-4 circle" alt="jonrohan" src="https://github.com/jonrohan.png?v=3&s=40" />
+          <span class="ml-2 d-block">Abeid Ahmed</span>
+        </a>
+      </div>
+      <nav class="my-1">
+        <a href="#" class="Header-link d-block py-2">Notifications</a>
+        <a href="#" class="Header-link d-block py-2">Sign out</a>
+      </nav>
+    </div>
+  </div>
+</header>
