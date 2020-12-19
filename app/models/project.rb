@@ -11,7 +11,7 @@ class Project < ApplicationRecord
   validates_length_of :name, :website_url, maximum: 255
   validates_length_of :subdomain, maximum: 63
   validates_uniqueness_of :subdomain, case_sensitive: false
-  validates_format_of :website_url, with: VALID_URL_REGEX
+  validates_format_of :website_url, with: VALID_URL_REGEX, allow_blank: true
 
   private
   def normalize_website_url
