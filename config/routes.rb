@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root "static_pages#home"
 
   namespace :app do
+    resources :projects, only: %i(update)
+
     scope "/settings/:id" do
       root "projects#edit"
     end

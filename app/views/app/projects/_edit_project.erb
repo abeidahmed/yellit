@@ -3,34 +3,37 @@
     <div class="Subhead-heading">Change project details</div>
   </div>
   <div>
-    <form>
+    <%= form_with model: [:app, @project], data: { controller: "form", action: "ajax:error->form#onError", remote: true } do |form| %>
       <div class="form-group mt-0">
         <div class="form-group-header">
-          <label for="">Project name</label>
+          <%= form.label :name, "Project name" %>
         </div>
         <div class="form-group-body">
-          <input type="text" class="form-control">
+          <%= form.text_field :name, class: "form-control", required: true, autocomplete: "off", maxlength: 255 %>
+          <%= render Forms::ErrorDisplayComponent.new(error_type: "name") %>
         </div>
       </div>
       <div class="form-group">
         <div class="form-group-header">
-          <label for="">URL</label>
+          <%= form.label :website_url, "Website URL" %>
         </div>
         <div class="form-group-body">
-          <input type="text" class="form-control">
+          <%= form.url_field :website_url, class: "form-control", autocomplete: "off", maxlength: 255 %>
+          <%= render Forms::ErrorDisplayComponent.new(error_type: "website_url") %>
         </div>
       </div>
       <div class="form-group">
         <div class="form-group-header">
-          <label for="">Subdomain</label>
+          <%= form.label :subdomain %>
         </div>
         <div class="form-group-body">
-          <input type="text" class="form-control">
+          <%= form.text_field :subdomain, class: "form-control", required: true, autocomplete: "off", maxlength: 63 %>
+          <%= render Forms::ErrorDisplayComponent.new(error_type: "subdomain") %>
         </div>
       </div>
       <div>
-        <button class="btn btn-primary">Save changes</button>
+        <%= form.submit "Save changes", class: "btn btn-primary" %>
       </div>
-    </form>
+    <% end %>
   </div>
 </section>
