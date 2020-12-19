@@ -1,6 +1,6 @@
 <%= render Containers::SettingComponent.new(project: @project) do |component| %>
   <% component.with(:body) do %>
-    <div>
+    <div data-controller="toggle" data-toggle-attribute-value="hidden">
       <div class="subnav d-flex flex-column flex-sm-row">
         <div class="subnav-search ml-0 col-12 col-sm-6 col-lg-5">
           <input
@@ -15,10 +15,10 @@
           <%= octicon "search", class: "subnav-search-icon" %>
         </div>
         <div class="mt-2 mt-sm-0 col-sm-6 col-lg-7 d-sm-flex flex-justify-end">
-          <button class="btn btn-primary">Invite colleague</button>
+          <button data-action="click->toggle#toggle" class="btn btn-primary">Invite colleague</button>
         </div>
       </div>
-      <form class="Box bg-gray p-3 d-md-flex mb-3">
+      <form data-toggle-target="content" class="Box d-md-flex bg-gray p-3 mb-3" hidden>
         <div class="form-group mt-0 mb-md-0 col-md-4 pr-md-3">
           <div class="form-group-header">
             <label for="">Email address</label>
@@ -43,7 +43,7 @@
             <button class="btn btn-primary">Send invitation</button>
           </div>
           <div class="d-flex flex-items-end mr-md-2">
-            <button type="button" class="btn">Cancel</button>
+            <button type="button" data-action="click->toggle#hide" class="btn">Cancel</button>
           </div>
         </div>
       </form>
