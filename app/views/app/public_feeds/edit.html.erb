@@ -1,0 +1,62 @@
+<%= render Containers::SettingComponent.new(project: @project) do |component| %>
+  <% component.with(:body) do %>
+    <section>
+      <div class="Subhead">
+        <div class="Subhead-heading">Change feed settings</div>
+      </div>
+      <form>
+        <div class="form-group mt-0">
+          <div class="form-group-header">
+            <label for="">Feed title</label>
+          </div>
+          <div class="form-group-body">
+            <select class="form-select form-control" aria-label="Important decision">
+              <option value="announcement">Announcement</option>
+              <option value="changelog">Changelog</option>
+              <option value="release">Release</option>
+              <option value="post">Post</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group mt-0">
+          <div class="form-group-header">
+            <label for="">Color</label>
+          </div>
+          <div class="form-group-body">
+            <input type="text" class="form-control">
+          </div>
+        </div>
+        <div class="form-checkbox">
+          <label>
+            <input type="checkbox" checked="checked" aria-describedby="subscribe-checkbox-help" />
+            Allow people to subscribe to feeds
+          </label>
+          <p class="note" id="subscribe-checkbox-help">
+            A popover email field will be displayed in the feed's <a href="#">home page</a>, where people can subscribe to this project's feed.
+          </p>
+        </div>
+        <div class="form-checkbox">
+          <label>
+            <input type="checkbox" checked="checked" aria-describedby="author-info-checkbox-help" />
+            Show author information
+          </label>
+          <p class="note" id="author-info-checkbox-help">
+            Avatar and name of the feed's author will be shown along side the feed.
+          </p>
+        </div>
+        <div class="form-checkbox">
+          <label>
+            <input type="checkbox" checked="checked" aria-describedby="water-mark-checkbox-help" />
+            Hide water-mark
+          </label>
+          <p class="note" id="water-mark-checkbox-help">
+            Disabling this will hide the water-mark from the feed widget.
+          </p>
+        </div>
+        <div>
+          <button class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+    </section>
+  <% end %>
+<% end %>
