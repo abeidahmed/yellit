@@ -1,6 +1,8 @@
 class App::BaseController < ApplicationController
   layout "app"
 
+  include MemberTenancy
+
   before_action :authenticate_user
   after_action :verify_authorized, except: %i(index)
   after_action :verify_policy_scoped, only: %i(index)

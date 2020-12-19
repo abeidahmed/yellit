@@ -13,4 +13,12 @@ RSpec.feature "GeneralSettings", type: :feature do
     expect(current_path).to eq(app_root_path(membership.project))
     expect(page).to have_text("we got your changes")
   end
+
+  it "should redirect to invitations page if user's project invite is pending" do
+    membership = create(:project_membership, :pending)
+    sign_in(user: membership.user)
+    visit app_root_path(membership.project)
+
+    expect(current_path).to eq(root_path)
+  end
 end
