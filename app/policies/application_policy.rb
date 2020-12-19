@@ -50,4 +50,12 @@ class ApplicationPolicy
       scope.all
     end
   end
+
+  def good_project_owner?(object: record)
+    good_project_member?(object: object) && user.project_owner?(object)
+  end
+
+  def good_project_member?(object: record)
+    user.has_project_membership?(object) && user.project_invite_accepted?(object)
+  end
 end
