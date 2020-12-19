@@ -1,0 +1,3 @@
+<% flash.each do |type, msg| %>
+  <%= render Popovers::ToastComponent.new(type: type, msg: msg) %>
+<% end %>
