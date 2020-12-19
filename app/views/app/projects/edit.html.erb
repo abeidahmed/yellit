@@ -1,4 +1,4 @@
-<%= render Containers::SettingComponent.new do |component| %>
+<%= render Containers::SettingComponent.new(project: @project) do |component| %>
   <% component.with(:body) do %>
     <%= render "edit_project" %>
     <%= render "danger_zone" %>
