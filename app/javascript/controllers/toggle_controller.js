@@ -9,7 +9,7 @@ export default class extends ApplicationController {
 
   connect() {
     if (this.pageIsTurbolinksPreview) {
-      this.resetAttributes();
+      this.hide();
     }
   }
 
@@ -30,7 +30,7 @@ export default class extends ApplicationController {
     }
   }
 
-  resetAttributes() {
+  hide() {
     this.resetToggleClass();
     this.resetHiddenAttribute();
   }
