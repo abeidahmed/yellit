@@ -9,7 +9,7 @@ export default class extends ApplicationController {
 
       setTimeout(() => {
         this.hide();
-      }, 4000);
+      }, 5000);
     }
   }
 
