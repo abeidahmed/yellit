@@ -1,19 +1,52 @@
 <%= render Containers::SettingComponent.new(project: @project) do |component| %>
   <% component.with(:body) do %>
-    <div class="subnav d-flex flex-column flex-sm-row">
-      <div class="subnav-search float-left ml-0">
-        <input
-          type="search"
-          name="name"
-          class="form-control subnav-search-input"
-          value=""
-          placeholder="Search people by name, email"
-          aria-label="Search people by name, email" />
-        <%= octicon "search", class: "subnav-search-icon" %>
+    <div>
+      <div class="subnav d-flex flex-column flex-sm-row">
+        <div class="subnav-search ml-0 col-12 col-sm-6 col-lg-5">
+          <input
+            type="search"
+            name="name"
+            class="form-control subnav-search-input width-full"
+            value=""
+            placeholder="Search people by name, email"
+            aria-label="Search people by name, email"
+            autocomplete="off"
+          />
+          <%= octicon "search", class: "subnav-search-icon" %>
+        </div>
+        <div class="mt-2 mt-sm-0 col-sm-6 col-lg-7 d-sm-flex flex-justify-end">
+          <button class="btn btn-primary">Invite colleague</button>
+        </div>
       </div>
-      <div class="mt-2 mt-sm-0 ml-sm-auto">
-        <button class="btn btn-primary">Invite colleague</button>
-      </div>
+      <form class="Box bg-gray p-3 d-md-flex mb-3">
+        <div class="form-group mt-0 mb-md-0 col-md-4 pr-md-3">
+          <div class="form-group-header">
+            <label for="">Email address</label>
+          </div>
+          <div class="form-group-body">
+            <input type="text" placeholder="Email address" class="form-control width-full">
+          </div>
+        </div>
+        <div class="form-group my-md-0 col-md-4 pr-md-3">
+          <div class="form-group-header">
+            <label for="">Role</label>
+          </div>
+          <div class="form-group-body">
+            <select class="form-select form-control width-full" aria-label="Important decision">
+              <option value="member" selected>Member</option>
+              <option value="owner">Owner</option>
+            </select>
+          </div>
+        </div>
+        <div class="d-flex mt-md-4 col-md-4 flex-md-justify-end">
+          <div class="d-flex flex-items-end flex-md-order-1 mr-2 mr-md-0">
+            <button class="btn btn-primary">Send invitation</button>
+          </div>
+          <div class="d-flex flex-items-end mr-md-2">
+            <button type="button" class="btn">Cancel</button>
+          </div>
+        </div>
+      </form>
     </div>
   <% end %>
 <% end %>
