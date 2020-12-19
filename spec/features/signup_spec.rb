@@ -11,10 +11,10 @@ RSpec.feature "Signups", type: :feature do
     expect(current_path).to eq(root_path)
   end
 
-  # it "should take me to sign in page if I click on the sign in link" do
-  #   visit new_user_path
-  #   click_link "Sign in"
+  it "should take me to sign in page if I click on the sign in link" do
+    visit new_user_path
+    click_link "Sign in"
 
-  #   expect(current_path).to eq(new_session_path)
-  # end
+    expect(current_path).to eq(new_session_path)
+  end
 end
