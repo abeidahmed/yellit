@@ -11,6 +11,6 @@ RSpec.feature "GeneralSettings", type: :feature do
     click_button "Save"
 
     expect(current_path).to eq(app_root_path(membership.project))
-    # expect(page).to have_text("we got your changes")
+    expect(page).to have_text("we got your changes")
   end
 end

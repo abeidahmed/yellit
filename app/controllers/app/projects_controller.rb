@@ -9,7 +9,7 @@ class App::ProjectsController < App::BaseController
     authorize project
 
     if project.update(project_params)
-      redirect_back fallback_location: app_root_path(project)
+      redirect_back fallback_location: app_root_path(project), success: "OK, we got your changes"
     else
       render json: { errors: project.errors }, status: :bad_request
     end
