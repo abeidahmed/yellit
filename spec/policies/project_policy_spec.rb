@@ -12,16 +12,18 @@ RSpec.describe ProjectPolicy, type: :policy do
   context "being an owner" do
     let(:membership) { create(:project_membership, :owner) }
 
-    it { is_expected.to permit_actions(%i(update)) }
+    it { is_expected.to permit_actions(%i(edit update)) }
   end
 
   context "being a member" do
+    it { is_expected.to permit_actions(%i(edit)) }
     it { is_expected.to forbid_actions(%i(update)) }
   end
 
   context "being a pending user" do
     let(:membership) { create(:project_membership, :pending_owner) }
 
+    it { is_expected.to permit_actions(%i(edit)) }
     it { is_expected.to forbid_actions(%i(update)) }
   end
 end
