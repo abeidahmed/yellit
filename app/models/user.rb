@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :project_memberships
+  has_many :projects, through: :project_memberships
+
   has_secure_password
 
   before_create :generate_auth_token
