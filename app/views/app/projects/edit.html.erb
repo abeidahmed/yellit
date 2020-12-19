@@ -1,14 +1,6 @@
-<main>
-  <%= render "app/page_headers/settings" %>
-  <div class="container-xl px-3 px-sm-4 px-lg-5">
-    <div class="d-lg-flex gutter mt-5">
-      <div class="col-lg-3 d-none d-lg-block">
-        <%= render "app/settings/menu" %>
-      </div>
-      <div class="col-lg-9">
-        <%= render "edit_project" %>
-        <%= render "danger_zone" %>
-      </div>
-    </div>
-  </div>
-</main>
+<%= render Containers::SettingComponent.new do |component| %>
+  <% component.with(:body) do %>
+    <%= render "edit_project" %>
+    <%= render "danger_zone" %>
+  <% end %>
+<% end %>
