@@ -1,6 +1,7 @@
 class App::ProjectsController < App::BaseController
   def edit
-    skip_authorization
+    @project = Project.find(params[:id])
+    authorize @project
   end
 
   def update
@@ -8,7 +9,7 @@ class App::ProjectsController < App::BaseController
     authorize project
 
     if project.update(project_params)
-      # do something
+      redirect_back fallback_location: app_root_path(project)
     else
       render json: { errors: project.errors }, status: :bad_request
     end
