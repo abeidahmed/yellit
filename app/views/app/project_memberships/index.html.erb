@@ -1,6 +1,6 @@
 <%= render Containers::SettingComponent.new(project: @project) do |component| %>
   <% component.with(:body) do %>
-    <div data-controller="toggle" data-toggle-attribute-value="hidden">
+    <div data-controller="toggle" data-toggle-attribute-value="hidden" class="mb-3">
       <div class="subnav d-flex flex-column flex-sm-row">
         <div class="subnav-search ml-0 col-12 col-sm-6 col-lg-5">
           <input
@@ -18,7 +18,7 @@
           <button data-action="click->toggle#toggle" class="btn btn-primary">Invite colleague</button>
         </div>
       </div>
-      <form data-toggle-target="content" class="Box d-md-flex bg-gray p-3 mb-3" hidden>
+      <form data-toggle-target="content" class="Box d-md-flex bg-gray p-3" hidden>
         <div class="form-group mt-0 mb-md-0 col-md-4 pr-md-3">
           <div class="form-group-header">
             <label for="">Email address</label>
@@ -52,6 +52,79 @@
           </div>
         </div>
       </form>
+    </div>
+    <div class="Box">
+      <div class="Box-header d-flex flex-justify-between flex-items-center">
+        <h3 class="Box-title">
+          People
+        </h3>
+        <div class="d-flex flex-justify-end position-relative">
+          <details class="details-reset details-overlay">
+            <summary class="btn-link text-gray" aria-haspopup="true">
+              Filter <span class="dropdown-caret"></span>
+            </summary>
+            <div class="SelectMenu right-0">
+              <div class="SelectMenu-modal">
+                <header class="SelectMenu-header">
+                  <h3 class="SelectMenu-title">Filter people</h3>
+                </header>
+                <div class="SelectMenu-list">
+                  <button class="SelectMenu-item" role="menuitemcheckbox" aria-checked="true">
+                    <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+                    All
+                  </button>
+                  <button class="SelectMenu-item" role="menuitemcheckbox">
+                    <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+                    Owners
+                  </button>
+                  <button class="SelectMenu-item" role="menuitemcheckbox">
+                    <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+                    Members
+                  </button>
+                  <button class="SelectMenu-item" role="menuitemcheckbox">
+                    <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+                    Invitation pending
+                  </button>
+                </div>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+      <div>
+        <div class="Box-row d-flex flex-items-center">
+          <div class="d-flex flex-items-center col-9 col-md-4">
+            <div>
+              <img class="avatar avatar-5 circle" alt="jonrohan" src="https://github.com/jonrohan.png?v=3&s=40" />
+            </div>
+            <div class="ml-2">
+              <span class="d-block h5">Abeid Ahmed</span>
+              <span class="d-block f6 text-gray">Owner</span>
+            </div>
+          </div>
+          <div class="text-gray-light d-none d-md-flex flex-items-center col-md-5">
+            <%= octicon "mail" %>
+            <a href="mailto:johndoe@example.com" class="f5 ml-2">johndoe@example.com</a>
+          </div>
+          <div class="col-3 d-flex flex-justify-end">
+            <div class="d-none d-md-flex">
+              <button class="btn-link text-gray f5">Demote</button>
+              <button class="btn-link text-gray f5 ml-3">Remove</button>
+            </div>
+            <div class="d-md-none">
+              <details class="dropdown details-reset details-overlay d-inline-block">
+                <summary class="btn" aria-haspopup="true">
+                  <%= octicon "kebab-horizontal" %>
+                </summary>
+                <ul class="dropdown-menu dropdown-menu-sw">
+                  <li><a class="dropdown-item" href="#url">Demote</a></li>
+                  <li><a class="dropdown-item" href="#url">Remove</a></li>
+                </ul>
+              </details>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   <% end %>
 <% end %>
