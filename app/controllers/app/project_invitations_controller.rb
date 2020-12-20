@@ -7,7 +7,7 @@ class App::ProjectInvitationsController < App::BaseController
 
   def update
     membership = ProjectMembership.find(params[:id])
-    authorize membership, :roller?
+    authorize membership, :decider?
 
     membership.update(join_date: Time.zone.now)
   end

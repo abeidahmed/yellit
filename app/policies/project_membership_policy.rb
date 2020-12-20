@@ -7,7 +7,7 @@ class ProjectMembershipPolicy < ApplicationPolicy
     is_current_user? && user.project_invite_pending?(record.project)
   end
 
-  def roller?
+  def decider?
     show?
   end
 
