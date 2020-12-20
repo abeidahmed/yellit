@@ -10,7 +10,7 @@
           People
         </h3>
         <div class="d-flex flex-justify-end position-relative">
-          <details class="details-reset details-overlay">
+          <details data-controller="details" class="details-reset details-overlay">
             <summary class="btn-link text-gray" aria-haspopup="true">
               Filter <span class="dropdown-caret"></span>
             </summary>
@@ -18,6 +18,9 @@
               <div class="SelectMenu-modal">
                 <header class="SelectMenu-header">
                   <h3 class="SelectMenu-title">Filter people</h3>
+                  <button data-action="click->details#hide" class="SelectMenu-closeButton">
+                    <%= octicon "x" %>
+                  </button>
                 </header>
                 <div class="SelectMenu-list">
                   <button class="SelectMenu-item" role="menuitemcheckbox" aria-checked="true">
