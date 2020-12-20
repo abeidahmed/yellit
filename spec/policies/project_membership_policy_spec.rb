@@ -1,27 +1,63 @@
 require "rails_helper"
 
 RSpec.describe ProjectMembershipPolicy, type: :policy do
-  let(:project_membership) { create(:project_membership) }
-  let(:user) { project_membership.user }
-  let(:project) { project_membership.project }
+  describe "subject is project" do
+    let(:project_membership) { create(:project_membership) }
+    let(:user) { project_membership.user }
+    let(:project) { project_membership.project }
 
-  subject { described_class.new(user, project) }
+    subject { described_class.new(user, project) }
 
-  include_examples "being_a_visitor"
+    include_examples "being_a_visitor"
 
-  context "being an owner" do
-    let(:project_membership) { create(:project_membership, :owner) }
+    context "being an owner" do
+      let(:project_membership) { create(:project_membership, :owner) }
 
-    it { is_expected.to permit_actions(%i(create)) }
+      it { is_expected.to permit_actions(%i(create)) }
+    end
+
+    context "being a member" do
+      it { is_expected.to forbid_actions(%i(create)) }
+    end
+
+    context "being a pending user" do
+      let(:project_membership) { create(:project_membership, :pending_owner) }
+
+      it { is_expected.to forbid_actions(%i(create)) }
+    end
   end
 
-  context "being a member" do
-    it { is_expected.to forbid_actions(%i(create)) }
-  end
+  describe "subject is membership" do
+    let(:membership) { create(:project_membership) }
+    let(:user) { membership.user }
 
-  context "being a pending user" do
-    let(:project_membership) { create(:project_membership, :pending_owner) }
+    subject { described_class.new(user, membership) }
 
-    it { is_expected.to forbid_actions(%i(create)) }
+    include_examples "being_a_visitor"
+
+    context "being the current pending user" do
+      let(:membership) { create(:project_membership, :pending) }
+
+      it { is_expected.to permit_actions(%i(show)) }
+    end
+
+    context "being a different pending user" do
+      let(:project) { create(:project) }
+      let(:membership) { create(:project_membership, :pending, project: project) }
+      let(:another_membership) { create(:project_membership, :pending, project: project) }
+      let(:user) { another_membership.user }
+
+      it { is_expected.to forbid_actions(%i(show)) }
+    end
+
+    context "being a permanent user" do
+      it { is_expected.to forbid_actions(%i(show)) }
+    end
+
+    context "being an uninvited user" do
+      let(:user) { create(:user) }
+
+      it { is_expected.to forbid_actions(%i(show)) }
+    end
   end
 end
