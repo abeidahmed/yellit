@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :project_invitations, only: %i(show)
 
     resources :project_memberships do
-      resource :account_setup, only: %i(edit), module: :project_memberships
+      resource :account_setup, only: %i(edit update), module: :project_memberships
     end
 
     scope "/settings/:id" do
