@@ -1,0 +1,12 @@
+<h1>Invite pending</h1>
+
+<%= link_to "View invitation", app_project_invitation_url(@membership.signed_id(purpose: :project_invitation)) %>
+
+<% if @new_user %>
+  <p>We noticed that you aren't a part of yellit family, and hence we took the initiative of creating a new account for you. Hope you do not mind.</p>
+  <p>
+    <span>Login details:</span><br>
+    <span>Email address: </span> <span><b><%= @user.email_address %></b></span><br>
+    <%= link_to "Update your account", edit_app_project_membership_account_setup_url(@membership.signed_id(purpose: :project_invitation)) %>
+  </p>
+<% end %>

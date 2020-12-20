@@ -1,27 +1,63 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe ProjectMembershipPolicy, type: :policy do
-  let(:user) { User.new }
+  describe "subject is project" do
+    let(:project_membership) { create(:project_membership) }
+    let(:user) { project_membership.user }
+    let(:project) { project_membership.project }
 
-  subject { described_class }
+    subject { described_class.new(user, project) }
 
-  permissions ".scope" do
-    pending "add some examples to (or delete) #{__FILE__}"
+    include_examples "being_a_visitor"
+
+    context "being an owner" do
+      let(:project_membership) { create(:project_membership, :owner) }
+
+      it { is_expected.to permit_actions(%i(create)) }
+    end
+
+    context "being a member" do
+      it { is_expected.to forbid_actions(%i(create)) }
+    end
+
+    context "being a pending user" do
+      let(:project_membership) { create(:project_membership, :pending_owner) }
+
+      it { is_expected.to forbid_actions(%i(create)) }
+    end
   end
 
-  permissions :show? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
+  describe "subject is membership" do
+    let(:membership) { create(:project_membership) }
+    let(:user) { membership.user }
 
-  permissions :create? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
+    subject { described_class.new(user, membership) }
 
-  permissions :update? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
+    include_examples "being_a_visitor"
 
-  permissions :destroy? do
-    pending "add some examples to (or delete) #{__FILE__}"
+    context "being the current pending user" do
+      let(:membership) { create(:project_membership, :pending) }
+
+      it { is_expected.to permit_actions(%i(show decider)) }
+    end
+
+    context "being a different pending user" do
+      let(:project) { create(:project) }
+      let(:membership) { create(:project_membership, :pending, project: project) }
+      let(:another_membership) { create(:project_membership, :pending, project: project) }
+      let(:user) { another_membership.user }
+
+      it { is_expected.to forbid_actions(%i(show decider)) }
+    end
+
+    context "being a permanent user" do
+      it { is_expected.to forbid_actions(%i(show decider)) }
+    end
+
+    context "being an uninvited user" do
+      let(:user) { create(:user) }
+
+      it { is_expected.to forbid_actions(%i(show decider)) }
+    end
   end
 end

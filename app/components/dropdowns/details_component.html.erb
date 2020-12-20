@@ -1,0 +1,20 @@
+<details data-controller="details" class="details-reset details-overlay">
+  <summary class="btn-link text-gray" aria-haspopup="true">
+    <%= button_title %> <span class="dropdown-caret"></span>
+  </summary>
+  <div class="SelectMenu <%= dropdown_position %>">
+    <div class="SelectMenu-modal">
+      <% if title %>
+        <header class="SelectMenu-header">
+          <h3 class="SelectMenu-title"><%= title %></h3>
+          <button data-action="click->details#hide" class="SelectMenu-closeButton">
+            <%= octicon "x" %>
+          </button>
+        </header>
+      <% end %>
+      <div class="SelectMenu-list">
+        <%= body %>
+      </div>
+    </div>
+  </div>
+</details>

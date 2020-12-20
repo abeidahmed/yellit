@@ -1,8 +1,18 @@
 class App::ProjectsController < App::BaseController
+  def index
+    skip_policy_scope
+    render layout: "slate"
+  end
+
   def edit
     @project = Project.find(params[:id])
     authorize @project
     check_member_tenancy_for @project
+  end
+
+  def show
+    @project = Project.find(params[:id])
+    skip_authorization
   end
 
   def update
