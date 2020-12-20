@@ -1,57 +1,8 @@
 <%= render Containers::SettingComponent.new(project: @project) do |component| %>
   <% component.with(:body) do %>
     <div data-controller="toggle" data-toggle-attribute-value="hidden" class="mb-3">
-      <div class="subnav d-flex flex-column flex-sm-row">
-        <div class="subnav-search ml-0 col-12 col-sm-6 col-lg-5">
-          <input
-            type="search"
-            name="name"
-            class="form-control subnav-search-input width-full"
-            value=""
-            placeholder="Search people by name, email"
-            aria-label="Search people by name, email"
-            autocomplete="off"
-          />
-          <%= octicon "search", class: "subnav-search-icon" %>
-        </div>
-        <div class="mt-2 mt-sm-0 col-sm-6 col-lg-7 d-sm-flex flex-justify-end">
-          <button data-action="click->toggle#toggle" class="btn btn-primary">Invite colleague</button>
-        </div>
-      </div>
-      <form data-toggle-target="content" class="Box d-md-flex bg-gray p-3" hidden>
-        <div class="form-group mt-0 mb-md-0 col-md-4 pr-md-3">
-          <div class="form-group-header">
-            <label for="">Email address</label>
-          </div>
-          <div class="form-group-body">
-            <input
-              type="text"
-              placeholder="Email address"
-              class="form-control width-full"
-              required
-            >
-          </div>
-        </div>
-        <div class="form-group my-md-0 col-md-4 pr-md-3">
-          <div class="form-group-header">
-            <label for="">Role</label>
-          </div>
-          <div class="form-group-body">
-            <select class="form-select form-control width-full" aria-label="Important decision">
-              <option value="member" selected>Member</option>
-              <option value="owner">Owner</option>
-            </select>
-          </div>
-        </div>
-        <div class="d-flex mt-md-4 col-md-4 flex-md-justify-end">
-          <div class="d-flex flex-items-end flex-md-order-1 mr-2 mr-md-0">
-            <button class="btn btn-primary">Send invitation</button>
-          </div>
-          <div class="d-flex flex-items-end mr-md-2">
-            <button type="button" data-action="click->toggle#hide" class="btn">Cancel</button>
-          </div>
-        </div>
-      </form>
+      <%= render "member_filter" %>
+      <%= render "invite_form", project: @project %>
     </div>
     <div class="Box">
       <div class="Box-header d-flex flex-justify-between flex-items-center">

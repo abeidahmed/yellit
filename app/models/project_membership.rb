@@ -9,4 +9,8 @@ class ProjectMembership < ApplicationRecord
   scope :users_with_role, ->(role) { where(role: role) }
 
   validates_uniqueness_of :user, case_sensitive: false, scope: :project_id, message: "is already on the project team"
+
+  def self.humanized_role_keys
+    roles.map { |key, value| [key.humanize, key] }
+  end
 end

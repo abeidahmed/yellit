@@ -11,7 +11,8 @@ class App::ProjectMembershipsController < App::BaseController
 
     member = ProjectMembership::Invitation.new(invite_params.merge({ project: project }))
     if member.invited
-      # do something
+      redirect_to app_project_memberships_path(project)
+      flash[:success] = "#{member.email_address} has been invited"
     else
       render json: { errors: member.errors }, status: :bad_request
     end
