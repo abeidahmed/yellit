@@ -7,10 +7,10 @@
     <%= octicon "milestone" %>
     Public feed
   <% end %>
-  <a href="#" class="menu-item border-0">
+  <%= link_to app_project_memberships_path, class: "menu-item border-0" do %>
     <%= octicon "people" %>
     Team members
-  </a>
+  <% end %>
   <a href="#" class="menu-item border-0">
     <%= octicon "tag" %>
     Labels
