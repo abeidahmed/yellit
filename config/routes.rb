@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
     resources :project_invitations, only: %i(show)
 
-    resources :project_memberships do
+    resources :project_memberships, only: %i(show) do
       resource :account_setup, only: %i(edit update), module: :project_memberships
     end
 
