@@ -1,27 +1,27 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe ProjectMembershipPolicy, type: :policy do
-  let(:user) { User.new }
+  let(:project_membership) { create(:project_membership) }
+  let(:user) { project_membership.user }
+  let(:project) { project_membership.project }
 
-  subject { described_class }
+  subject { described_class.new(user, project) }
 
-  permissions ".scope" do
-    pending "add some examples to (or delete) #{__FILE__}"
+  include_examples "being_a_visitor"
+
+  context "being an owner" do
+    let(:project_membership) { create(:project_membership, :owner) }
+
+    it { is_expected.to permit_actions(%i(create)) }
   end
 
-  permissions :show? do
-    pending "add some examples to (or delete) #{__FILE__}"
+  context "being a member" do
+    it { is_expected.to forbid_actions(%i(create)) }
   end
 
-  permissions :create? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
+  context "being a pending user" do
+    let(:project_membership) { create(:project_membership, :pending_owner) }
 
-  permissions :update? do
-    pending "add some examples to (or delete) #{__FILE__}"
-  end
-
-  permissions :destroy? do
-    pending "add some examples to (or delete) #{__FILE__}"
+    it { is_expected.to forbid_actions(%i(create)) }
   end
 end
