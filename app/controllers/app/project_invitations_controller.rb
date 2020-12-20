@@ -11,4 +11,11 @@ class App::ProjectInvitationsController < App::BaseController
 
     membership.update(join_date: Time.zone.now)
   end
+
+  def destroy
+    membership = ProjectMembership.find(params[:id])
+    authorize membership, :decider?
+
+    membership.destroy
+  end
 end
