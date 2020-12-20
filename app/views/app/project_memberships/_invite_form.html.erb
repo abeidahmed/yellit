@@ -1,6 +1,6 @@
 <%= form_with model: [:app, project, ProjectMembership::Invitation.new],
   url: app_project_project_memberships_path(project),
-  html: { id: "member-invite-form", class: "Box d-md-flex bg-gray p-3", hidden: "" },
+  html: { id: "member-invite-form", class: "Box d-md-flex flex-md-items-center bg-gray p-3", hidden: "" },
   data: { controller: "form", action: "ajax:error->form#onError", toggle_target: "content", remote: true } do |form|
 %>
   <div class="form-group mt-0 mb-md-0 col-md-4 pr-md-3">
@@ -27,11 +27,11 @@
       <%= render Forms::ErrorDisplayComponent.new(error_type: "role") %>
     </div>
   </div>
-  <div class="d-flex mt-md-4 col-md-4 flex-md-justify-end">
-    <div class="d-flex flex-items-end flex-md-order-1 mr-2 mr-md-0">
+  <div class="d-flex mt-md-3 col-md-4 flex-md-justify-end">
+    <div class="d-flex flex-items-start flex-md-order-1 mr-2 mr-md-0">
       <%= form.submit "Send invitation", class: "btn btn-primary" %>
     </div>
-    <div class="d-flex flex-items-end mr-md-2">
+    <div class="d-flex flex-items-start mr-md-2">
       <button type="button" data-action="click->toggle#hide" class="btn">Cancel</button>
     </div>
   </div>
