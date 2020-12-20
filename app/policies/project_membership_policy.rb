@@ -7,6 +7,10 @@ class ProjectMembershipPolicy < ApplicationPolicy
     is_current_user? && user.project_invite_pending?(record.project)
   end
 
+  def roller?
+    show?
+  end
+
   class Scope < Scope
     def resolve
       scope.project_memberships.includes(:user) if good_project_member?

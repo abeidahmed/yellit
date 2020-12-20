@@ -38,7 +38,7 @@ RSpec.describe ProjectMembershipPolicy, type: :policy do
     context "being the current pending user" do
       let(:membership) { create(:project_membership, :pending) }
 
-      it { is_expected.to permit_actions(%i(show)) }
+      it { is_expected.to permit_actions(%i(show roller)) }
     end
 
     context "being a different pending user" do
@@ -47,17 +47,17 @@ RSpec.describe ProjectMembershipPolicy, type: :policy do
       let(:another_membership) { create(:project_membership, :pending, project: project) }
       let(:user) { another_membership.user }
 
-      it { is_expected.to forbid_actions(%i(show)) }
+      it { is_expected.to forbid_actions(%i(show roller)) }
     end
 
     context "being a permanent user" do
-      it { is_expected.to forbid_actions(%i(show)) }
+      it { is_expected.to forbid_actions(%i(show roller)) }
     end
 
     context "being an uninvited user" do
       let(:user) { create(:user) }
 
-      it { is_expected.to forbid_actions(%i(show)) }
+      it { is_expected.to forbid_actions(%i(show roller)) }
     end
   end
 end

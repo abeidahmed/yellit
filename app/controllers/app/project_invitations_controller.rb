@@ -4,4 +4,8 @@ class App::ProjectInvitationsController < App::BaseController
   def show
     skip_authorization
   end
+
+  def update
+
+  end
 end
