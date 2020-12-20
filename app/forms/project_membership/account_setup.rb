@@ -8,7 +8,7 @@ class ProjectMembership::AccountSetup
   validates_length_of :password, minimum: User::MIN_PASSWORD_LENGTH
 
   def membership
-    @membership ||= ProjectMembership.find_signed!(id)
+    @membership ||= ProjectMembership.find_signed!(id, purpose: :project_invitation)
   end
 
   def user
