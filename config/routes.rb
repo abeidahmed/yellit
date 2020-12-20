@@ -4,8 +4,15 @@ Rails.application.routes.draw do
   root "static_pages#home"
 
   namespace :app do
-    resources :projects, only: %i(update)
+    resources :projects, only: %i(update) do
+      resources :project_memberships, only: %i(create)
+    end
+
     resources :project_invitations, only: %i(show)
+
+    resources :project_memberships do
+      resource :account_setup, only: %i(edit), module: :project_memberships
+    end
 
     scope "/settings/:id" do
       root "projects#edit"
