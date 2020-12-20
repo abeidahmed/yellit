@@ -92,38 +92,40 @@
         </div>
       </div>
       <div>
-        <div class="Box-row d-flex flex-items-center">
-          <div class="d-flex flex-items-center col-9 col-md-4">
-            <div>
-              <img class="avatar avatar-5 circle" alt="jonrohan" src="https://github.com/jonrohan.png?v=3&s=40" />
+        <% @memberships.each do |member| %>
+          <div class="Box-row d-flex flex-items-center">
+            <div class="d-flex flex-items-center col-9 col-md-4">
+              <div>
+                <img class="avatar avatar-5 circle" alt="jonrohan" src="https://github.com/jonrohan.png?v=3&s=40" />
+              </div>
+              <div class="ml-2">
+                <span class="d-block h5"><%= member.full_name %></span>
+                <span class="d-block f6 text-gray"><%= member.role.capitalize %></span>
+              </div>
             </div>
-            <div class="ml-2">
-              <span class="d-block h5">Abeid Ahmed</span>
-              <span class="d-block f6 text-gray">Owner</span>
+            <div class="text-gray-light d-none d-md-flex flex-items-center col-md-5">
+              <%= octicon "mail" %>
+              <a href="mailto:<%= member.email_address %>" class="f5 ml-2"><%= member.email_address %></a>
+            </div>
+            <div class="col-3 d-flex flex-justify-end">
+              <div class="d-none d-md-flex">
+                <button class="btn-link text-gray f5">Demote</button>
+                <button class="btn-link text-gray f5 ml-3">Remove</button>
+              </div>
+              <div class="d-md-none">
+                <details class="dropdown details-reset details-overlay d-inline-block">
+                  <summary class="btn" aria-haspopup="true">
+                    <%= octicon "kebab-horizontal" %>
+                  </summary>
+                  <ul class="dropdown-menu dropdown-menu-sw">
+                    <li><a class="dropdown-item" href="#url">Demote</a></li>
+                    <li><a class="dropdown-item" href="#url">Remove</a></li>
+                  </ul>
+                </details>
+              </div>
             </div>
           </div>
-          <div class="text-gray-light d-none d-md-flex flex-items-center col-md-5">
-            <%= octicon "mail" %>
-            <a href="mailto:johndoe@example.com" class="f5 ml-2">johndoe@example.com</a>
-          </div>
-          <div class="col-3 d-flex flex-justify-end">
-            <div class="d-none d-md-flex">
-              <button class="btn-link text-gray f5">Demote</button>
-              <button class="btn-link text-gray f5 ml-3">Remove</button>
-            </div>
-            <div class="d-md-none">
-              <details class="dropdown details-reset details-overlay d-inline-block">
-                <summary class="btn" aria-haspopup="true">
-                  <%= octicon "kebab-horizontal" %>
-                </summary>
-                <ul class="dropdown-menu dropdown-menu-sw">
-                  <li><a class="dropdown-item" href="#url">Demote</a></li>
-                  <li><a class="dropdown-item" href="#url">Remove</a></li>
-                </ul>
-              </details>
-            </div>
-          </div>
-        </div>
+        <% end %>
       </div>
     </div>
   <% end %>

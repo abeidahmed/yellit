@@ -49,6 +49,10 @@ class ApplicationPolicy
     def resolve
       scope.all
     end
+
+    def good_project_member?(object: scope)
+      user.has_project_membership?(object) && user.project_invite_accepted?(object)
+    end
   end
 
   def good_project_owner?(object: record)
