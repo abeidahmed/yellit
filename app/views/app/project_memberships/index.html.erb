@@ -10,39 +10,26 @@
           People
         </h3>
         <div class="d-flex flex-justify-end position-relative">
-          <details data-controller="details" class="details-reset details-overlay">
-            <summary class="btn-link text-gray" aria-haspopup="true">
-              Filter <span class="dropdown-caret"></span>
-            </summary>
-            <div class="SelectMenu right-0">
-              <div class="SelectMenu-modal">
-                <header class="SelectMenu-header">
-                  <h3 class="SelectMenu-title">Filter people</h3>
-                  <button data-action="click->details#hide" class="SelectMenu-closeButton">
-                    <%= octicon "x" %>
-                  </button>
-                </header>
-                <div class="SelectMenu-list">
-                  <button class="SelectMenu-item" role="menuitemcheckbox" aria-checked="true">
-                    <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
-                    All
-                  </button>
-                  <button class="SelectMenu-item" role="menuitemcheckbox">
-                    <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
-                    Owners
-                  </button>
-                  <button class="SelectMenu-item" role="menuitemcheckbox">
-                    <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
-                    Members
-                  </button>
-                  <button class="SelectMenu-item" role="menuitemcheckbox">
-                    <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
-                    Invitation pending
-                  </button>
-                </div>
-              </div>
-            </div>
-          </details>
+          <%= render Dropdowns::DetailsComponent.new(button_title: "Filter", title: "Filter people") do |component| %>
+            <% component.with(:body) do %>
+              <button class="SelectMenu-item" role="menuitemcheckbox" aria-checked="true">
+                <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+                All
+              </button>
+              <button class="SelectMenu-item" role="menuitemcheckbox">
+                <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+                Owners
+              </button>
+              <button class="SelectMenu-item" role="menuitemcheckbox">
+                <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+                Members
+              </button>
+              <button class="SelectMenu-item" role="menuitemcheckbox">
+                <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+                Invitation pending
+              </button>
+            <% end %>
+          <% end %>
         </div>
       </div>
       <div>
