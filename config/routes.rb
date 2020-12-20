@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   namespace :app do
     resources :projects, only: %i(update)
+    resources :project_invitations, only: %i(show)
 
     scope "/settings/:id" do
       root "projects#edit"
