@@ -14,4 +14,24 @@ RSpec.feature "ProjectInvitations", type: :feature do
   #   expect(current_path).to eq(app_project_memberships_path(membership.project))
   #   expect(page).to have_text("invited")
   # end
+
+  it "should accept the invitation when accept invite button is clicked" do
+    membership = create(:project_membership, :pending)
+    sign_in(user: membership.user)
+    visit app_project_invitation_path(membership.signed_id(purpose: :project_invitation))
+    click_button "Accept"
+
+    # expect(current_path).to eq(app_root_path(membership.project))
+    expect(page).to have_text("part of the team")
+  end
+
+  it "should decline the invitation when decline invite button is clicked" do
+    membership = create(:project_membership, :pending)
+    sign_in(user: membership.user)
+    visit app_project_invitation_path(membership.signed_id(purpose: :project_invitation))
+    click_button "Decline"
+
+    # expect(current_path).to eq(app_projects_path)
+    expect(page).to have_text("Declined for good reasons")
+  end
 end

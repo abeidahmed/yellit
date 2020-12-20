@@ -2,14 +2,17 @@ class App::ProjectInvitationsController < App::BaseController
   layout "slate"
 
   def show
-    skip_authorization
+    @membership = ProjectMembership.find_signed!(params[:id], purpose: :project_invitation)
+    authorize @membership
   end
 
   def update
     membership = ProjectMembership.find(params[:id])
     authorize membership, :decider?
 
-    membership.update(join_date: Time.zone.now)
+    if membership.update(join_date: Time.zone.now)
+      redirect_to root_path, success: "Yay! You're now part of the team"
+    end
   end
 
   def destroy
@@ -17,5 +20,6 @@ class App::ProjectInvitationsController < App::BaseController
     authorize membership, :decider?
 
     membership.destroy
+    redirect_to root_path, success: "Declined for good reasons"
   end
 end
