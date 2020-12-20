@@ -1,5 +1,7 @@
 class App::ProjectMemberships::AccountSetupsController < ApplicationController
   def edit
+    @membership = ProjectMembership.find_signed!(params[:project_membership_id], purpose: :project_invitation)
+    @user       = @membership.user
   end
 
   def update
@@ -7,6 +9,7 @@ class App::ProjectMemberships::AccountSetupsController < ApplicationController
 
     if membership.update
       login(membership.user)
+      redirect_to app_project_invitation_path(membership.id)
     else
       render json: { errors: membership.errors }, status: :bad_request
     end
