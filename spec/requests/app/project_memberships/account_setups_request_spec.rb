@@ -15,6 +15,15 @@ RSpec.describe "App::ProjectMemberships::AccountSetups", type: :request do
       expect(cookies[:auth_token]).to eq(user.auth_token)
     end
 
+    it "should not allow anonymous as user's full name" do
+      membership = create(:project_membership, :pending)
+      patch app_project_membership_account_setup_path(membership.signed_id(purpose: :project_invitation)), params: { user: {
+        full_name: "   Anonymous  ", password: "newuserpassword"
+      } }
+
+      expect(json.dig(:errors, :full_name)).to be_present
+    end
+
     it "should return error if request is not valid" do
       membership = create(:project_membership, :pending)
       patch app_project_membership_account_setup_path(membership.signed_id(purpose: :project_invitation)), params: { user: { full_name: "", password: "" } }
