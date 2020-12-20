@@ -2,7 +2,7 @@ class ProjectMembership < ApplicationRecord
   belongs_to :project
   belongs_to :user
 
-  delegate :full_name, :email_address, to: :user
+  delegate :full_name, :email_address, :project_invite_pending?, to: :user
 
   enum role: { member: "member", owner: "owner" }
 
