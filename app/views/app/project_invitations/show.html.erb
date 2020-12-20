@@ -12,6 +12,6 @@
     </div>
   <% end %>
   <% component.with(:footer) do %>
-    Nevermind, I'll do it <a href="#">later</a>
+    Nevermind, I'll do it <%= link_to "later", app_projects_path %>
   <% end %>
 <% end %>

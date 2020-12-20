@@ -1,6 +1,7 @@
 class App::ProjectsController < App::BaseController
   def index
     skip_policy_scope
+    render layout: "slate"
   end
 
   def edit

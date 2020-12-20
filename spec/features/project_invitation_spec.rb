@@ -34,4 +34,13 @@ RSpec.feature "ProjectInvitations", type: :feature do
     expect(current_path).to eq(app_projects_path)
     expect(page).to have_text("Declined for good reasons")
   end
+
+  it "should take me to app_projects_path if I click on the later link" do
+    membership = create(:project_membership, :pending)
+    sign_in(user: membership.user)
+    visit app_project_invitation_path(membership.signed_id(purpose: :project_invitation))
+    click_link "later"
+
+    expect(current_path).to eq(app_projects_path)
+  end
 end
