@@ -35,12 +35,12 @@
       <div>
         <% @memberships.each do |member| %>
           <div class="Box-row d-flex flex-items-center">
-            <div class="d-flex flex-items-center col-9 col-md-4">
+            <div class="d-flex flex-items-center col-9 col-md-4 pr-3">
               <%= render Members::InfoComponent.new(member: member) %>
             </div>
-            <div class="text-gray-light d-none d-md-flex flex-items-center col-md-5">
+            <div class="text-gray-light d-none d-md-flex flex-items-center col-md-5 pr-3">
               <%= octicon "mail" %>
-              <a href="mailto:<%= member.email_address %>" class="f5 ml-2"><%= member.email_address %></a>
+              <%= link_to member.email_address, "mailto:#{member.email_address}", class: "f5 ml-2 css-truncate css-truncate-overflow" %>
             </div>
             <div class="col-3 d-flex flex-justify-end">
               <div class="d-none d-md-flex">

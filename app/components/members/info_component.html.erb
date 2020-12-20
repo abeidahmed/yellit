@@ -1,7 +1,7 @@
 <div>
   <%= render Users::AvatarComponent.new %>
 </div>
-<div class="ml-2">
-  <span class="d-block <%= name_classes %>"><%= full_name %></span>
+<div class="ml-2" style="min-width: 0;">
+  <span class="d-block css-truncate css-truncate-overflow <%= name_classes %>"><%= full_name %></span>
   <span class="d-block f6 text-gray"><%= member_role %></span>
 </div>
