@@ -1,4 +1,8 @@
 class App::ProjectsController < App::BaseController
+  def index
+    skip_policy_scope
+  end
+
   def edit
     @project = Project.find(params[:id])
     authorize @project

@@ -20,6 +20,6 @@ class App::ProjectInvitationsController < App::BaseController
     authorize membership, :decider?
 
     membership.destroy
-    redirect_to root_path, success: "Declined for good reasons"
+    redirect_to app_projects_path, success: "Declined for good reasons"
   end
 end

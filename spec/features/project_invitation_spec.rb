@@ -31,7 +31,7 @@ RSpec.feature "ProjectInvitations", type: :feature do
     visit app_project_invitation_path(membership.signed_id(purpose: :project_invitation))
     click_button "Decline"
 
-    # expect(current_path).to eq(app_projects_path)
+    expect(current_path).to eq(app_projects_path)
     expect(page).to have_text("Declined for good reasons")
   end
 end
