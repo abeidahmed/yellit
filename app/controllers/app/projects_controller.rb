@@ -9,6 +9,11 @@ class App::ProjectsController < App::BaseController
     check_member_tenancy_for @project
   end
 
+  def show
+    @project = Project.find(params[:id])
+    skip_authorization
+  end
+
   def update
     project = Project.find(params[:id])
     authorize project

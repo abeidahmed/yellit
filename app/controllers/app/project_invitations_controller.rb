@@ -11,7 +11,7 @@ class App::ProjectInvitationsController < App::BaseController
     authorize membership, :decider?
 
     if membership.update(join_date: Time.zone.now)
-      redirect_to root_path, success: "Yay! You're now part of the team"
+      redirect_to app_project_path(membership.project), success: "Yay! You're now part of the team"
     end
   end
 

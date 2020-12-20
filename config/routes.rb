@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root "static_pages#home"
 
   namespace :app do
-    resources :projects, only: %i(index update) do
+    resources :projects, only: %i(index show update) do
       resources :project_memberships, only: %i(create)
     end
 

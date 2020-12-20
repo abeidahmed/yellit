@@ -21,7 +21,7 @@ RSpec.feature "ProjectInvitations", type: :feature do
     visit app_project_invitation_path(membership.signed_id(purpose: :project_invitation))
     click_button "Accept"
 
-    # expect(current_path).to eq(app_root_path(membership.project))
+    expect(current_path).to eq(app_project_path(membership.project))
     expect(page).to have_text("part of the team")
   end
 
