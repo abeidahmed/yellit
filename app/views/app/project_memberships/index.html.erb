@@ -96,7 +96,7 @@
           <div class="Box-row d-flex flex-items-center">
             <div class="d-flex flex-items-center col-9 col-md-4">
               <div>
-                <img class="avatar avatar-5 circle" alt="jonrohan" src="https://github.com/jonrohan.png?v=3&s=40" />
+                <%= render Users::AvatarComponent.new %>
               </div>
               <div class="ml-2">
                 <span class="d-block h5"><%= member.full_name %></span>
