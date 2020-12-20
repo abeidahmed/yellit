@@ -6,7 +6,7 @@ RSpec.feature "MemberLists", type: :feature do
     sign_in(user: membership.user)
     visit app_project_memberships_path(membership.project)
 
-    expect(current_path).to eq(root_path)
+    expect(current_path).to eq(app_project_invitation_path(membership.signed_id(purpose: :project_invitation)))
   end
 
   it "should list all the members of the team" do

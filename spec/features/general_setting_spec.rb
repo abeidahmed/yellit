@@ -19,6 +19,6 @@ RSpec.feature "GeneralSettings", type: :feature do
     sign_in(user: membership.user)
     visit app_root_path(membership.project)
 
-    expect(current_path).to eq(root_path)
+    expect(current_path).to eq(app_project_invitation_path(membership.signed_id(purpose: :project_invitation)))
   end
 end
