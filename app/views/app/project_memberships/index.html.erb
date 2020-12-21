@@ -32,7 +32,7 @@
           <% end %>
         </div>
       </div>
-      <div>
+      <div id="project-member-list">
         <% @memberships.each do |member| %>
           <div class="Box-row d-flex flex-items-center">
             <div class="d-flex flex-items-center col-9 col-md-4 pr-3">
@@ -43,21 +43,7 @@
               <%= link_to member.email_address, "mailto:#{member.email_address}", class: "f5 ml-2 css-truncate css-truncate-overflow" %>
             </div>
             <div class="col-3 d-flex flex-justify-end">
-              <div class="d-none d-md-flex">
-                <button class="btn-link text-gray f5">Demote</button>
-                <button class="btn-link text-gray f5 ml-3">Remove</button>
-              </div>
-              <div class="d-md-none">
-                <details class="dropdown details-reset details-overlay d-inline-block">
-                  <summary class="btn" aria-haspopup="true">
-                    <%= octicon "kebab-horizontal" %>
-                  </summary>
-                  <ul class="dropdown-menu dropdown-menu-sw">
-                    <li><a class="dropdown-item" href="#url">Demote</a></li>
-                    <li><a class="dropdown-item" href="#url">Remove</a></li>
-                  </ul>
-                </details>
-              </div>
+              <%= render Members::ActionComponent.new(current_user: current_user, member: member) %>
             </div>
           </div>
         <% end %>

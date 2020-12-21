@@ -1,0 +1,31 @@
+<div class="d-none d-md-flex">
+  <% if current_user? %>
+    <button class="btn-link text-gray f5">Exit</button>
+  <% else %>
+    <% if member_is_owner? %>
+      <button class="btn-link text-gray f5">Demote</button>
+    <% else %>
+      <button class="btn-link text-gray f5">Promote</button>
+    <% end %>
+    <button class="btn-link text-gray f5 ml-3">Remove</button>
+  <% end %>
+</div>
+<div class="d-md-none">
+  <details class="dropdown details-reset details-overlay d-inline-block">
+    <summary class="btn" aria-haspopup="true">
+      <%= octicon "kebab-horizontal" %>
+    </summary>
+    <ul class="dropdown-menu dropdown-menu-sw">
+      <% if current_user? %>
+        <li><a class="dropdown-item" href="#url">Exit</a></li>
+      <% else %>
+        <% if member_is_owner? %>
+          <li><a class="dropdown-item" href="#url">Demote</a></li>
+        <% else %>
+          <li><a class="dropdown-item" href="#url">Promote</a></li>
+        <% end %>
+        <li><a class="dropdown-item" href="#url">Remove</a></li>
+      <% end %>
+    </ul>
+  </details>
+</div>
