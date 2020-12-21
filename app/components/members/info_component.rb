@@ -1,13 +1,10 @@
-class Members::InfoComponent < ApplicationComponent
-  attr_reader :member, :project
-
-  def initialize(member:)
-    @member  = member
-    @project = member.project
+class Members::InfoComponent < Members::BaseComponent
+  def project
+    member.project
   end
 
-  def full_name
-    pending_member? ? "Invitation pending" : member.full_name
+  def member_full_name
+    pending_member? ? "Invitation pending" : super
   end
 
   def member_role
