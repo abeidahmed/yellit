@@ -1,10 +1,9 @@
-class Members::ActionComponent < ApplicationComponent
-  attr_reader :current_user, :member, :project
+class Members::ActionComponent < Members::BaseComponent
+  attr_reader :current_user
 
-  def initialize(current_user:, member:)
+  def initialize(current_user:, **args)
+    super(**args)
     @current_user = current_user
-    @member       = member
-    @project      = member.project
   end
 
   def render?
@@ -21,5 +20,10 @@ class Members::ActionComponent < ApplicationComponent
 
   def current_user?
     current_user == member.user
+  end
+
+  private
+  def project
+    member.project
   end
 end
