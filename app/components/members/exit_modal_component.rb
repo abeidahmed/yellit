@@ -1,13 +1,3 @@
-class Members::ExitModalComponent < ApplicationComponent
+class Members::ExitModalComponent < Members::BaseComponent
   with_content_areas :trigger
-
-  attr_reader :member
-
-  def initialize(member:)
-    @member = member
-  end
-
-  def project_name
-    member.project.name
-  end
 end
