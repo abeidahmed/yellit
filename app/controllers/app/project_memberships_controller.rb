@@ -24,11 +24,12 @@ class App::ProjectMembershipsController < App::BaseController
 
     if membership.owner?
       membership.member!
+      flash[:success] = "Demoted #{membership.email_address} to member"
     else
       membership.owner!
-      redirect_back fallback_location: app_project_memberships_path(membership.project)
       flash[:success] = "Promoted #{membership.email_address} to owner"
     end
+    redirect_back fallback_location: app_project_memberships_path(membership.project)
   end
 
   private
