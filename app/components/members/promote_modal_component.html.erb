@@ -10,6 +10,8 @@
     </p>
   <% end %>
   <% component.with(:footer) do %>
-    <button class="btn btn-primary btn-block">Promote <%= member_full_name %> to owner</button>
+    <%= form_with url: app_project_membership_path(member), method: :patch, data: { remote: true } do |form| %>
+      <%= form.submit "Promote #{member_full_name} to owner", id: "user-promote-btn", class: "btn btn-primary btn-block" %>
+    <% end %>
   <% end %>
 <% end %>
