@@ -1,0 +1,32 @@
+details-dialog {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  min-height: 100vh;
+  width: 100%;
+
+  &.Box {
+    border-radius: 0;
+  }
+
+  .Box-body {
+    height: calc(100vh - 120px);
+  }
+
+  @include breakpoint(sm) {
+    margin: 10vh auto;
+    max-height: 80vh;
+    max-width: 440px;
+    min-height: auto;
+
+    &.Box {
+      border-radius: $border-radius;
+    }
+
+    .Box-body {
+      height: auto;
+    }
+  }
+}
