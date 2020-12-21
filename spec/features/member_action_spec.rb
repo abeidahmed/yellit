@@ -10,7 +10,7 @@ RSpec.feature "MemberActions", type: :feature do
 
     expect(last_user).to have_text(another_membership.email_address)
     within last_user do
-      page.all(:css, "#user-promote-btn", visible: false).first.click
+      page.all(:css, ".user-promote-btn", visible: false).first.click
     end
 
     expect(current_path).to eq(app_project_memberships_path(membership.project))
@@ -23,7 +23,7 @@ RSpec.feature "MemberActions", type: :feature do
 
     expect(last_user).to have_text(another_membership.email_address)
     within last_user do
-      page.all(:css, "#user-demote-btn", visible: false).first.click
+      page.all(:css, ".user-demote-btn", visible: false).first.click
     end
 
     expect(current_path).to eq(app_project_memberships_path(membership.project))
