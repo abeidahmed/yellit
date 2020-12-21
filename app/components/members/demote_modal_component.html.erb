@@ -1,0 +1,15 @@
+<%= render Boxes::ModalComponent.new(title: "Demote Abeid Ahmed?") do |component| %>
+  <% component.with(:trigger) do %>
+    <%= trigger %>
+  <% end %>
+  <% component.with(:body) do %>
+    <p class="mb-0">
+      Are you sure you want to demote Abeid Ahmed to member?
+      Abeid Ahmed will lose all priveleges like managing subscriptions,
+      billings, etc. Members can manage posts, labels, etc. <%= link_to "Learn more", "#" %>.
+    </p>
+  <% end %>
+  <% component.with(:footer) do %>
+    <button class="btn btn-danger btn-block">Demote Abeid Ahmed</button>
+  <% end %>
+<% end %>
