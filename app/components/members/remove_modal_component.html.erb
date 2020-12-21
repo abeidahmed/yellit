@@ -1,14 +1,14 @@
-<%= render Boxes::ModalComponent.new(title: "Remove Abeid Ahmed?") do |component| %>
+<%= render Boxes::ModalComponent.new(title: "Remove #{member_full_name}?") do |component| %>
   <% component.with(:trigger) do %>
     <%= trigger %>
   <% end %>
   <% component.with(:body) do %>
     <p class="mb-0">
-      Are you sure you want to remove Abeid Ahmed from the project team?
-      Once removed, Abeid Ahmed will no longer have access to the Applog space project.
+      Are you sure you want to <span class="h5">remove <%= member_full_name %> from the project team</span>?
+      Once removed, <%= member_full_name %> will no longer have access to the Applog space project.
     </p>
   <% end %>
   <% component.with(:footer) do %>
-    <button class="btn btn-danger btn-block">Remove Abeid Ahmed from team</button>
+    <button class="btn btn-danger btn-block">Remove <%= member_full_name %> from team</button>
   <% end %>
 <% end %>

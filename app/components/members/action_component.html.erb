@@ -19,7 +19,7 @@
         <% end %>
       <% end %>
     <% end %>
-    <%= render Members::RemoveModalComponent.new do |component| %>
+    <%= render Members::RemoveModalComponent.new(member: member) do |component| %>
       <% component.with(:trigger) do %>
         <div class="btn-link text-gray f5 ml-3">Remove</div>
       <% end %>
@@ -60,7 +60,7 @@
         <% end %>
         <li class="dropdown-divider" role="separator"></li>
         <li>
-          <%= render Members::RemoveModalComponent.new do |component| %>
+          <%= render Members::RemoveModalComponent.new(member: member) do |component| %>
             <% component.with(:trigger) do %>
               <div class="dropdown-item">Remove</div>
             <% end %>
