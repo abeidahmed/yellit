@@ -7,6 +7,10 @@ class ProjectMembershipPolicy < ApplicationPolicy
     is_current_user? && user.project_invite_pending?(record.project)
   end
 
+  def destroy?
+    good_current_project_member? || good_project_owner?(object: record.project)
+  end
+
   def decider?
     show?
   end
@@ -22,6 +26,10 @@ class ProjectMembershipPolicy < ApplicationPolicy
   end
 
   private
+  def good_current_project_member?
+    is_current_user? && good_project_member?(object: record.project)
+  end
+
   def is_current_user?
     user == record.user
   end
