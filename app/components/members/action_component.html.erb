@@ -13,7 +13,7 @@
         <% end %>
       <% end %>
     <% else %>
-      <%= render Members::PromoteModalComponent.new do |component| %>
+      <%= render Members::PromoteModalComponent.new(member: member) do |component| %>
         <% component.with(:trigger) do %>
           <div class="btn-link text-gray f5">Promote</div>
         <% end %>
@@ -51,7 +51,7 @@
           </li>
         <% else %>
           <li>
-            <%= render Members::PromoteModalComponent.new do |component| %>
+            <%= render Members::PromoteModalComponent.new(member: member) do |component| %>
               <% component.with(:trigger) do %>
                 <div class="dropdown-item">Promote</div>
               <% end %>
