@@ -1,0 +1,21 @@
+<details class="details-reset details-overlay details-overlay-dark">
+  <summary role="button" aria-haspopup="dialog"><%= trigger %></summary>
+  <details-dialog class="Box Box--overlay d-flex flex-column anim-fade-in fast details">
+    <div class="Box-header">
+      <% if title %>
+        <button class="Box-btn-octicon btn-octicon float-right" type="button" aria-label="Close dialog" data-close-dialog>
+          <%= octicon "x" %>
+        </button>
+        <h3 class="Box-title"><%= title %></h3>
+      <% end %>
+    </div>
+    <div class="overflow-auto Box-body">
+      <%= body %>
+    </div>
+    <% if footer %>
+      <div class="Box-footer">
+        <%= footer %>
+      </div>
+    <% end %>
+  </details-dialog>
+</details>

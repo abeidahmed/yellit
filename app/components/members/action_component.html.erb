@@ -1,11 +1,19 @@
 <div class="d-none d-md-flex">
   <% if current_user? %>
-    <button class="btn-link text-gray f5">Exit</button>
+    <%= render Members::PromoteModalComponent.new do |component| %>
+      <% component.with(:trigger) do %>
+        <div class="btn-link text-gray f5">Exit</div>
+      <% end %>
+    <% end %>
   <% else %>
     <% if member_is_owner? %>
       <button class="btn-link text-gray f5">Demote</button>
     <% else %>
-      <button class="btn-link text-gray f5">Promote</button>
+      <%= render Members::PromoteModalComponent.new do |component| %>
+        <% component.with(:trigger) do %>
+          <div class="btn-link text-gray f5">Promote</div>
+        <% end %>
+      <% end %>
     <% end %>
     <button class="btn-link text-gray f5 ml-3">Remove</button>
   <% end %>
@@ -17,12 +25,24 @@
     </summary>
     <ul class="dropdown-menu dropdown-menu-sw">
       <% if current_user? %>
-        <li><a class="dropdown-item" href="#url">Exit</a></li>
+        <li>
+          <%= render Members::PromoteModalComponent.new do |component| %>
+            <% component.with(:trigger) do %>
+              <div class="dropdown-item">Exit</div>
+            <% end %>
+          <% end %>
+        </li>
       <% else %>
         <% if member_is_owner? %>
           <li><a class="dropdown-item" href="#url">Demote</a></li>
         <% else %>
-          <li><a class="dropdown-item" href="#url">Promote</a></li>
+          <li>
+            <%= render Members::PromoteModalComponent.new do |component| %>
+              <% component.with(:trigger) do %>
+                <div class="dropdown-item">Promote</div>
+              <% end %>
+            <% end %>
+          </li>
         <% end %>
         <li class="dropdown-divider" role="separator"></li>
         <li><a class="dropdown-item" href="#url">Remove</a></li>

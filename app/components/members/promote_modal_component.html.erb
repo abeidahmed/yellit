@@ -1,0 +1,15 @@
+<%= render Boxes::ModalComponent.new(title: "Promote Abeid Ahmed?") do |component| %>
+  <% component.with(:trigger) do %>
+    <%= trigger %>
+  <% end %>
+  <% component.with(:body) do %>
+    <p class="mb-0">
+      Are you sure you want to promote Abeid Ahmed to owner?
+      Owner’s can manage everything inside the project, including
+      but not limited to billings, subscriptions, etc. <%= link_to "Learn more", "#" %>.
+    </p>
+  <% end %>
+  <% component.with(:footer) do %>
+    <button class="btn btn-primary btn-block">Promote Abeid Ahmed</button>
+  <% end %>
+<% end %>
