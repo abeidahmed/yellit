@@ -11,6 +11,10 @@ class ProjectMembershipPolicy < ApplicationPolicy
     show?
   end
 
+  def roller?
+    good_project_owner?(object: record.project)
+  end
+
   class Scope < Scope
     def resolve
       scope.project_memberships.includes(:user) if good_project_member?
