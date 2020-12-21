@@ -58,4 +58,28 @@ RSpec.describe "App::ProjectMemberships", type: :request do
       expect(json.dig(:errors, :email_address)).to be_present
     end
   end
+
+  describe "#update" do
+    let(:project) { create(:project) }
+    let(:membership) { create(:project_membership, :owner, project: project) }
+
+    it "should promote the member to owner" do
+      another_membership = create(:project_membership, project: project)
+      setup_roller_for(another_membership)
+
+      expect(another_membership.reload.role).to eq("owner")
+    end
+
+    it "should demote the owner to member" do
+      another_membership = create(:project_membership, :owner, project: project)
+      setup_roller_for(another_membership)
+
+      expect(another_membership.reload.role).to eq("member")
+    end
+
+    def setup_roller_for(user)
+      login(membership.user)
+      patch app_project_membership_path(user), params: nil
+    end
+  end
 end

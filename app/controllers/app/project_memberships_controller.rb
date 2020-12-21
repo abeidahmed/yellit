@@ -18,6 +18,17 @@ class App::ProjectMembershipsController < App::BaseController
     end
   end
 
+  def update
+    membership = ProjectMembership.find(params[:id])
+    authorize membership, :roller?
+
+    if membership.owner?
+      membership.member!
+    else
+      membership.owner!
+    end
+  end
+
   private
   def invite_params
     params.require(:user).permit(:email_address, :role)
