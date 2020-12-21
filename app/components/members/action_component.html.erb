@@ -1,6 +1,6 @@
 <div class="d-none d-md-flex">
   <% if current_user? %>
-    <%= render Members::PromoteModalComponent.new do |component| %>
+    <%= render Members::ExitModalComponent.new do |component| %>
       <% component.with(:trigger) do %>
         <div class="btn-link text-gray f5">Exit</div>
       <% end %>
@@ -30,7 +30,7 @@
     <ul class="dropdown-menu dropdown-menu-sw">
       <% if current_user? %>
         <li>
-          <%= render Members::PromoteModalComponent.new do |component| %>
+          <%= render Members::ExitModalComponent.new do |component| %>
             <% component.with(:trigger) do %>
               <div class="dropdown-item">Exit</div>
             <% end %>

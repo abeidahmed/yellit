@@ -1,0 +1,15 @@
+<%= render Boxes::ModalComponent.new(title: "Exit out of Applog space?") do |component| %>
+  <% component.with(:trigger) do %>
+    <%= trigger %>
+  <% end %>
+  <% component.with(:body) do %>
+    <p class="mb-0">
+      Are you sure you want to exit out of Applog space?
+      Once done, you will no longer have access to the Applog space project.
+      You can always join back if someone from the team invites you.
+    </p>
+  <% end %>
+  <% component.with(:footer) do %>
+    <button class="btn btn-danger btn-block">Exit out of Applog space</button>
+  <% end %>
+<% end %>
