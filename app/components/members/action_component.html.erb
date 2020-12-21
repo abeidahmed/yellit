@@ -7,7 +7,7 @@
     <% end %>
   <% else %>
     <% if member_is_owner? %>
-      <%= render Members::DemoteModalComponent.new do |component| %>
+      <%= render Members::DemoteModalComponent.new(member: member) do |component| %>
         <% component.with(:trigger) do %>
           <div class="btn-link text-gray f5">Demote</div>
         <% end %>
@@ -43,7 +43,7 @@
       <% else %>
         <% if member_is_owner? %>
           <li>
-            <%= render Members::DemoteModalComponent.new do |component| %>
+            <%= render Members::DemoteModalComponent.new(member: member) do |component| %>
               <% component.with(:trigger) do %>
                 <div class="dropdown-item">Demote</div>
               <% end %>
