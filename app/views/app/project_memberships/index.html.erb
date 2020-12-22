@@ -1,41 +1,39 @@
 <%= render Containers::SettingComponent.new(project: @project) do |component| %>
   <% component.with(:body) do %>
-    <div data-controller="search">
-      <div data-controller="toggle" data-toggle-attribute-value="hidden" class="mb-3">
-        <%= render "member_filter" %>
-        <%= render "invite_form", project: @project %>
-      </div>
-      <div class="Box">
-        <div class="Box-header d-flex flex-justify-between flex-items-center">
-          <h3 class="Box-title">
-            People
-          </h3>
-          <div class="d-flex flex-justify-end position-relative">
-            <%= render Dropdowns::DetailsComponent.new(button_title: "Filter", title: "Filter people") do |component| %>
-              <% component.with(:body) do %>
-                <button class="SelectMenu-item" role="menuitemcheckbox" aria-checked="true">
-                  <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
-                  All
-                </button>
-                <button class="SelectMenu-item" role="menuitemcheckbox">
-                  <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
-                  Owners
-                </button>
-                <button class="SelectMenu-item" role="menuitemcheckbox">
-                  <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
-                  Members
-                </button>
-                <button class="SelectMenu-item" role="menuitemcheckbox">
-                  <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
-                  Invitation pending
-                </button>
+    <div data-controller="toggle" data-toggle-attribute-value="hidden" class="mb-3">
+      <%= render "member_filter" %>
+      <%= render "invite_form", project: @project %>
+    </div>
+    <div class="Box">
+      <div class="Box-header d-flex flex-justify-between flex-items-center">
+        <h3 class="Box-title">
+          People
+        </h3>
+        <div class="d-flex flex-justify-end position-relative">
+          <%= render Dropdowns::DetailsComponent.new(button_title: "Filter", title: "Filter people") do |component| %>
+            <% component.with(:body) do %>
+              <%= link_to request.query_parameters.merge({ role: nil }), class: "SelectMenu-item", aria: { checked: true } do %>
+                <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+                All
+              <% end %>
+              <%= link_to request.query_parameters.merge({ role: "owner" }), class: "SelectMenu-item", aria: { checked: false } do %>
+                <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+                Owners
+              <% end %>
+              <%= link_to request.query_parameters.merge({ role: "member" }), class: "SelectMenu-item", aria: { checked: false } do %>
+                <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+                Members
+              <% end %>
+              <%= link_to request.query_parameters.merge({ role: "pending" }), class: "SelectMenu-item", aria: { checked: false } do %>
+                <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+                Invitation pending
               <% end %>
             <% end %>
-          </div>
+          <% end %>
         </div>
-        <div data-search-target="result" id="project-member-list">
-          <%= render "member_list", memberships: @memberships %>
-        </div>
+      </div>
+      <div id="project-member-list">
+        <%= render "member_list", memberships: @memberships %>
       </div>
     </div>
   <% end %>
