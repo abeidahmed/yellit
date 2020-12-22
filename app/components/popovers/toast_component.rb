@@ -27,14 +27,34 @@ class Popovers::ToastComponent < ApplicationComponent
   end
 
   def banner_class
-    BANNER_PROPERTIES.dig(type.to_sym, :class)
+    raise_undefined_banner if banner_type.nil?
+    banner_type[:class]
   end
 
   def toast_class
-    TOAST_PROPERTIES.dig(type.to_sym, :class)
+    raise_undefined_toast if toast_type.nil?
+    toast_type[:class]
   end
 
   def toast_icon
-    TOAST_PROPERTIES.dig(type.to_sym, :icon)
+    raise_undefined_toast if toast_type.nil?
+    toast_type[:icon]
+  end
+
+  private
+  def toast_type
+    TOAST_PROPERTIES[type.to_sym]
+  end
+
+  def raise_undefined_toast
+    raise "Undefined toast type: #{type}"
+  end
+
+  def banner_type
+    BANNER_PROPERTIES[type.to_sym]
+  end
+
+  def raise_undefined_banner
+    raise "Undefined banner type: #{type}"
   end
 end
