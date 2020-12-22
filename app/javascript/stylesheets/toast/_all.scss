@@ -1,3 +1,7 @@
+.Toast-container {
+  z-index: z(toast);
+}
+
 @keyframes Toast--animateIn {
   0% {
     opacity: 0;
