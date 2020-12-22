@@ -1,0 +1,8 @@
+<nav class="menu border-0">
+  <% links.each do |link| %>
+    <%= link_to link[:url], class: "menu-item border-0", aria: { selected: link[:active] } do %>
+      <%= octicon link[:icon] %>
+      <%= link[:title] %>
+    <% end %>
+  <% end %>
+</nav>
