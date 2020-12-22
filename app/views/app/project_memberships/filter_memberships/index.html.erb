@@ -1,5 +1,9 @@
 <% if @memberships.present? %>
   <%= render "app/project_memberships/member_list", memberships: @memberships %>
 <% else %>
-  <p>No results found</p>
+  <div class="blankslate blankslate-spacious">
+    <%= octicon "octoface", height: 24, class: "blankslate-icon" %>
+    <h3>We couldn't find what you were looking for</h3>
+    <p class="mt-1">Try searching people by their name, or by their email address. Search only works within your project environment.</p>
+  </div>
 <% end %>
