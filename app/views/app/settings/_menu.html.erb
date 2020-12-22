@@ -1,30 +1,44 @@
-<nav class="menu border-0">
-  <%= link_to app_root_path, class: "menu-item border-0", aria: { current: "page" } do %>
-    <%= octicon "gear" %>
-    General
-  <% end %>
-  <%= link_to edit_app_public_feeds_path, class: "menu-item border-0" do %>
-    <%= octicon "milestone" %>
-    Public feed
-  <% end %>
-  <%= link_to app_project_memberships_path, class: "menu-item border-0" do %>
-    <%= octicon "people" %>
-    Team members
-  <% end %>
-  <a href="#" class="menu-item border-0">
-    <%= octicon "tag" %>
-    Labels
-  </a>
-  <a href="#" class="menu-item border-0">
-    <%= octicon "cpu" %>
-    Widget
-  </a>
-  <a href="#" class="menu-item border-0">
-    <%= octicon "history" %>
-    Subscription
-  </a>
-  <a href="#" class="menu-item border-0">
-    <%= octicon "credit-card" %>
-    Billings
-  </a>
-</nav>
+<%= render Navigations::SidebarComponent.new(links: [
+  {
+    url: app_root_path,
+    icon: "gear",
+    title: "General",
+    active: is_active_link?(app_root_path, :exclusive)
+  },
+  {
+    url: edit_app_public_feeds_path,
+    icon: "milestone",
+    title: "Public feed",
+    active: is_active_link?(edit_app_public_feeds_path)
+  },
+  {
+    url: app_project_memberships_path,
+    icon: "people",
+    title: "Team members",
+    active: is_active_link?(app_project_memberships_path)
+  },
+  {
+    url: "#",
+    icon: "tag",
+    title: "Labels",
+    active: false
+  },
+  {
+    url: "#",
+    icon: "cpu",
+    title: "Widget",
+    active: false
+  },
+  {
+    url: "#",
+    icon: "history",
+    title: "Subscription",
+    active: false
+  },
+  {
+    url: "#",
+    icon: "credit-card",
+    title: "Billings",
+    active: false
+  },
+]) %>

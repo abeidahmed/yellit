@@ -1,4 +1,4 @@
-.menu-item[aria-current]:not([aria-current='false']) {
+.menu-item[aria-selected='true'] {
   cursor: pointer;
   font-weight: $font-weight-semibold;
 
