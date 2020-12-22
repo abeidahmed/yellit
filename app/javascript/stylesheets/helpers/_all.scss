@@ -1,0 +1,12 @@
+$z-index: (
+  toast: 1000,
+);
+
+@function z($name, $z: $z-index) {
+  @if map-has-key($z, $name) {
+    @return map-get($z, $name);
+  } @else {
+    @error "No value is present in `#{$z-index}` of the name `#{$name}`";
+  }
+  @return null;
+}

@@ -1,0 +1,27 @@
+<% if show_banner? %>
+  <div
+    data-controller="toggle"
+    data-toggle-attribute-value="hidden"
+    data-toggle-target="content"
+    class="flash flash-full px-sm-4 px-lg-5 <%= banner_class %>"
+  >
+    <div class="d-flex flex-justify-between flex-items-baseline">
+      <div class="pr-2"><%= message %></div>
+      <button data-action="click->toggle#hide" class="flash-close" type="button" aria-label="Dismiss this message">
+        <%= octicon "x" %>
+      </button>
+    </div>
+  </div>
+<% else %>
+  <div data-controller="toast" class="Toast-container p-1 position-fixed top-0 right-0">
+    <div data-toast-target="content" class="Toast <%= toast_class %>">
+      <span class="Toast-icon">
+        <%= octicon toast_icon %>
+      </span>
+      <span class="Toast-content"><%= message %></span>
+      <button data-action="click->toast#hide" type="button" class="Toast-dismissButton">
+        <%= octicon "x" %>
+      </button>
+    </div>
+  </div>
+<% end %>
