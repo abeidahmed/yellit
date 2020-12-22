@@ -58,4 +58,68 @@ RSpec.describe "App::ProjectMemberships", type: :request do
       expect(json.dig(:errors, :email_address)).to be_present
     end
   end
+
+  describe "#update" do
+    let(:project) { create(:project) }
+    let(:membership) { create(:project_membership, :owner, project: project) }
+
+    it "should promote the member to owner" do
+      another_membership = create(:project_membership, project: project)
+      setup_roller_for(another_membership)
+
+      expect(another_membership.reload.role).to eq("owner")
+    end
+
+    it "should demote the owner to member" do
+      another_membership = create(:project_membership, :owner, project: project)
+      setup_roller_for(another_membership)
+
+      expect(another_membership.reload.role).to eq("member")
+    end
+
+    def setup_roller_for(user)
+      login(membership.user)
+      patch app_project_membership_path(user), params: nil
+    end
+  end
+
+  describe "#destroy" do
+    it "should remove the owner from the team" do
+      project            = create(:project)
+      membership         = create(:project_membership, :owner, project: project)
+      another_membership = create(:project_membership, :owner, project: project)
+      login(membership.user)
+      delete app_project_membership_path(another_membership)
+
+      expect { ProjectMembership.find(another_membership.id) }.to raise_error(ActiveRecord::RecordNotFound)
+    end
+
+    it "should exit the team for the current user" do
+      membership = create(:project_membership)
+      login(membership.user)
+      delete app_project_membership_path(membership)
+
+      expect { ProjectMembership.find(membership.id) }.to raise_error(ActiveRecord::RecordNotFound)
+    end
+
+    it "should not exit the team if there is only one owner in the team" do
+      project            = create(:project)
+      membership         = create(:project_membership, :owner, project: project)
+      another_membership = create(:project_membership, project: project)
+      login(membership.user)
+      delete app_project_membership_path(membership)
+
+      expect(ProjectMembership.find(membership.id)).to be_present
+    end
+
+    it "should exit the team if there are two owners" do
+      project            = create(:project)
+      membership         = create(:project_membership, :owner, project: project)
+      another_membership = create(:project_membership, :owner, project: project)
+      login(membership.user)
+      delete app_project_membership_path(membership)
+
+      expect { ProjectMembership.find(membership.id) }.to raise_error(ActiveRecord::RecordNotFound)
+    end
+  end
 end

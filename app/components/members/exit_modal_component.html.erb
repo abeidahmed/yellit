@@ -1,0 +1,17 @@
+<%= render Boxes::ModalComponent.new(title: "Exit out of #{project_name}?") do |component| %>
+  <% component.with(:trigger) do %>
+    <%= trigger %>
+  <% end %>
+  <% component.with(:body) do %>
+    <p class="mb-0">
+      Are you sure you want to <span class="h5">exit out of <%= project_name %></span>?
+      Once done, you will no longer have access to the <%= project_name %> project.
+      You can always join back if someone from the team invites you.
+    </p>
+  <% end %>
+  <% component.with(:footer) do %>
+    <%= form_with url: app_project_membership_path(member), method: :delete do |form| %>
+      <%= form.submit "Exit out of #{project_name}", class: "user-exit-btn btn btn-danger btn-block" %>
+    <% end %>
+  <% end %>
+<% end %>

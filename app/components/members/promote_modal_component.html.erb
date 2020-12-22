@@ -1,0 +1,17 @@
+<%= render Boxes::ModalComponent.new(title: "Promote #{member_full_name}?") do |component| %>
+  <% component.with(:trigger) do %>
+    <%= trigger %>
+  <% end %>
+  <% component.with(:body) do %>
+    <p class="mb-0">
+      Are you sure you want to <span class="h5">promote <%= member_full_name %> to owner</span>?
+      Owner’s can manage everything inside the project, including
+      but not limited to billings, subscriptions, etc.
+    </p>
+  <% end %>
+  <% component.with(:footer) do %>
+    <%= form_with url: app_project_membership_path(member), method: :patch, data: { remote: true } do |form| %>
+      <%= form.submit "Promote #{member_full_name} to owner", class: "user-promote-btn btn btn-primary btn-block" %>
+    <% end %>
+  <% end %>
+<% end %>

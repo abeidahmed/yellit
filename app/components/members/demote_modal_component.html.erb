@@ -1,0 +1,17 @@
+<%= render Boxes::ModalComponent.new(title: "Demote #{member_full_name}?") do |component| %>
+  <% component.with(:trigger) do %>
+    <%= trigger %>
+  <% end %>
+  <% component.with(:body) do %>
+    <p class="mb-0">
+      Are you sure you want to <span class="h5">demote <%= member_full_name %> to member</span>?
+      <%= member_full_name %> will lose all priveleges like managing subscriptions,
+      billings, etc. Members can manage posts, labels, etc.
+    </p>
+  <% end %>
+  <% component.with(:footer) do %>
+    <%= form_with url: app_project_membership_path(member), method: :patch, data: { remote: true } do |form| %>
+      <%= form.submit "Demote #{member_full_name} to member", class: "user-demote-btn btn btn-danger btn-block" %>
+    <% end %>
+  <% end %>
+<% end %>
