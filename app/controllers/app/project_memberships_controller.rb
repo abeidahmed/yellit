@@ -32,6 +32,26 @@ class App::ProjectMembershipsController < App::BaseController
     redirect_back fallback_location: app_project_memberships_path(membership.project)
   end
 
+  def destroy
+    membership = ProjectMembership.find(params[:id])
+    authorize membership
+
+    owner = ProjectMembership::Tombstone.new(membership: membership, current_user: current_user)
+    if owner.needs_partner_owner?
+      redirect_back fallback_location: app_project_memberships_path(membership.project)
+      flash[:alert] = "Please promote your colleague to owner before you leave"
+      return
+    end
+
+    membership.destroy
+    if current_user == membership.user
+      redirect_to app_projects_path, success: "Exited for good reasons"
+    else
+      flash[:success] = "Removed #{membership.full_name} for good reasons"
+      redirect_back fallback_location: app_project_memberships_path(membership.project)
+    end
+  end
+
   private
   def invite_params
     params.require(:user).permit(:email_address, :role)

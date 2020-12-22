@@ -13,6 +13,10 @@ class Project < ApplicationRecord
   validates_uniqueness_of :subdomain, case_sensitive: false
   validates_format_of :website_url, with: VALID_URL_REGEX, allow_blank: true
 
+  def total_owners
+    project_memberships.users_with_role("owner").size
+  end
+
   private
   def normalize_website_url
     self.website_url = website_url.downcase
