@@ -9,6 +9,7 @@
       } do |form|
     %>
       <%= form.text_field :query,
+        value: params[:query],
         class: "form-control subnav-search-input width-full",
         placeholder: "Search people by name, email",
         autocomplete: "off",
