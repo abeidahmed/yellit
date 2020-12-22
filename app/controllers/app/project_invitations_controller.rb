@@ -11,7 +11,7 @@ class App::ProjectInvitationsController < App::BaseController
     authorize membership, :decider?
 
     if membership.update(join_date: Time.zone.now)
-      redirect_to app_project_path(membership.project), success: "Yay! You're now part of the team"
+      redirect_to app_project_path(membership.project), success: { message: "Yay! You're now part of the team" }
     end
   end
 
@@ -20,6 +20,6 @@ class App::ProjectInvitationsController < App::BaseController
     authorize membership, :decider?
 
     membership.destroy
-    redirect_to app_projects_path, success: "Declined for good reasons"
+    redirect_to app_projects_path, success: { message: "Declined for good reasons" }
   end
 end
