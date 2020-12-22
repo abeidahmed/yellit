@@ -42,25 +42,25 @@ RSpec.feature "MemberActions", type: :feature do
     expect(page).to have_text("Removed #{another_membership.email_address} for good reasons")
   end
 
-  # it "should exit the user" do
-  #   another_membership = create(:project_membership, :owner, project: project)
-  #   initialize_action(membership)
+  it "should exit the user" do
+    another_membership = create(:project_membership, :owner, project: project)
+    initialize_action(membership)
 
-  #   expect(first_user).to have_text(membership.email_address)
-  #   within first_user do
-  #     find("#user-exit-btn").click
-  #   end
+    expect(first_user).to have_text(membership.email_address)
+    within first_user do
+      page.all(:css, ".user-exit-btn", visible: false).first.click
+    end
 
-  #   expect(current_path).to eq(app_projects_path)
-  #   expect(page).to have_text("Exited for good reasons")
-  # end
+    expect(current_path).to eq(app_projects_path)
+    expect(page).to have_text("Exited for good reasons")
+  end
 
-  # it "should flash error message if there is only one owner and owner tries to exit the team" do
-  #   initialize_action(membership)
+  it "should flash error message if there is only one owner and owner tries to exit the team" do
+    initialize_action(membership)
 
-  #   find("#user-exit-btn").click
-  #   expect(page).to have_text("promote your colleague")
-  # end
+    page.all(:css, ".user-exit-btn", visible: false).first.click
+    expect(page).to have_text("promote your colleague")
+  end
 
   def initialize_action(membership)
     sign_in(user: membership.user)
@@ -71,7 +71,7 @@ RSpec.feature "MemberActions", type: :feature do
     page.all(:css, "#project-member-list").last
   end
 
-  # def first_user
-  #   page.all(:css, "#project-member-list").first
-  # end
+  def first_user
+    page.all(:css, "#project-member-list").first
+  end
 end

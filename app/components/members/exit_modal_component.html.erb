@@ -10,6 +10,8 @@
     </p>
   <% end %>
   <% component.with(:footer) do %>
-    <button class="btn btn-danger btn-block">Exit out of <%= project_name %></button>
+    <%= form_with url: app_project_membership_path(member), method: :delete do |form| %>
+      <%= form.submit "Exit out of #{project_name}", class: "user-exit-btn btn btn-danger btn-block" %>
+    <% end %>
   <% end %>
 <% end %>
