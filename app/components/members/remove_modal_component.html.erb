@@ -9,6 +9,8 @@
     </p>
   <% end %>
   <% component.with(:footer) do %>
-    <button class="btn btn-danger btn-block">Remove <%= member_full_name %> from team</button>
+    <%= form_with url: app_project_membership_path(member), method: :delete do |form| %>
+      <%= form.submit "Remove #{member_full_name} from team", class: "user-remove-btn btn btn-danger btn-block" %>
+    <% end %>
   <% end %>
 <% end %>

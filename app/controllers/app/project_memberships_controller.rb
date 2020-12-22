@@ -47,7 +47,7 @@ class App::ProjectMembershipsController < App::BaseController
     if current_user == membership.user
       redirect_to app_projects_path, success: "Exited for good reasons"
     else
-      flash[:success] = "Removed #{membership.full_name} for good reasons"
+      flash[:success] = "Removed #{membership.email_address} for good reasons"
       redirect_back fallback_location: app_project_memberships_path(membership.project)
     end
   end

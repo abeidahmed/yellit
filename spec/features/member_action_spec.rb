@@ -30,17 +30,17 @@ RSpec.feature "MemberActions", type: :feature do
     expect(page).to have_text("Demoted #{another_membership.email_address} to member")
   end
 
-  # it "should remove the user" do
-  #   another_membership = create(:project_membership, :owner, project: project)
-  #   initialize_action(membership)
+  it "should remove the user" do
+    another_membership = create(:project_membership, :owner, project: project)
+    initialize_action(membership)
 
-  #   expect(last_user).to have_text(another_membership.email_address)
-  #   within last_user do
-  #     find("#user-remove-btn").click
-  #   end
+    expect(last_user).to have_text(another_membership.email_address)
+    within last_user do
+      page.all(:css, ".user-remove-btn", visible: false).first.click
+    end
 
-  #   expect(page).to have_text("Removed #{another_membership.full_name} for good reasons")
-  # end
+    expect(page).to have_text("Removed #{another_membership.email_address} for good reasons")
+  end
 
   # it "should exit the user" do
   #   another_membership = create(:project_membership, :owner, project: project)
