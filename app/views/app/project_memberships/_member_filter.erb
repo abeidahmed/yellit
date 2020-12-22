@@ -1,14 +1,21 @@
 <div class="subnav d-flex flex-column flex-sm-row">
   <div class="subnav-search ml-0 col-12 col-sm-6 col-lg-5">
-    <input
-      type="search"
-      name="name"
-      class="form-control subnav-search-input width-full"
-      value=""
-      placeholder="Search people by name, email"
-      aria-label="Search people by name, email"
-      autocomplete="off"
-    />
+    <%= form_with url: app_project_filter_memberships_path(@project),
+      method: :get,
+      data: {
+        action: "ajax:success->search#populateResult",
+        search_target: "form",
+        remote: true
+      } do |form|
+    %>
+      <%= form.text_field :query,
+        class: "form-control subnav-search-input width-full",
+        placeholder: "Search people by name, email",
+        autocomplete: "off",
+        data: { action: "input->search#performSearch" },
+        aria: { label: "Search people by name, email" }
+      %>
+    <% end %>
     <%= octicon "search", class: "subnav-search-icon" %>
   </div>
   <div class="mt-2 mt-sm-0 col-sm-6 col-lg-7 d-sm-flex flex-justify-end">

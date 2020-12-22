@@ -1,0 +1,5 @@
+<% if @memberships.present? %>
+  <%= render "app/project_memberships/member_list", memberships: @memberships %>
+<% else %>
+  <p>No results found</p>
+<% end %>

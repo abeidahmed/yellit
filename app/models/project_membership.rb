@@ -13,4 +13,12 @@ class ProjectMembership < ApplicationRecord
   def self.humanized_role_keys
     roles.map { |key, value| [key.humanize, key] }
   end
+
+  def self.search(query)
+    if query.present?
+      where("users.email_address iLIKE :query OR users.full_name iLIKE :query", query: "%#{query}%").references(:users)
+    else
+      self.all
+    end
+  end
 end
