@@ -21,4 +21,16 @@ class ProjectMembership < ApplicationRecord
       self.all
     end
   end
+
+  def self.filter_by_role(role)
+    if role.present?
+      if role.downcase == "pending"
+        where(join_date: nil)
+      else
+        users_with_role(role.downcase)
+      end
+    else
+      self.all
+    end
+  end
 end
