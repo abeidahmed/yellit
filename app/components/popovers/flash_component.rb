@@ -1,4 +1,4 @@
-class Popovers::ToastComponent < ApplicationComponent
+class Popovers::FlashComponent < ApplicationComponent
   attr_reader :type, :flash_hash
 
   TOAST_PROPERTIES = {
