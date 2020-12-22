@@ -10,6 +10,17 @@ export default class extends ApplicationController {
   }
 
   performSearch(e) {
-    Rails.fire(this.formTarget, 'submit');
+    this.updateQueryParam(e.target.value);
+
+    if (this.timeoutId) clearTimeout(this.timeoutId);
+    this.timeoutId = setTimeout(() => {
+      Rails.fire(this.formTarget, 'submit');
+    }, 500);
+  }
+
+  updateQueryParam(value) {
+    const url = new URL(window.location);
+    url.searchParams.set('query', value);
+    window.history.pushState({}, '', url);
   }
 }
