@@ -4,7 +4,7 @@
       <%= render "member_filter" %>
       <%= render "invite_form", project: @project %>
     </div>
-    <div class="Box">
+    <div id="project-member-list" class="Box">
       <div class="Box-header d-flex flex-justify-between flex-items-center">
         <h3 class="Box-title">
           People
@@ -32,9 +32,7 @@
           <% end %>
         </div>
       </div>
-      <div id="project-member-list">
-        <%= render "member_list", memberships: @memberships %>
-      </div>
+      <%= render "member_list", memberships: @memberships %>
     </div>
   <% end %>
 <% end %>
