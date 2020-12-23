@@ -1,7 +1,10 @@
 <%= render Containers::SettingComponent.new(project: @project) do |component| %>
   <% component.with(:body) do %>
-    <div>
+    <div class="mb-3">
       <%= render "box_header" %>
+      <div class="Box p-3 bg-gray">
+        <%= render "form" %>
+      </div>
     </div>
     <div class="Box">
       <div class="Box-header">
