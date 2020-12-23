@@ -1,7 +1,7 @@
 <%= render Containers::SettingComponent.new(project: @project) do |component| %>
   <% component.with(:body) do %>
     <div data-controller="toggle" data-toggle-attribute-value="hidden" class="mb-3">
-      <%= render "member_filter" %>
+      <%= render "box_header" %>
       <%= render "invite_form", project: @project %>
     </div>
     <div id="project-member-list" class="Box">
@@ -10,26 +10,7 @@
           People
         </h3>
         <div class="d-flex flex-justify-end position-relative">
-          <%= render Dropdowns::DetailsComponent.new(button_title: "Filter", title: "Filter people") do |component| %>
-            <% component.with(:body) do %>
-              <%= link_to request.query_parameters.merge({ role: nil }), class: "SelectMenu-item", aria: { checked: has_param?("role", nil) } do %>
-                <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
-                All
-              <% end %>
-              <%= link_to request.query_parameters.merge({ role: "owner" }), class: "SelectMenu-item", aria: { checked: has_param?("role", "owner") } do %>
-                <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
-                Owners
-              <% end %>
-              <%= link_to request.query_parameters.merge({ role: "member" }), class: "SelectMenu-item", aria: { checked: has_param?("role", "member") } do %>
-                <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
-                Members
-              <% end %>
-              <%= link_to request.query_parameters.merge({ role: "pending" }), class: "SelectMenu-item", aria: { checked: has_param?("role", "pending") } do %>
-                <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
-                Invitation pending
-              <% end %>
-            <% end %>
-          <% end %>
+          <%= render "member_filter" %>
         </div>
       </div>
       <%= render "member_list", memberships: @memberships %>
