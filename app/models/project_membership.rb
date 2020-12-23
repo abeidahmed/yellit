@@ -13,4 +13,24 @@ class ProjectMembership < ApplicationRecord
   def self.humanized_role_keys
     roles.map { |key, value| [key.humanize, key] }
   end
+
+  def self.search(query)
+    if query.present?
+      where("users.email_address iLIKE :query OR users.full_name iLIKE :query", query: "%#{query}%").references(:users)
+    else
+      self.all
+    end
+  end
+
+  def self.filter_by_role(role)
+    if role.present?
+      if role.downcase == "pending"
+        where(join_date: nil)
+      else
+        users_with_role(role.downcase)
+      end
+    else
+      self.all
+    end
+  end
 end

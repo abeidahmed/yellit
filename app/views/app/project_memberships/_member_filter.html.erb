@@ -1,0 +1,20 @@
+<%= render Dropdowns::DetailsComponent.new(button_title: "Filter", title: "Filter people") do |component| %>
+  <% component.with(:body) do %>
+    <%= link_to request.query_parameters.merge({ role: nil }), class: "SelectMenu-item", aria: { checked: has_param?("role", nil) } do %>
+      <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+      All
+    <% end %>
+    <%= link_to request.query_parameters.merge({ role: "owner" }), class: "SelectMenu-item", aria: { checked: has_param?("role", "owner") } do %>
+      <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+      Owners
+    <% end %>
+    <%= link_to request.query_parameters.merge({ role: "member" }), class: "SelectMenu-item", aria: { checked: has_param?("role", "member") } do %>
+      <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+      Members
+    <% end %>
+    <%= link_to request.query_parameters.merge({ role: "pending" }), class: "SelectMenu-item", aria: { checked: has_param?("role", "pending") } do %>
+      <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+      Invitation pending
+    <% end %>
+  <% end %>
+<% end %>
