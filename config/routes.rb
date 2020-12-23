@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       root "projects#edit"
       resource :public_feeds, only: %i(edit)
       resources :project_memberships, only: %i(index)
+      resources :labels, only: %i(index)
     end
   end
 end
