@@ -4,7 +4,7 @@ export default class extends ApplicationController {
   static targets = ['content'];
 
   connect() {
-    if (!this.pageIsTurbolinksPreview) {
+    if (!this.pageIsTurboPreview) {
       this.contentTarget.classList.add('Toast--animateIn');
 
       setTimeout(() => {

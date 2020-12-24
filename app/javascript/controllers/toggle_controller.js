@@ -8,7 +8,7 @@ export default class extends ApplicationController {
   };
 
   connect() {
-    if (this.pageIsTurbolinksPreview) {
+    if (this.pageIsTurboPreview) {
       this.hide();
     }
   }

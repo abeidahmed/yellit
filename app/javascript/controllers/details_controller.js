@@ -2,7 +2,7 @@ import ApplicationController from './application_controller';
 
 export default class extends ApplicationController {
   connect() {
-    if (this.pageIsTurbolinksPreview) {
+    if (this.pageIsTurboPreview) {
       this.hide();
     }
   }
