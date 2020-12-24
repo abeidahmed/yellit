@@ -9,7 +9,6 @@ export default class extends ApplicationController {
 
   connect() {
     this.setActive();
-    console.log(this.keyValue);
   }
 
   setActive() {
