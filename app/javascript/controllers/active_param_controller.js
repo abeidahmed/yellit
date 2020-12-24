@@ -12,7 +12,7 @@ export default class extends ApplicationController {
     const q = qs.parse(location.search);
 
     this.listTargets.forEach((t) => {
-      if (!t.value.length && !Object.keys(q).length) {
+      if (!t.value.length && (!Object.keys(q).length || !q.role)) {
         t.setAttribute('aria-checked', true);
       } else if (t.value === q.role) {
         t.setAttribute('aria-checked', true);
