@@ -1,6 +1,6 @@
 <%= render Dropdowns::DetailsComponent.new(button_title: "Filter", title: "Filter people") do |component| %>
   <% component.with(:body) do %>
-    <div data-controller="active-param">
+    <div data-controller="active-param" data-active-param-key-value="role">
       <button
         class="SelectMenu-item"
         data-controller="search"
