@@ -1,0 +1,6 @@
+.Box .Box-row {
+  &:first-of-type,
+  &:not(:last-of-type) {
+    border-radius: 0;
+  }
+}
