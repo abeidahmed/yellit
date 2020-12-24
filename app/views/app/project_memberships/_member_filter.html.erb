@@ -1,51 +1,57 @@
 <%= render Dropdowns::DetailsComponent.new(button_title: "Filter", title: "Filter people") do |component| %>
   <% component.with(:body) do %>
-    <button
-      class="SelectMenu-item"
-      data-controller="search"
-      data-search-url-value="<%= app_project_filter_memberships_path(@project) %>"
-      data-search-key-value="role"
-      data-action="click->search#filter"
-      data-search-target-value="project-member-list"
-      value=""
-    >
-      <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
-      All
-    </button>
-    <button
-      class="SelectMenu-item"
-      data-controller="search"
-      data-search-url-value="<%= app_project_filter_memberships_path(@project) %>"
-      data-search-key-value="role"
-      data-action="click->search#filter"
-      data-search-target-value="project-member-list"
-      value="owner"
-    >
-      <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
-      Owners
-    <button
-      class="SelectMenu-item"
-      data-controller="search"
-      data-search-url-value="<%= app_project_filter_memberships_path(@project) %>"
-      data-search-key-value="role"
-      data-action="click->search#filter"
-      data-search-target-value="project-member-list"
-      value="member"
-    >
-      <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
-      Members
-    </button>
-    <button
-      class="SelectMenu-item"
-      data-controller="search"
-      data-search-url-value="<%= app_project_filter_memberships_path(@project) %>"
-      data-search-key-value="role"
-      data-action="click->search#filter"
-      data-search-target-value="project-member-list"
-      value="pending"
-    >
-      <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
-      Invitation pending
-    </button>
+    <div data-controller="active-param">
+      <button
+        class="SelectMenu-item"
+        data-controller="search"
+        data-search-url-value="<%= app_project_filter_memberships_path(@project) %>"
+        data-search-key-value="role"
+        data-action="click->search#filter click->active-param#setActive"
+        data-search-target-value="project-member-list"
+        data-active-param-target="list"
+        value=""
+      >
+        <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+        All
+      </button>
+      <button
+        class="SelectMenu-item"
+        data-controller="search"
+        data-search-url-value="<%= app_project_filter_memberships_path(@project) %>"
+        data-search-key-value="role"
+        data-action="click->search#filter click->active-param#setActive"
+        data-search-target-value="project-member-list"
+        data-active-param-target="list"
+        value="owner"
+      >
+        <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+        Owners
+      <button
+        class="SelectMenu-item"
+        data-controller="search"
+        data-search-url-value="<%= app_project_filter_memberships_path(@project) %>"
+        data-search-key-value="role"
+        data-action="click->search#filter click->active-param#setActive"
+        data-search-target-value="project-member-list"
+        data-active-param-target="list"
+        value="member"
+      >
+        <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+        Members
+      </button>
+      <button
+        class="SelectMenu-item"
+        data-controller="search"
+        data-search-url-value="<%= app_project_filter_memberships_path(@project) %>"
+        data-search-key-value="role"
+        data-action="click->search#filter click->active-param#setActive"
+        data-search-target-value="project-member-list"
+        data-active-param-target="list"
+        value="pending"
+      >
+        <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+        Invitation pending
+      </button>
+    </div>
   <% end %>
 <% end %>
