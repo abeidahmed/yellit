@@ -1,14 +1,19 @@
 <div class="subnav d-flex flex-column flex-sm-row">
   <div class="subnav-search ml-0 col-12 col-sm-6 col-lg-5">
-    <%= form_with url: app_project_memberships_path(@project), method: :get do |form| %>
-      <%= form.text_field :query,
-        value: params[:query],
-        class: "form-control subnav-search-input width-full",
-        placeholder: "Search people by name, email",
-        autocomplete: "off",
-        aria: { label: "Search people by name, email" }
-      %>
-    <% end %>
+    <%= text_field_tag "search",
+      params[:query],
+      class: "form-control subnav-search-input width-full",
+      data: {
+        controller: "search",
+        action: "search#observeField",
+        search_url_value: app_project_filter_memberships_path(@project),
+        search_key_value: "query",
+        search_target_value: "project-member-list"
+      },
+      placeholder: "Search people by name, email",
+      aria: { label: "Search people by name, email" },
+      autocomplete: "off"
+    %>
     <%= octicon "search", class: "subnav-search-icon" %>
   </div>
   <div class="mt-2 mt-sm-0 col-sm-6 col-lg-7 d-sm-flex flex-justify-end">
