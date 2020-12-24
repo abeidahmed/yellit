@@ -1,6 +1,6 @@
 <%= render Containers::FocussedComponent.new(title: "Sign in to yellit") do |component| %>
   <% component.with(:body) do %>
-    <%= form_with url: sessions_path, data: { controller: "form", action: "ajax:error->form#onError", remote: true } do |form| %>
+    <%= form_with url: sessions_path, data: { controller: "form", action: "ajax:error->form#onError" } do |form| %>
       <div class="form-group mt-0">
         <div class="form-group-header">
           <%= form.label :email_address %>

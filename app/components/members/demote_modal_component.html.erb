@@ -10,7 +10,7 @@
     </p>
   <% end %>
   <% component.with(:footer) do %>
-    <%= form_with url: app_project_membership_path(member), method: :patch, data: { remote: true } do |form| %>
+    <%= form_with url: app_project_membership_path(member), method: :patch do |form| %>
       <%= form.submit "Demote #{member_full_name} to member", class: "user-demote-btn btn btn-danger btn-block" %>
     <% end %>
   <% end %>

@@ -15,6 +15,7 @@ gem "pundit", "~> 2.1"
 gem "view_component", require: "view_component/engine"
 gem "octicons_helper"
 gem "active_link_to", "~> 1.0", ">= 1.0.5"
+gem "turbo-rails"
 # gem "redis", "~> 4.0"
 # gem "image_processing", "~> 1.2"
 gem "bootsnap", ">= 1.4.4", require: false

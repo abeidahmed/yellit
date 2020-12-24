@@ -4,8 +4,7 @@
       url: app_project_membership_account_setup_path(@membership.signed_id(purpose: :project_invitation)),
       data: {
         controller: "form",
-        action: "ajax:error->form#onError",
-        remote: true
+        action: "ajax:error->form#onError"
       } do |form| %>
       <div class="form-group mt-0">
         <div class="form-group-header">
