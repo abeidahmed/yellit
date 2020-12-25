@@ -16,6 +16,17 @@ class App::LabelsController < App::BaseController
     end
   end
 
+  def update
+    label = Label.find(params[:id])
+    authorize label
+
+    if label.update(label_params)
+      # do
+    else
+      render json: { errors: label.errors }, status: :bad_request
+    end
+  end
+
   private
   def label_params
     params.require(:label).permit(:name, :bg_color, :text_color)

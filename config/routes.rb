@@ -7,10 +7,11 @@ Rails.application.routes.draw do
     resources :projects, only: %i(index show update) do
       resources :project_memberships, only: %i(create)
       resources :filter_memberships, only: %i(index), module: :project_memberships
-      resources :labels, only: %i(create update)
+      resources :labels, only: %i(create)
     end
 
     resources :project_invitations, only: %i(show update destroy)
+    resources :labels, only: %i(update)
 
     resources :project_memberships, only: %i(update destroy) do
       resource :account_setup, only: %i(edit update), module: :project_memberships
