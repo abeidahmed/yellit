@@ -1,7 +1,7 @@
 class Label < ApplicationRecord
   belongs_to :project
 
-  # before_validation :normalize_hex_code
+  before_validation :normalize_hex_code
 
   VALID_HEX_REGEX = /\A#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\z/i
 
@@ -19,12 +19,15 @@ class Label < ApplicationRecord
     self.bg_color   = value
   end
 
-  # private
-  # def normalize_hex_code
-  #   self.color = prefix_hash(self.color)
-  # end
+  def normalize_hex_code
+  end
 
-  # def prefix_hash(hex_code)
-  #   hex_code.chr == "#" ? hex_code : "##{hex_code}"
-  # end
+  private
+  def normalize_hex_code
+    self.color = prefix_hash(color) if color
+  end
+
+  def prefix_hash(hex_code)
+    hex_code.chr == "#" ? hex_code : "##{hex_code}"
+  end
 end
