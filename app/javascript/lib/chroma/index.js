@@ -14,8 +14,8 @@ export default class Chroma {
 
   appendPoundSymbol() {
     this.input.addEventListener('input', () => {
-      if (!this.input.value) {
-        this.input.value = '#';
+      if (this.input.value.charAt(0) !== '#') {
+        this.input.value = `#${this.input.value}`;
       }
     });
   }
