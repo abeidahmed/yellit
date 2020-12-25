@@ -10,7 +10,7 @@ class App::LabelsController < App::BaseController
 
     label = project.labels.build(label_params)
     if label.save
-      # do something
+      redirect_back fallback_location: app_labels_path(project)
     else
       render json: { errors: label.errors }, status: :bad_request
     end

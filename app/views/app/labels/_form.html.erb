@@ -1,31 +1,31 @@
-<form>
+<%= form_with model: [:app, @project, Label.new], id: "label-form" do |form| %>
   <div class="form-group mt-0 mb-4">
     <span class="IssueLabel IssueLabel--big bg-yellow text-dark">Label preview</span>
   </div>
   <div class="d-md-flex flex-md-items-center">
     <div class="form-group mt-0 mb-md-0 col-md-4 pr-md-3">
       <div class="form-group-header">
-        <label for="">Label name</label>
+        <%= form.label :name, "Label name" %>
       </div>
       <div class="form-group-body">
-        <input type="text" class="form-control width-full" placeholder="Label name" autocomplete="off">
+        <%= form.text_field :name, class: "form-control width-full", placeholder: "Label name", autocomplete: "off" %>
       </div>
     </div>
     <div class="form-group mt-0 mb-md-0 col-md-4 pr-md-3">
       <div class="form-group-header">
-        <label for="">Color</label>
+        <%= form.label :color %>
       </div>
       <div class="form-group-body">
-        <input type="text" class="form-control width-full" placeholder="Hex color code" autocomplete="off">
+        <%= form.text_field :color, class: "form-control width-full", placeholder: "Hex color code", autocomplete: "off" %>
       </div>
     </div>
     <div class="d-flex mt-md-3 col-md-4 flex-md-justify-end">
       <div class="d-flex flex-items-start flex-md-order-1 mr-2 mr-md-0">
-        <button class="btn btn-primary">Create</button>
+        <%= form.submit class: "btn btn-primary" %>
       </div>
       <div class="d-flex flex-items-start mr-md-2">
         <button type="button" class="btn">Cancel</button>
       </div>
     </div>
   </div>
-</form>
+<% end %>
