@@ -2,7 +2,9 @@
   <% labels.each do |label| %>
     <div class="Box-row d-flex flex-items-center">
       <div class="d-flex flex-items-center col-9 pr-3">
-        <span class="IssueLabel IssueLabel--big bg-blue text-white"><%= label.name %></span>
+        <span style="background-color: <%= label.bg_color %>; color: <%= label.text_color %>" class="IssueLabel IssueLabel--big">
+          <%= label.name %>
+        </span>
       </div>
       <div class="col-3 d-flex flex-justify-end">
         <div class="d-none d-md-flex">
