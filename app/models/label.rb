@@ -11,12 +11,12 @@ class Label < ApplicationRecord
   validates_format_of :color, with: VALID_HEX_REGEX, message: "is not a valid hex color code"
 
   def color
-    self.text_color
+    self.bg_color
   end
 
   def color=(value)
-    self.text_color = Chroma.get_hex_from(value)
-    self.bg_color   = Chroma.get_accent_hex_from(value)
+    self.bg_color   = Chroma.get_hex_from(value)
+    self.text_color = Chroma.get_accent_hex_from(value)
   end
 
   private

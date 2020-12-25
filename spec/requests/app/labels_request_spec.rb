@@ -8,8 +8,8 @@ RSpec.describe "App::Labels", type: :request do
 
       label = project.labels.first
       expect(label.name).to eq("New label")
-      expect(label.text_color).to eq("#ffffff")
-      expect(label.bg_color).to eq("#000000")
+      expect(label.text_color).to eq("#000000")
+      expect(label.bg_color).to eq("#ffffff")
     end
 
     it "should return error if label is invalid" do
@@ -26,8 +26,8 @@ RSpec.describe "App::Labels", type: :request do
 
       label.reload
       expect(label.name).to eq("Updated label")
-      expect(label.text_color).to eq("#ffffff")
-      expect(label.bg_color).to eq("#000000")
+      expect(label.text_color).to eq("#000000")
+      expect(label.bg_color).to eq("#ffffff")
     end
 
     it "should return error when update is invalid" do
