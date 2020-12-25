@@ -1,5 +1,7 @@
 module Chroma
   class Color
+    include ActiveModel::Model
+
     attr_reader :hex
 
     def initialize(hex)
@@ -16,10 +18,14 @@ module Chroma
 
     private
     def normalized_hex
-      if [3, 4].include?(hex.size)
-        reduced_or_original_hex.split("").map { |v| v * 2 }.join
-      else
-        reduced_or_original_hex
+      begin
+        if [3, 4].include?(hex.size)
+          reduced_or_original_hex.split("").map { |v| v * 2 }.join
+        else
+          reduced_or_original_hex
+        end
+      rescue => exception
+        errors.add(:color, "must be 3 or 6 characters in length")
       end
     end
 

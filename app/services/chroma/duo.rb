@@ -1,5 +1,7 @@
 module Chroma
   class Duo
+    include ActiveModel::Model
+
     WHITE = "#ffffff"
     BLACK = "#000000"
 
@@ -8,7 +10,11 @@ module Chroma
     end
 
     def complement
-      contrast_of(*rgb_array) >= 128 ? BLACK : WHITE
+      begin
+        contrast_of(*rgb_array) >= 128 ? BLACK : WHITE
+      rescue => exception
+        errors.add(:color, "is invalid")
+      end
     end
 
     private
