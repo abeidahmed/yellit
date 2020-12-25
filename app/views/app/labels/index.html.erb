@@ -8,11 +8,9 @@
     </div>
     <div class="Box">
       <div class="Box-header">
-        <h3 class="Box-title">9 labels</h3>
+        <h3 class="Box-title"><%= pluralize(@labels.size, "label") %></h3>
       </div>
-      <% @labels.each do |label| %>
-        <%= render "label", label: label %>
-      <% end %>
+      <%= render "label", labels: @labels %>
     </div>
   <% end %>
 <% end %>
