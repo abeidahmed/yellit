@@ -10,4 +10,10 @@ class LabelPolicy < ApplicationPolicy
   def destroy?
     update?
   end
+
+  class Scope < Scope
+    def resolve
+      scope.labels if good_project_member?
+    end
+  end
 end

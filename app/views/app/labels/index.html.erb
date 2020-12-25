@@ -10,7 +10,9 @@
       <div class="Box-header">
         <h3 class="Box-title">9 labels</h3>
       </div>
-      <%= render "label_list" %>
+      <% @labels.each do |label| %>
+        <%= render "label", label: label %>
+      <% end %>
     </div>
   <% end %>
 <% end %>

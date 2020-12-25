@@ -1,7 +1,7 @@
 class App::LabelsController < App::BaseController
   def index
     @project = Project.find(params[:id])
-    skip_policy_scope
+    @labels  = policy_scope(@project, policy_scope_class: LabelPolicy::Scope)
   end
 
   def create
