@@ -14,8 +14,8 @@ RSpec.describe Label, type: :model do
 
     it { should validate_length_of(:name).is_at_most(255) }
 
-    it { should allow_value("#000", "#1f1f1F").for(:color) }
+    it { should allow_value("#000", "#1f1f1F", "000").for(:color) }
 
-    it { should_not allow_value("#F0h", "#afaf", "1f1#1F").for(:color) }
+    it { should_not allow_value("#F0h", "#afaf", "1f1#1F", "0000").for(:color) }
   end
 end

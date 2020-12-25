@@ -1,6 +1,8 @@
 class Label < ApplicationRecord
   belongs_to :project
 
+  before_validation :normalize_hex_code
+
   VALID_HEX_REGEX = /\A#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\z/i
 
   validates_presence_of :name
@@ -15,5 +17,10 @@ class Label < ApplicationRecord
   def color=(value)
     self.text_color = Chroma.get_hex_from(value)
     self.bg_color   = Chroma.get_accent_hex_from(value)
+  end
+
+  private
+  def normalize_hex_code
+    self.color = Chroma.get_hex_from(color)
   end
 end
