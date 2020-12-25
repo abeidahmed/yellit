@@ -1,7 +1,7 @@
 class Label < ApplicationRecord
   belongs_to :project
 
-  before_validation :normalize_hex_code
+  before_validation :prepend_pound_symbol
 
   VALID_HEX_REGEX = /\A#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\z/i
 
@@ -19,11 +19,8 @@ class Label < ApplicationRecord
     self.bg_color   = value
   end
 
-  def normalize_hex_code
-  end
-
   private
-  def normalize_hex_code
+  def prepend_pound_symbol
     self.color = prefix_hash(color) if color
   end
 
