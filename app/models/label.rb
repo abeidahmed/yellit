@@ -10,6 +10,8 @@ class Label < ApplicationRecord
   validates_uniqueness_of :name, case_sensitive: false, scope: :project_id
   validates_format_of :color, with: VALID_HEX_REGEX, message: "is not a valid hex color code"
 
+  scope :sort_asc_by_name, -> { order(name: :asc) }
+
   def color
     self.bg_color
   end
