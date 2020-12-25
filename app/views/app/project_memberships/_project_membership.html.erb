@@ -14,5 +14,8 @@
     </div>
   <% end %>
 <% else %>
-  <%= render Members::BlankslateComponent.new %>
+  <%= render BlankslateComponent.new(
+    title: "No team members!",
+    description: "Search and filter only works within the scope of this project."
+  ) %>
 <% end %>
