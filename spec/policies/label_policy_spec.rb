@@ -40,17 +40,17 @@ RSpec.describe LabelPolicy, type: :policy do
     context "being an owner" do
       let(:membership) { create(:project_membership, :owner, project: project) }
 
-      it { is_expected.to permit_actions(%i(update)) }
+      it { is_expected.to permit_actions(%i(update destroy)) }
     end
 
     context "being a member" do
-      it { is_expected.to permit_actions(%i(update)) }
+      it { is_expected.to permit_actions(%i(update destroy)) }
     end
 
     context "being a spectator" do
       let(:membership) { create(:project_membership, :pending_owner, project: project) }
 
-      it { is_expected.to forbid_actions(%i(update)) }
+      it { is_expected.to forbid_actions(%i(update destroy)) }
     end
   end
 end

@@ -6,4 +6,8 @@ class LabelPolicy < ApplicationPolicy
   def update?
     good_project_member?(object: record.project)
   end
+
+  def destroy?
+    update?
+  end
 end
