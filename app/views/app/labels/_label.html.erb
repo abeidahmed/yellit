@@ -27,11 +27,8 @@
     </div>
   <% end %>
 <% else %>
-  <div class="blankslate blankslate-large blankslate-spacious">
-    <%= octicon "octoface", height: 32, class: "blankslate-icon" %>
-    <h3>No labels!</h3>
-    <p class="mt-1 text-gray">
-      There aren’t any labels for this project quite yet. Click on the "New Label" button above to create one.
-    </p>
-  </div>
+  <%= render BlankslateComponent.new(
+    title: "No labels!",
+    description: "There aren’t any labels for this repository quite yet. Click on the \"New Label\" button above to create one."
+  ) %>
 <% end %>
