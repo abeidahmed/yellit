@@ -1,6 +1,7 @@
 class Project < ApplicationRecord
   has_many :project_memberships
   has_many :users, through: :project_memberships
+  has_many :labels
 
   before_save :normalize_website_url
   before_save :normalize_subdomain
