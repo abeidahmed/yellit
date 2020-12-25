@@ -21,10 +21,6 @@ class Label < ApplicationRecord
 
   private
   def prepend_pound_symbol
-    self.color = prefix_hash(color) if color
-  end
-
-  def prefix_hash(hex_code)
-    hex_code.chr == "#" ? hex_code : "##{hex_code}"
+    self.color = Chroma.get_hex_from(color) if color
   end
 end
