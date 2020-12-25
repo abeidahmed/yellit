@@ -35,6 +35,15 @@ RSpec.describe "App::Labels", type: :request do
     end
   end
 
+  describe "#destroy" do
+    it "should delete the label" do
+      label = create(:label, project: initialize_request)
+      delete app_label_path(label)
+
+      expect { Label.find(label.id) }.to raise_error(ActiveRecord::RecordNotFound)
+    end
+  end
+
   def initialize_request
     membership = create(:project_membership)
     project    = membership.project

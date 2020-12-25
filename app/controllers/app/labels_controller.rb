@@ -27,6 +27,13 @@ class App::LabelsController < App::BaseController
     end
   end
 
+  def destroy
+    label = Label.find(params[:id])
+    authorize label
+
+    label.destroy
+  end
+
   private
   def label_params
     params.require(:label).permit(:name, :bg_color, :text_color)
