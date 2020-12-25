@@ -36,6 +36,6 @@ class App::LabelsController < App::BaseController
 
   private
   def label_params
-    params.require(:label).permit(:name, :bg_color, :text_color)
+    params.require(:label).permit(:name, :color)
   end
 end

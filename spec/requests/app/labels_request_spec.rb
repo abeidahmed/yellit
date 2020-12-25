@@ -4,9 +4,12 @@ RSpec.describe "App::Labels", type: :request do
   describe "#create" do
     it "should create the label" do
       project = initialize_request
-      post app_project_labels_path(project), params: { label: attributes_for(:label) }
+      post app_project_labels_path(project), params: { label: { name: "New label", color: "#ffffff" } }
 
-      expect(project.labels.count).to eq(1)
+      label = project.labels.first
+      expect(label.name).to eq("New label")
+      expect(label.text_color).to eq("#ffffff")
+      expect(label.bg_color).to eq("#ffffff") # TODO: convert color
     end
 
     it "should return error if label is invalid" do
@@ -19,17 +22,17 @@ RSpec.describe "App::Labels", type: :request do
   describe "#update" do
     it "should update the label" do
       label = create(:label, project: initialize_request)
-      patch app_label_path(label), params: { label: { name: "Updated label", bg_color: "#ffffff", text_color: "#000000" } }
+      patch app_label_path(label), params: { label: { name: "Updated label", color: "#ffffff" } }
 
       label.reload
       expect(label.name).to eq("Updated label")
-      expect(label.bg_color).to eq("#ffffff")
-      expect(label.text_color).to eq("#000000")
+      expect(label.bg_color).to eq("#ffffff") # TODO: convert color
+      expect(label.text_color).to eq("#ffffff")
     end
 
     it "should return error when update is invalid" do
       label = create(:label, project: initialize_request)
-      patch app_label_path(label), params: { label: { name: "", bg_color: "#ffffff", text_color: "#000000" } }
+      patch app_label_path(label), params: { label: { name: "", color: "#ffffff" } }
 
       expect(json.dig(:errors, :name)).to be_present
     end
