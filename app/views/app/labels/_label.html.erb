@@ -22,7 +22,9 @@
                 <%= octicon "kebab-horizontal" %>
               </summary>
               <ul class="dropdown-menu dropdown-menu-sw">
-                <li><a href="#" class="dropdown-item">Edit</a></li>
+                <li>
+                  <button type="button" data-action="click->binding#show" class="btn-link dropdown-item">Edit</button>
+                </li>
                 <li class="dropdown-divider" role="separator"></li>
                 <li>
                   <%= render Labels::DeleteModalComponent.new(label: label) do |component| %>
