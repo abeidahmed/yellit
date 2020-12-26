@@ -4,18 +4,23 @@ import { formErrorHandler } from '../utils';
 export default class extends Controller {
   static targets = ['showError'];
 
-  onError(e) {
-    const [, , xhr] = e.detail;
-    const { errors } = JSON.parse(xhr.response);
+  async onError(e) {
+    const formData = await e.detail.formSubmission;
+    const { success, fetchResponse } = formData.result;
 
-    this.showErrorTargets.forEach((errorTarget) => {
-      const errorType = errorTarget.getAttribute('data-form-error');
+    if (!success) {
+      const res = await fetchResponse.responseText;
+      const { errors } = JSON.parse(res);
 
-      const errorMsg = formErrorHandler({
-        errors,
-        type: errorType,
+      this.showErrorTargets.forEach((errorTarget) => {
+        const errorType = errorTarget.getAttribute('data-form-error');
+
+        const errorMsg = formErrorHandler({
+          errors,
+          type: errorType,
+        });
+        errorTarget.innerHTML = errorMsg || '';
       });
-      errorTarget.innerHTML = errorMsg || '';
-    });
+    }
   }
 }

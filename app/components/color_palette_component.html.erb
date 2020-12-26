@@ -1,0 +1,19 @@
+<div data-toggle-target="content" class="Popover" hidden>
+  <div class="Popover-message color-palette-container Popover-message--top-left text-left p-2 mt-2 Box box-shadow-large">
+    <p class="f6 mb-0">
+      or choose from the default palette:
+    </p>
+    <div class="mt-1 d-flex flex-column">
+      <div class="color-palette">
+        <% color_palette.each do |color| %>
+          <button type="button"
+            data-action="click->label-color-picker#pickColor"
+            value="<%= color %>"
+            class="rounded-1 color-palette-btn btn-link"
+            style="background-color: <%= color %>"
+          ></button>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

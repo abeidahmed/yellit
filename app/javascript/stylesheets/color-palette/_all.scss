@@ -1,0 +1,13 @@
+.Popover-message.color-palette-container {
+  width: 256px;
+}
+
+.color-palette {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(24px, 1fr));
+  gap: 6px;
+}
+
+.color-palette-btn {
+  height: 24px;
+}

@@ -13,9 +13,37 @@ export default class extends ApplicationController {
     }
   }
 
+  show() {
+    this.addToggleClass();
+    this.addToggleAttribute();
+  }
+
   toggle() {
     this.toggleToggleClass();
     this.toggleAttribute();
+  }
+
+  hide() {
+    this.resetToggleClass();
+    this.resetHiddenAttribute();
+  }
+
+  onOutsideClick(e) {
+    if (!this.element.contains(e.target)) {
+      this.hide();
+    }
+  }
+
+  addToggleClass() {
+    if (this.hasToggleClass) {
+      this.contentTarget.classList.add(this.toggleClass);
+    }
+  }
+
+  addToggleAttribute() {
+    if (this.hasAttributeValue) {
+      this.contentTarget.removeAttribute(this.attributeValue);
+    }
   }
 
   toggleToggleClass() {
@@ -28,11 +56,6 @@ export default class extends ApplicationController {
     if (this.hasAttributeValue) {
       this.contentTarget.toggleAttribute(this.attributeValue);
     }
-  }
-
-  hide() {
-    this.resetToggleClass();
-    this.resetHiddenAttribute();
   }
 
   resetToggleClass() {

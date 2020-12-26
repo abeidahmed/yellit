@@ -3,4 +3,8 @@ class ApplicationController < ActionController::Base
 
   include Pundit
   include SessionsHelper
+
+  def redirect_back_or_to(fallback_location, **args)
+    redirect_back fallback_location: fallback_location, **args
+  end
 end

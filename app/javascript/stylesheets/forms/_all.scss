@@ -1,3 +1,9 @@
 .form-group .form-control {
   margin-right: 0;
 }
+
+.inline-form-btn-group {
+  @include breakpoint(md) {
+    margin-top: 27px;
+  }
+}

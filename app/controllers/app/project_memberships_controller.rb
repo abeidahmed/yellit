@@ -1,11 +1,9 @@
 class App::ProjectMembershipsController < App::BaseController
-  include ProjectMemberships::Members
+  include ProjectMemberships::MemberList
 
   def index
     @project = Project.find(params[:id])
-
     skip_policy_scope
-    check_member_tenancy_for @project
 
     @memberships = project_members
   end
@@ -34,7 +32,7 @@ class App::ProjectMembershipsController < App::BaseController
       membership.owner!
       flash[:success] = { message: "Promoted #{membership.email_address} to owner" }
     end
-    redirect_back fallback_location: app_project_memberships_path(membership.project)
+    redirect_back_or_to app_project_memberships_path(membership.project)
   end
 
   def destroy
@@ -43,7 +41,7 @@ class App::ProjectMembershipsController < App::BaseController
 
     owner = ProjectMembership::Tombstone.new(membership: membership, current_user: current_user)
     if owner.needs_partner_owner?
-      redirect_back fallback_location: app_project_memberships_path(membership.project)
+      redirect_back_or_to app_project_memberships_path(membership.project)
       flash[:alert] = { message: "Please promote your colleague to owner before you leave", banner: true }
       return
     end
@@ -53,7 +51,7 @@ class App::ProjectMembershipsController < App::BaseController
       redirect_to app_projects_path, success: { message: "Exited for good reasons" }
     else
       flash[:success] = { message: "Removed #{membership.email_address} for good reasons" }
-      redirect_back fallback_location: app_project_memberships_path(membership.project)
+      redirect_back_or_to app_project_memberships_path(membership.project)
     end
   end
 
