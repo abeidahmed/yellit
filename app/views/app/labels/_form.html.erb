@@ -3,12 +3,12 @@
   data: {
     controller: "label-color-picker typer form",
     action: "turbo:submit-end->form#onError",
-    typer_default_value: "Label preview"
+    typer_default_value: local_assigns[:label] ? label.name : "Label preview"
   } do |form|
 %>
   <div class="form-group mt-0 mb-4">
     <span data-typer-target="bind" data-label-color-picker-target="sideEffect" class="IssueLabel IssueLabel--big">
-      Label preview
+      <%= local_assigns[:label] ? label.name : "Label preview" %>
     </span>
   </div>
   <div class="d-md-flex">
