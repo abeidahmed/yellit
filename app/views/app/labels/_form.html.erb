@@ -7,9 +7,13 @@
   } do |form|
 %>
   <div class="form-group mt-0 mb-4">
-    <span data-typer-target="bind" data-label-color-picker-target="sideEffect" class="IssueLabel IssueLabel--big">
-      <%= local_assigns[:label] ? label.name : "Label preview" %>
-    </span>
+    <%= render Labels::IssueComponent.new(
+      title: local_assigns[:label] ? label.name : "Label preview",
+      data: {
+        typer_target: "bind",
+        label_color_picker_target: "sideEffect"
+      })
+    %>
   </div>
   <div class="d-md-flex">
     <div class="form-group mt-0 mb-0 col-md-4 pr-md-3">

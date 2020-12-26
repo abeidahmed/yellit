@@ -3,9 +3,10 @@
     <div data-controller="binding" class="Box-row">
       <div data-binding-target="shownElement" class="d-flex flex-items-center">
         <div class="d-flex flex-items-center col-9 pr-3">
-          <span style="background-color: <%= label.bg_color %>; color: <%= label.text_color %>" class="IssueLabel IssueLabel--big css-truncate css-truncate-overflow">
-            <%= label.name %>
-          </span>
+          <%= render Labels::IssueComponent.new(
+            title: label.name,
+            style: "background-color: #{label.bg_color}; color: #{label.text_color}"
+          ) %>
         </div>
         <div class="col-3 d-flex flex-justify-end">
           <div class="d-none d-md-flex">
