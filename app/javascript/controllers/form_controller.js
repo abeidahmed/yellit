@@ -6,17 +6,21 @@ export default class extends Controller {
 
   async onError(e) {
     const formData = await e.detail.formSubmission;
-    const res = await formData.result.fetchResponse.responseText;
-    const { errors } = JSON.parse(res);
+    const { success, fetchResponse } = formData.result;
 
-    this.showErrorTargets.forEach((errorTarget) => {
-      const errorType = errorTarget.getAttribute('data-form-error');
+    if (!success) {
+      const res = await fetchResponse.responseText;
+      const { errors } = JSON.parse(res);
 
-      const errorMsg = formErrorHandler({
-        errors,
-        type: errorType,
+      this.showErrorTargets.forEach((errorTarget) => {
+        const errorType = errorTarget.getAttribute('data-form-error');
+
+        const errorMsg = formErrorHandler({
+          errors,
+          type: errorType,
+        });
+        errorTarget.innerHTML = errorMsg || '';
       });
-      errorTarget.innerHTML = errorMsg || '';
-    });
+    }
   }
 }
