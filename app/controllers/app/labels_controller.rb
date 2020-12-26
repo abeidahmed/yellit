@@ -10,7 +10,7 @@ class App::LabelsController < App::BaseController
 
     label = project.labels.build(label_params)
     if label.save
-      redirect_back fallback_location: app_labels_path(project)
+      redirect_back_or_to app_labels_path(project)
     else
       render json: { errors: label.errors }, status: :bad_request
     end
@@ -21,7 +21,7 @@ class App::LabelsController < App::BaseController
     authorize label
 
     if label.update(label_params)
-      redirect_back fallback_location: app_labels_path(label.project), success: { message: "OK, we got your changes" }
+      redirect_back_or_to app_labels_path(label.project), success: { message: "OK, we got your changes" }
     else
       render json: { errors: label.errors }, status: :bad_request
     end
