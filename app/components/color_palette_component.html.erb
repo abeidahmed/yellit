@@ -7,7 +7,7 @@
       <div class="color-palette">
         <% color_palette.each do |color| %>
           <button type="button"
-            data-action="click->label-color-picker#observe"
+            data-action="click->label-color-picker#pickColor"
             value="<%= color %>"
             class="rounded-1 color-palette-btn btn-link"
             style="background-color: <%= color %>"

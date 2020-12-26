@@ -13,15 +13,19 @@ export default class extends ApplicationController {
     this.observe();
   }
 
-  observe(e) {
-    if (typeof e !== 'undefined') {
-      const palette = this.chroma.generatePalette(e.target.value);
-      this.inputTarget.value = e.target.value;
-      this.publishSideEffect(palette);
-    }
+  observe() {
+    this.publishSideEffect(this.inputTarget.value);
   }
 
-  publishSideEffect(palette) {
+  pickColor(e) {
+    const chosenColor = e.target.value;
+    this.inputTarget.value = chosenColor;
+
+    this.publishSideEffect(chosenColor);
+  }
+
+  publishSideEffect(color) {
+    const palette = this.chroma.generatePalette(color);
     if (!palette) return;
 
     const { primary, accent } = palette;
