@@ -7,7 +7,7 @@ RSpec.feature "LabelActions", type: :feature do
     label      = create(:label, project: project)
     sign_in(user: membership.user)
     visit app_labels_path(project)
-    within "#label-list", visible: false do
+    within "#project-label-list", visible: false do
       page.all(:css, ".label-delete-btn", visible: false).first.click
     end
 

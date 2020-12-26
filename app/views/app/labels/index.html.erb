@@ -6,7 +6,7 @@
         <%= render "form", model: [:app, @project, Label.new], dom_id: Label.new %>
       </div>
     </div>
-    <div id="label-list" class="Box">
+    <div class="Box">
       <div class="Box-header">
         <h3 class="Box-title"><%= pluralize(@labels.size, "label") %></h3>
       </div>
