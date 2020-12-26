@@ -2,7 +2,7 @@ module Labels::LabelList
   extend ActiveSupport::Concern
 
   def project_labels
-    check_member_tenancy_for project
+    check_member_tenancy
     scope_pundit_policy.sort_asc_by_name.search(params[:query]) unless project_invite_pending?
   end
 

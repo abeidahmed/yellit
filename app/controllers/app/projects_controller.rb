@@ -7,7 +7,7 @@ class App::ProjectsController < App::BaseController
   def edit
     @project = Project.find(params[:id])
     authorize @project
-    check_member_tenancy_for @project
+    check_member_tenancy
   end
 
   def show

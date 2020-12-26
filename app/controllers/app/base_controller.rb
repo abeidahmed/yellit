@@ -1,7 +1,7 @@
 class App::BaseController < ApplicationController
   layout "app"
 
-  include MemberTenancy
+  include ProjectMemberships::MemberTenancy
   include SignedIdHelper
 
   before_action :authenticate_user
