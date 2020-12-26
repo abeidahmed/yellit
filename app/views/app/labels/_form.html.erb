@@ -14,10 +14,11 @@
   <div class="d-md-flex">
     <div class="form-group mt-0 mb-0 col-md-4 pr-md-3">
       <div class="form-group-header">
-        <%= form.label :name, "Label name" %>
+        <%= form.label :name, "Label name", for: "label-name-#{dom_id(dom_id)}" %>
       </div>
       <div class="form-group-body">
         <%= form.text_field :name,
+          id: "label-name-#{dom_id(dom_id)}",
           class: "form-control width-full",
           data: { action: "input->typer#type" },
           placeholder: "Label name",
@@ -30,11 +31,12 @@
     </div>
     <div class="form-group my-md-0 col-md-4 pr-md-3">
       <div class="form-group-header">
-        <%= form.label :color %>
+        <%= form.label :color, for: "label-color-#{dom_id(dom_id)}" %>
       </div>
       <div class="form-group-body">
         <div data-controller="toggle" data-toggle-attribute-value="hidden" data-action="click@window->toggle#onOutsideClick" class="position-relative">
           <%= form.text_field :color,
+            id: "label-color-#{dom_id(dom_id)}",
             class: "form-control width-full",
             data: {
               label_color_picker_target: "input",
