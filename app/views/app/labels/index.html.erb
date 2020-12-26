@@ -1,7 +1,7 @@
 <%= render Containers::SettingComponent.new(project: @project) do |component| %>
   <% component.with(:body) do %>
     <div data-controller="toggle" data-toggle-attribute-value="hidden" class="mb-3">
-      <%= render "box_header" %>
+      <%= render "box_header", project: @project %>
       <div data-toggle-target="content" class="Box p-3 bg-gray" hidden>
         <%= render "form", model: [:app, @project, Label.new], dom_id: Label.new %>
       </div>
@@ -10,7 +10,9 @@
       <div class="Box-header">
         <h3 class="Box-title"><%= pluralize(@labels.size, "label") %></h3>
       </div>
-      <%= render "label", labels: @labels %>
+      <div id="project-label-list">
+        <%= render "label", labels: @labels %>
+      </div>
     </div>
   <% end %>
 <% end %>

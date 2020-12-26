@@ -21,6 +21,14 @@ class Label < ApplicationRecord
     self.text_color = Chroma.get_accent_hex_from(value)
   end
 
+  def self.search(query)
+    if query.present?
+      where("name iLIKE :query", query: "%#{query}%")
+    else
+      self.all
+    end
+  end
+
   private
   def normalize_hex_code
     self.color = Chroma.get_hex_from(color)
