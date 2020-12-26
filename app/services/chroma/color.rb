@@ -30,7 +30,8 @@ module Chroma
     end
 
     def reduced_or_original_hex
-      hex.chr == "#" ? hex.slice(1..-1) : hex
+      checker = hex.chr == "#" ? hex.slice(1..-1) : hex
+      checker.to_s.downcase
     end
   end
 end

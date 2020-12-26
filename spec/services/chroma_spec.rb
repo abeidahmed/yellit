@@ -6,6 +6,7 @@ RSpec.describe "Chroma" do
       expect(Chroma.get_hex_from("#000")).to eq("#000000")
       expect(Chroma.get_hex_from("000")).to eq("#000000")
       expect(Chroma.get_hex_from("#000000")).to eq("#000000")
+      expect(Chroma.get_hex_from("#E1E1e1")).to eq("#e1e1e1")
     end
   end
 
