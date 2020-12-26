@@ -1,9 +1,9 @@
 <%= form_with model: [:app, @project, Label.new],
   id: "label-form",
-  data: { controller: "label-color-picker" } do |form|
+  data: { controller: "label-color-picker typer", typer_default_value: "Label preview" } do |form|
 %>
   <div class="form-group mt-0 mb-4">
-    <span data-label-color-picker-target="sideEffect" class="IssueLabel IssueLabel--big">
+    <span data-typer-target="bind" data-label-color-picker-target="sideEffect" class="IssueLabel IssueLabel--big">
       Label preview
     </span>
   </div>
@@ -13,7 +13,12 @@
         <%= form.label :name, "Label name" %>
       </div>
       <div class="form-group-body">
-        <%= form.text_field :name, class: "form-control width-full", placeholder: "Label name", autocomplete: "off" %>
+        <%= form.text_field :name,
+          class: "form-control width-full",
+          data: { action: "input->typer#type" },
+          placeholder: "Label name",
+          autocomplete: "off"
+        %>
       </div>
     </div>
     <div class="form-group mt-0 mb-md-0 col-md-4 pr-md-3">
