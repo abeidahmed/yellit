@@ -1,7 +1,7 @@
 <%= render Containers::FocussedComponent.new(title: "Update your account") do |component| %>
   <% component.with(:body) do %>
     <%= form_with model: [:app, @user],
-      url: app_project_membership_account_setup_path(@membership.signed_id(purpose: :project_invitation)),
+      url: app_project_membership_account_setup_path(invitation_sid_for(@membership)),
       data: {
         controller: "form",
         action: "turbo:submit-end->form#onError"

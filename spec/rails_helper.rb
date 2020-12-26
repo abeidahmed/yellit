@@ -41,6 +41,7 @@ RSpec.configure do |config|
   config.include Features::SessionsHelper
   config.include Mailers::MailersHelper
   config.include Requests::SessionsHelper
+  config.include SignedIdHelper
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false

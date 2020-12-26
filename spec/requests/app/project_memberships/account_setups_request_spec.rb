@@ -4,7 +4,7 @@ RSpec.describe "App::ProjectMemberships::AccountSetups", type: :request do
   describe "#update" do
     it "should let user update their name and password" do
       membership = create(:project_membership, :pending)
-      patch app_project_membership_account_setup_path(membership.signed_id(purpose: :project_invitation)), params: { user: {
+      patch app_project_membership_account_setup_path(invitation_sid_for(membership)), params: { user: {
         full_name: "New full name", password: "newuserpassword"
       } }
 
@@ -17,7 +17,7 @@ RSpec.describe "App::ProjectMemberships::AccountSetups", type: :request do
 
     it "should not allow anonymous as user's full name" do
       membership = create(:project_membership, :pending)
-      patch app_project_membership_account_setup_path(membership.signed_id(purpose: :project_invitation)), params: { user: {
+      patch app_project_membership_account_setup_path(invitation_sid_for(membership)), params: { user: {
         full_name: "   Anonymous  ", password: "newuserpassword"
       } }
 
@@ -26,7 +26,7 @@ RSpec.describe "App::ProjectMemberships::AccountSetups", type: :request do
 
     it "should return error if request is not valid" do
       membership = create(:project_membership, :pending)
-      patch app_project_membership_account_setup_path(membership.signed_id(purpose: :project_invitation)), params: { user: { full_name: "", password: "" } }
+      patch app_project_membership_account_setup_path(invitation_sid_for(membership)), params: { user: { full_name: "", password: "" } }
 
       expect(json.dig(:errors, :full_name)).to be_present
       expect(json.dig(:errors, :password)).to be_present

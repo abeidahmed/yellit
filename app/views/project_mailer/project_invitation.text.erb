@@ -1,10 +1,10 @@
 Invite pending
 
-<%= app_project_invitation_url(@membership.signed_id(purpose: :project_invitation)) %>
+<%= app_project_invitation_url(invitation_sid_for(@membership)) %>
 
 <% if @new_user %>
   We noticed that you aren't a part of Applog family, and hence we took the initiative of creating a new account for you. Hope you do not mind.
   Login details:
   Email address: <%= @user.email_address %>
-  <%= edit_app_project_membership_account_setup_url(@membership.signed_id(purpose: :project_invitation)) %>
+  <%= edit_app_project_membership_account_setup_url(invitation_sid_for(@membership)) %>
 <% end %>

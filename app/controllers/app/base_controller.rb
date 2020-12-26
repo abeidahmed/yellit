@@ -2,6 +2,7 @@ class App::BaseController < ApplicationController
   layout "app"
 
   include MemberTenancy
+  include SignedIdHelper
 
   before_action :authenticate_user
   after_action :verify_authorized, except: %i(index)

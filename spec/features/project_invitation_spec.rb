@@ -19,7 +19,7 @@ RSpec.feature "ProjectInvitations", type: :feature do
   it "should accept the invitation when accept invite button is clicked" do
     membership = create(:project_membership, :pending)
     sign_in(user: membership.user)
-    visit app_project_invitation_path(membership.signed_id(purpose: :project_invitation))
+    visit app_project_invitation_path(invitation_sid_for(membership))
     click_button "Accept"
 
     expect(current_path).to eq(app_project_path(membership.project))
@@ -29,7 +29,7 @@ RSpec.feature "ProjectInvitations", type: :feature do
   it "should decline the invitation when decline invite button is clicked" do
     membership = create(:project_membership, :pending)
     sign_in(user: membership.user)
-    visit app_project_invitation_path(membership.signed_id(purpose: :project_invitation))
+    visit app_project_invitation_path(invitation_sid_for(membership))
     click_button "Decline"
 
     expect(current_path).to eq(app_projects_path)
@@ -39,7 +39,7 @@ RSpec.feature "ProjectInvitations", type: :feature do
   it "should take me to app_projects_path if I click on the later link" do
     membership = create(:project_membership, :pending)
     sign_in(user: membership.user)
-    visit app_project_invitation_path(membership.signed_id(purpose: :project_invitation))
+    visit app_project_invitation_path(invitation_sid_for(membership))
     click_link "later"
 
     expect(current_path).to eq(app_projects_path)
