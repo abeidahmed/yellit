@@ -1,0 +1,17 @@
+<%= render Boxes::ModalComponent.new(title: "Delete #{label_name} label?") do |component| %>
+  <% component.with(:trigger) do %>
+    <%= trigger %>
+  <% end %>
+  <% component.with(:body) do %>
+    <p class="mb-0">
+      Are you sure you want to delete the <span class="h5"><%= label_name %></span> label?
+      Deleting the label will not delete the post itself, but it will remove the label
+      attribute from the posts that are associated with the label.
+    </p>
+  <% end %>
+  <% component.with(:footer) do %>
+    <%= form_with url: app_label_path(label), method: :delete do |form| %>
+      <%= form.submit "Delete it", class: "label-delete-btn btn btn-danger btn-block" %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -32,6 +32,7 @@ class App::LabelsController < App::BaseController
     authorize label
 
     label.destroy
+    redirect_back_or_to app_labels_path(label.project), success: { message: "Deleted for good reasons" }
   end
 
   private
