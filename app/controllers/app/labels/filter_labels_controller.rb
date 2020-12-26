@@ -1,8 +1,10 @@
 class App::Labels::FilterLabelsController < App::BaseController
   layout false
 
+  include Labels::LabelList
+
   def index
     @project = Project.find(params[:project_id])
-    @labels  = policy_scope(@project, policy_scope_class: LabelPolicy::Scope).sort_asc_by_name.search(params[:query])
+    @labels  = project_labels
   end
 end

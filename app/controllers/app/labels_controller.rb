@@ -1,7 +1,9 @@
 class App::LabelsController < App::BaseController
+  include Labels::LabelList
+
   def index
     @project = Project.find(params[:id])
-    @labels  = policy_scope(@project, policy_scope_class: LabelPolicy::Scope).sort_asc_by_name
+    @labels  = project_labels
   end
 
   def create
