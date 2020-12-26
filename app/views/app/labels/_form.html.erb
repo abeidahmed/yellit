@@ -21,7 +21,9 @@
           class: "form-control width-full",
           data: { action: "input->typer#type" },
           placeholder: "Label name",
-          autocomplete: "off"
+          maxlength: 255,
+          autocomplete: "off",
+          required: true
         %>
         <%= render Forms::ErrorDisplayComponent.new(error_type: "name") %>
       </div>
@@ -39,7 +41,9 @@
               action: "input->label-color-picker#observe click->toggle#show focus->toggle#show"
             },
             placeholder: "Hex color code",
-            autocomplete: "off"
+            maxlength: 7,
+            autocomplete: "off",
+            required: true
           %>
           <%= render Forms::ErrorDisplayComponent.new(error_type: "color") %>
           <%= render ColorPaletteComponent.new %>
