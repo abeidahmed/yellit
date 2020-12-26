@@ -6,7 +6,7 @@ RSpec.feature "LabelForms", type: :feature do
     project    = membership.project
     sign_in(user: membership.user)
     visit app_labels_path(project)
-    within "#label-form", visible: false do
+    within ".label-form", visible: false do
       fill_in "Label name", visible: false, with: "Just created"
       fill_in "Color", visible: false, with: "#000000"
       click_button "Create", visible: false
@@ -22,7 +22,7 @@ RSpec.feature "LabelForms", type: :feature do
     sign_in(user: membership.user)
     visit app_labels_path(project)
 
-    update_form = page.all(:css, "#label-form", visible: false).last
+    update_form = page.all(:css, ".label-form", visible: false).last
     within update_form do
       fill_in "Label name", visible: false, with: "Updated label"
       fill_in "Color", visible: false, with: "#ffffff"
