@@ -5,6 +5,8 @@ class App::Labels::FilterLabelsController < App::BaseController
 
   def index
     @project = Project.find(params[:project_id])
+    skip_policy_scope
+
     @labels  = project_labels
   end
 end

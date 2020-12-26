@@ -1,6 +1,14 @@
 require "rails_helper"
 
 RSpec.feature "LabelLists", type: :feature do
+  it "should redirect to invitations page if user's project invite is pending" do
+    membership = create(:project_membership, :pending)
+    sign_in(user: membership.user)
+    visit app_labels_path(membership.project)
+
+    expect(current_path).to eq(app_project_invitation_path(membership.signed_id(purpose: :project_invitation)))
+  end
+
   it "should list all the labels of the current project" do
     project       = create(:project)
     membership    = create(:project_membership, project: project)
