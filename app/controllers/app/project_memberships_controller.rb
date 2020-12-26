@@ -1,11 +1,9 @@
 class App::ProjectMembershipsController < App::BaseController
-  include ProjectMemberships::Members
+  include ProjectMemberships::MemberList
 
   def index
     @project = Project.find(params[:id])
-
     skip_policy_scope
-    check_member_tenancy_for @project
 
     @memberships = project_members
   end

@@ -1,7 +1,8 @@
-module ProjectMemberships::Members
+module ProjectMemberships::MemberList
   extend ActiveSupport::Concern
 
   def project_members
+    check_member_tenancy_for project
     scope_pundit_policy.search(params[:query]).filter_by_role(params[:role]) unless project_invite_pending?
   end
 
