@@ -21,7 +21,7 @@ class App::LabelsController < App::BaseController
     authorize label
 
     if label.update(label_params)
-      # do
+      redirect_back fallback_location: app_labels_path(label.project), success: { message: "OK, we got your changes" }
     else
       render json: { errors: label.errors }, status: :bad_request
     end

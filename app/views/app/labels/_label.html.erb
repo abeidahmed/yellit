@@ -1,28 +1,33 @@
 <% if labels.present? %>
   <% labels.each do |label| %>
-    <div class="Box-row d-flex flex-items-center">
-      <div class="d-flex flex-items-center col-9 pr-3">
-        <span style="background-color: <%= label.bg_color %>; color: <%= label.text_color %>" class="IssueLabel IssueLabel--big">
-          <%= label.name %>
-        </span>
+    <div data-controller="binding" class="Box-row">
+      <div data-binding-target="shownElement" class="d-flex flex-items-center">
+        <div class="d-flex flex-items-center col-9 pr-3">
+          <span style="background-color: <%= label.bg_color %>; color: <%= label.text_color %>" class="IssueLabel IssueLabel--big">
+            <%= label.name %>
+          </span>
+        </div>
+        <div class="col-3 d-flex flex-justify-end">
+          <div class="d-none d-md-flex">
+            <button type="button" data-action="click->binding#show" class="btn-link text-gray f5">Edit</button>
+            <button class="btn-link text-gray f5 ml-3">Delete</button>
+          </div>
+          <div class="d-md-none">
+            <details class="dropdown details-reset details-overlay d-inline-block">
+              <summary class="btn" aria-haspopup="true">
+                <%= octicon "kebab-horizontal" %>
+              </summary>
+              <ul class="dropdown-menu dropdown-menu-sw">
+                <li><a href="#" class="dropdown-item">Edit</a></li>
+                <li class="dropdown-divider" role="separator"></li>
+                <li><a href="#" class="dropdown-item">Delete</a></li>
+              </ul>
+            </details>
+          </div>
+        </div>
       </div>
-      <div class="col-3 d-flex flex-justify-end">
-        <div class="d-none d-md-flex">
-          <button class="btn-link text-gray f5">Edit</button>
-          <button class="btn-link text-gray f5 ml-3">Delete</button>
-        </div>
-        <div class="d-md-none">
-          <details class="dropdown details-reset details-overlay d-inline-block">
-            <summary class="btn" aria-haspopup="true">
-              <%= octicon "kebab-horizontal" %>
-            </summary>
-            <ul class="dropdown-menu dropdown-menu-sw">
-              <li><a href="#" class="dropdown-item">Edit</a></li>
-              <li class="dropdown-divider" role="separator"></li>
-              <li><a href="#" class="dropdown-item">Delete</a></li>
-            </ul>
-          </details>
-        </div>
+      <div data-binding-target="hiddenElement" hidden>
+        <%= render "form", model: [:app, label] %>
       </div>
     </div>
   <% end %>

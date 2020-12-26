@@ -3,7 +3,7 @@
     <div class="mb-3">
       <%= render "box_header" %>
       <div class="Box p-3 bg-gray">
-        <%= render "form" %>
+        <%= render "form", model: [:app, @project, Label.new] %>
       </div>
     </div>
     <div class="Box">
