@@ -26,8 +26,6 @@ RSpec.describe User, type: :model do
 
     it { should validate_length_of(:full_name).is_at_most(255) }
 
-    it { should_not allow_value(" anonymous", " Anonymous ").for(:full_name) }
-
     it "is should lowercase email_address before saving" do
       subject.email_address = subject.email_address.upcase
       subject.save!

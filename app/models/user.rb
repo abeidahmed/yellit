@@ -19,7 +19,6 @@ class User < ApplicationRecord
   validates_length_of :email_address, :full_name, maximum: 255
   validates_format_of :email_address, with: VALID_EMAIL_REGEX
   validates_length_of :password, minimum: MIN_PASSWORD_LENGTH, on: :create
-  validate :full_name_is_not_reserved
 
   private
   def generate_auth_token
@@ -33,10 +32,6 @@ class User < ApplicationRecord
   def trim_white_spaces
     self.email_address = email_address.strip if email_address
     self.full_name     = full_name.strip if full_name
-  end
-
-  def full_name_is_not_reserved
-    errors.add(:full_name, "can't be #{full_name}") if FULL_NAME_EXCLUSION.include? full_name.to_s.strip.downcase
   end
 
   def generate_token(column)
