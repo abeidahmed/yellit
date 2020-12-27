@@ -30,6 +30,7 @@ class User < ApplicationRecord
 
   def trim_white_space
     self.email_address = email_address.strip if email_address
+    self.full_name     = full_name.strip if full_name
   end
 
   def generate_token(column)

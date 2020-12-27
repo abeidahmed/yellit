@@ -42,10 +42,16 @@ RSpec.describe User, type: :model do
       expect(subject.reload.auth_token).to_not be_nil
     end
 
-    it "should trim excess white spaces" do
+    it "should trim excess white spaces from email address" do
       subject.email_address = "       email@example.com "
       subject.save!
       expect(subject.email_address).to eq("email@example.com")
+    end
+
+    it "should trim excess white spaces from full name" do
+      subject.full_name = "   John Doe "
+      subject.save!
+      expect(subject.full_name).to eq("John Doe")
     end
   end
 end
