@@ -6,4 +6,8 @@ class Containers::SettingComponent < ApplicationComponent
   def initialize(project:)
     @project = project
   end
+
+  def project_name
+    project.name
+  end
 end
