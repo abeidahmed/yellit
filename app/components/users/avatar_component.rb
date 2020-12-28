@@ -11,6 +11,8 @@ class Users::AvatarComponent < ApplicationComponent
       "avatar-4"
     when "md"
       "avatar-5"
+    when "lg"
+      "avatar-6"
     else
       raise "Undefined avatar size: #{size}"
     end
