@@ -23,10 +23,36 @@
       <md-task-list class="btn-octicon markdown-btn"><%= octicon "tasklist" %></md-task-list>
     </div>
     <div class="d-flex flex-items-center">
-      <button type="button" data-md-button class="btn-octicon d-flex flex-items-center">
-        <%= octicon "tag" %>
-        <span class="dropdown-caret ml-1"></span>
-      </button>
+      <%= render Dropdowns::DetailsComponent.new(title: "Apply labels to this post") do |component| %>
+        <% component.with(:trigger) do %>
+          <div data-md-button class="btn-octicon d-flex flex-items-center">
+            <%= octicon "tag" %>
+            <span class="dropdown-caret ml-1"></span>
+          </div>
+        <% end %>
+        <% component.with(:body) do %>
+          <div class="SelectMenu-filter">
+            <input class="SelectMenu-input form-control" type="text" placeholder="Find or create label..." aria-label="Find or create label" />
+          </div>
+          <div class="SelectMenu-list">
+            <button class="SelectMenu-item" role="menuitemcheckbox" aria-checked="true">
+              <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+              <div class="p-1 bg-blue circle mr-2"></div>
+              Improvement
+            </button>
+            <button class="SelectMenu-item" role="menuitemcheckbox">
+              <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+              <div class="p-1 bg-green circle mr-2"></div>
+              Feature
+            </button>
+            <button class="SelectMenu-item" role="menuitemcheckbox">
+              <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+              <div class="p-1 bg-yellow circle mr-2"></div>
+              Warning
+            </button>
+          </div>
+        <% end %>
+      <% end %>
       <button type="button" data-md-button class="btn-octicon btn-octicon-danger">
         <%= octicon "trashcan" %>
       </button>
