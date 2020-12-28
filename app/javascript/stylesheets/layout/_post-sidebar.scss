@@ -1,0 +1,14 @@
+.post-sidebar-heading {
+  color: $gray-600;
+}
+
+.post-sidebar-icon {
+  color: $gray-500;
+}
+
+.post-sidebar-toggler:hover {
+  .post-sidebar-heading,
+  .post-sidebar-icon {
+    color: $blue-500;
+  }
+}
