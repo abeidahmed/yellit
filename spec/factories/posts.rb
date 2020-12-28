@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :post do
     project
-    title { "Version 1.0.0" }
+    sequence(:title) { |n| "Version #{n}.0.0" }
     published_at { Time.zone.now - 1.hours }
 
     trait :draft do
