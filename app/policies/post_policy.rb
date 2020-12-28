@@ -4,7 +4,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def edit?
-    new?
+    good_project_member?(object: record.project)
   end
 
   def update?
