@@ -4,15 +4,15 @@ class App::ProjectsController < App::BaseController
     render layout: "slate"
   end
 
+  def show
+    @project = Project.find(params[:id])
+    authorize @project
+  end
+
   def edit
     @project = Project.find(params[:id])
     authorize @project
     check_member_tenancy
-  end
-
-  def show
-    @project = Project.find(params[:id])
-    skip_authorization
   end
 
   def update

@@ -1,4 +1,8 @@
 class ProjectPolicy < ApplicationPolicy
+  def show?
+    redirect_pending_user
+  end
+
   def edit?
     redirect_pending_user
   end
