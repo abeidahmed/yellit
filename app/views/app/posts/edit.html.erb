@@ -17,33 +17,24 @@
       </div>
       <div class="Box width-full p-2">
         <%= form.text_field :title, class: "form-control input-block input-contrast", placeholder: "Eg: v1.0.0", aria: { label: "Edit post title" }, autocomplete: "off" %>
-        <%= form.fields_for :sections do |section| %>
-          <div class="d-lg-flex flex-items-center flex-justify-between bg-gray ml-n2 mr-n2 p-2 mt-2">
-            <div>
-              <span class="IssueLabel bg-green text-white mr-1">Feature</span>
-              <span class="IssueLabel bg-red text-white mr-1">Bug</span>
+        <div data-controller="nested-form">
+          <template data-nested-form-target="template">
+            <%= form.fields_for :sections, Section.new, child_index: "NEW_RECORD" do |section| %>
+              <%= render "section_field", form: section %>
+            <% end %>
+          </template>
+          <%= form.fields_for :sections do |section| %>
+            <%= render "section_field", form: section %>
+          <% end %>
+          <div data-nested-form-target="insertAbove" class="d-flex flex-items-center flex-justify-between pt-2">
+            <a href="#" class="f6 text-gray d-none d-md-block">
+              <%= octicon "markdown" %>
+              Styling with Markdown is supported
+            </a>
+            <div class="d-flex flex-items-center">
+              <button type="button" data-action="click->nested-form#addField" class="btn mr-2">Add section</button>
+              <button class="btn btn-primary d-none d-md-block">Save draft</button>
             </div>
-            <div class="mt-2 mt-lg-0">
-              <%= render Posts::MarkdownToolbarComponent.new %>
-            </div>
-          </div>
-          <%= section.text_area :body,
-            id: "post-textarea",
-            class: "mt-2 form-control input-block input-contrast",
-            style: "resize: vertical; min-height: 200px",
-            placeholder: "Start typing here...",
-            aria: { label: "Edit or add post sections" },
-            spellcheck: false
-          %>
-        <% end %>
-        <div class="d-flex flex-items-center flex-justify-between pt-2">
-          <a href="#" class="f6 text-gray d-none d-md-block">
-            <%= octicon "markdown" %>
-            Styling with Markdown is supported
-          </a>
-          <div class="d-flex flex-items-center">
-            <button type="button" class="btn mr-2">Add section</button>
-            <button class="btn btn-primary d-none d-md-block">Save draft</button>
           </div>
         </div>
       </div>

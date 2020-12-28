@@ -1,0 +1,19 @@
+<div data-new-record="<%= form.object.new_record? %>" class="nested-field">
+  <div class="d-lg-flex flex-items-center flex-justify-between bg-gray ml-n2 mr-n2 p-2 mt-2">
+    <div>
+      <span class="IssueLabel bg-green text-white mr-1">Feature</span>
+      <span class="IssueLabel bg-red text-white mr-1">Bug</span>
+    </div>
+    <div class="mt-2 mt-lg-0">
+      <%= render Posts::MarkdownToolbarComponent.new(form: form) %>
+    </div>
+  </div>
+  <%= form.text_area :body,
+    class: "mt-2 form-control input-block input-contrast",
+    style: "resize: vertical; min-height: 200px",
+    placeholder: "Start typing here...",
+    aria: { label: "Edit or add post sections" },
+    spellcheck: false
+  %>
+  <%= form.hidden_field :_destroy %>
+</div>

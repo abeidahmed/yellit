@@ -1,4 +1,4 @@
-<markdown-toolbar data-controller="toggle" data-toggle-attribute-value="hidden" for="post-textarea" class="ml-n2 ml-lg-0 d-flex flex-items-center flex-justify-between flex-wrap">
+<markdown-toolbar data-controller="toggle" data-toggle-attribute-value="hidden" for="<%= textarea_id %>" class="ml-n2 ml-lg-0 d-flex flex-items-center flex-justify-between flex-wrap">
   <div class="d-sm-none mr-3">
     <button type="button" data-action="click->toggle#toggle" data-md-button class="btn-octicon">
       <%= octicon "typography" %>
@@ -53,7 +53,7 @@
           </div>
         <% end %>
       <% end %>
-      <button type="button" data-md-button class="btn-octicon btn-octicon-danger">
+      <button type="button" data-action="click->nested-form#removeField" data-md-button class="btn-octicon btn-octicon-danger">
         <%= octicon "trashcan" %>
       </button>
     </div>
