@@ -2,6 +2,7 @@
   "name": "yellit",
   "private": true,
   "dependencies": {
+    "@github/markdown-toolbar-element": "^1.3.2",
     "@hotwired/turbo-rails": "^7.0.0-beta.1",
     "@primer/css": "^15.2.0",
     "@rails/actioncable": "^6.0.0",

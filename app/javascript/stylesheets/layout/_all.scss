@@ -1,7 +1,13 @@
+@import 'post-sidebar';
+
 .container-xs {
   max-width: 416px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.container-sm-custom {
+  max-width: 600px;
 }
 
 .min-h-screen {
