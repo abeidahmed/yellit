@@ -1,0 +1,91 @@
+<%= render PageHeads::WithActionComponent.new do |component| %>
+  <% component.with(:header) do %>
+    <div class="d-flex flex-items-center">
+      <h1 class="h3 mr-2">Version 1.0.0</h1>
+      <span class="Label Label--yellow">Draft</span>
+    </div>
+  <% end %>
+  <% component.with(:action) do %>
+    <button type="button" class="btn btn-danger">Delete post</button>
+  <% end %>
+<% end %>
+<section class="container-xl px-3 px-sm-4 px-lg-5 mt-5">
+  <form class="d-md-flex gutter-condensed gutter-lg">
+    <div class="d-flex col-12 col-md-9">
+      <div class="mr-3 d-none d-md-block">
+        <%= render Users::AvatarComponent.new(size: "lg") %>
+      </div>
+      <div class="Box width-full p-2">
+        <div>
+          <input type="text" placeholder="Eg: v1.0.0" class="form-control input-block input-contrast">
+        </div>
+        <div class="bg-gray ml-n2 mr-n2 p-2 mt-2">
+          <div>
+            <span class="IssueLabel bg-blue text-white mr-1">Primer</span>
+            <span class="IssueLabel bg-red text-white mr-1">bug 🐛</span>
+          </div>
+          <div></div>
+        </div>
+        <div class="mt-2">
+          <textarea placeholder="Start typing here..." class="form-control input-block input-contrast" style="resize: vertical; min-height: 200px"></textarea>
+        </div>
+        <div class="d-flex flex-items-center flex-justify-between pt-2">
+          <a href="#" class="f6 text-gray d-none d-md-block">
+            <%= octicon "markdown" %>
+            Styling with Markdown is supported
+          </a>
+          <div class="d-flex flex-items-center">
+            <button type="button" class="btn mr-2">Add section</button>
+            <button class="btn btn-primary d-none d-md-block">Save draft</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-3 mt-4 mt-md-0">
+      <div>
+        <div class="d-flex flex-items-center flex-justify-between mb-2">
+          <h6 class="text-gray">Authors</h6>
+          <div class="btn-octicon"><%= octicon "gear" %></div>
+        </div>
+        <div>
+          <div class="d-flex flex-items-center mb-2">
+            <%= render Users::AvatarComponent.new(size: "xs") %>
+            <h5 class="ml-2">Abeid Ahmed</h5>
+          </div>
+          <div class="d-flex flex-items-center">
+            <%= render Users::AvatarComponent.new(size: "xs") %>
+            <h5 class="ml-2">Abeid Ahmed</h5>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <div class="mb-2">
+          <h6 class="text-gray">Settings</h6>
+        </div>
+        <div class="form-checkbox my-0">
+          <label>
+            <input type="checkbox" checked="checked" />
+            Save as draft
+          </label>
+        </div>
+      </div>
+      <hr>
+      <div>
+        <div class="mb-2">
+          <h6 class="text-gray">Publish on</h6>
+        </div>
+        <div class="subnav-search ml-0">
+          <input type="text" class="form-control subnav-search-input width-full">
+          <%= octicon "clock", class: "subnav-search-icon", style: "top: 8px" %>
+          <p class="note">
+            <a href="#">Learn more</a> about time formats.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 px-2 d-md-none">
+      <button class="btn btn-primary btn-block">Save draft</button>
+    </div>
+  </form>
+</section>
