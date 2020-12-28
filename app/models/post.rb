@@ -2,6 +2,8 @@ class Post < ApplicationRecord
   belongs_to :project
   has_many :sections, inverse_of: :post
 
+  accepts_nested_attributes_for :sections, reject_if: :body_is_blank?
+
   before_save :check_draft_status
 
   validates_presence_of :title
@@ -14,6 +16,10 @@ class Post < ApplicationRecord
 
   private
   def check_draft_status
-    self.published_at = nil if draft == 1
+    self.published_at = nil if draft.to_i == 1
+  end
+
+  def body_is_blank?(attributes)
+    attributes[:body].blank?
   end
 end
