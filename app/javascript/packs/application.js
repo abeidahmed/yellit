@@ -10,3 +10,4 @@ import 'stylesheets/index.scss';
 ActiveStorage.start();
 
 import 'controllers';
+import '@github/markdown-toolbar-element';
