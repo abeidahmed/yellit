@@ -13,6 +13,8 @@ class App::PostsController < App::BaseController
     @project = @post.project
     authorize @post, policy_class: PostPolicy
     check_member_tenancy
+
+    @post.sections.build if @post.sections.blank?
   end
 
   def update
