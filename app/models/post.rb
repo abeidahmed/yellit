@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :project
+  has_many :sections, inverse_of: :post
 
   before_save :check_draft_status
 
