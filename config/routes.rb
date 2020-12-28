@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
     resources :project_invitations, only: %i(show update destroy)
     resources :labels, only: %i(update destroy)
-    resources :posts, only: %i(edit)
+    resources :posts, only: %i(edit update)
 
     resources :project_memberships, only: %i(update destroy) do
       resource :account_setup, only: %i(edit update), module: :project_memberships

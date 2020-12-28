@@ -6,4 +6,8 @@ class PostPolicy < ApplicationPolicy
   def edit?
     new?
   end
+
+  def update?
+    edit?
+  end
 end
