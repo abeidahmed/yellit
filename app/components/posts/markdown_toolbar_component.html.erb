@@ -1,6 +1,6 @@
 <markdown-toolbar data-controller="toggle" data-toggle-attribute-value="hidden" for="post-textarea" class="ml-n2 ml-lg-0 d-flex flex-items-center flex-justify-between flex-wrap">
   <div class="d-sm-none mr-3">
-    <button data-action="click->toggle#toggle" data-md-button type="button" class="btn-octicon">
+    <button type="button" data-action="click->toggle#toggle" data-md-button class="btn-octicon">
       <%= octicon "typography" %>
       <span class="dropdown-caret"></span>
     </button>
@@ -35,17 +35,17 @@
             <input class="SelectMenu-input form-control" type="text" placeholder="Find or create label..." aria-label="Find or create label" />
           </div>
           <div class="SelectMenu-list">
-            <button class="SelectMenu-item" role="menuitemcheckbox" aria-checked="true">
+            <button type="button" class="SelectMenu-item" role="menuitemcheckbox" aria-checked="true">
               <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
               <div class="p-1 bg-blue circle mr-2"></div>
               Improvement
             </button>
-            <button class="SelectMenu-item" role="menuitemcheckbox">
+            <button type="button" class="SelectMenu-item" role="menuitemcheckbox">
               <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
               <div class="p-1 bg-green circle mr-2"></div>
               Feature
             </button>
-            <button class="SelectMenu-item" role="menuitemcheckbox">
+            <button type="button" class="SelectMenu-item" role="menuitemcheckbox">
               <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
               <div class="p-1 bg-yellow circle mr-2"></div>
               Warning

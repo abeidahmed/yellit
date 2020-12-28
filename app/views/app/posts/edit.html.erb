@@ -57,17 +57,17 @@
               <input class="SelectMenu-input form-control" type="text" placeholder="Find authors..." aria-label="Find authors" />
             </div>
             <div class="SelectMenu-list">
-              <button class="SelectMenu-item" role="menuitemcheckbox" aria-checked="true">
+              <button type="button" class="SelectMenu-item" role="menuitemcheckbox" aria-checked="true">
                 <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
                 <%= render Users::AvatarComponent.new(size: "xs") %>
                 <span class="ml-2">John Doe</span>
               </button>
-              <button class="SelectMenu-item" role="menuitemcheckbox">
+              <button type="button" class="SelectMenu-item" role="menuitemcheckbox">
                 <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
                 <%= render Users::AvatarComponent.new(size: "xs") %>
                 <span class="ml-2">Smith Muller</span>
               </button>
-              <button class="SelectMenu-item" role="menuitemcheckbox">
+              <button type="button" class="SelectMenu-item" role="menuitemcheckbox">
                 <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
                 <%= render Users::AvatarComponent.new(size: "xs") %>
                 <span class="ml-2">Thomas Ballack</span>
