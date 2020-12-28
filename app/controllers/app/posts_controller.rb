@@ -20,7 +20,7 @@ class App::PostsController < App::BaseController
     authorize post
 
     if post.update(post_params)
-      # do something
+      redirect_back_or_to edit_app_post_path(post), success: { message: "OK, we got your changes" }
     else
       render json: { errors: post.errors }, status: :bad_request
     end
