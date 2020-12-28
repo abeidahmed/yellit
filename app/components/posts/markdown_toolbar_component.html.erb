@@ -25,10 +25,10 @@
     <div class="d-flex flex-items-center">
       <%= render Dropdowns::DetailsComponent.new(title: "Apply labels to this post") do |component| %>
         <% component.with(:trigger) do %>
-          <div data-md-button class="btn-octicon d-flex flex-items-center">
+          <summary data-md-button aria-haspopup="true" class="btn-octicon d-flex flex-items-center">
             <%= octicon "tag" %>
             <span class="dropdown-caret ml-1"></span>
-          </div>
+          </summary>
         <% end %>
         <% component.with(:body) do %>
           <div class="SelectMenu-filter">
