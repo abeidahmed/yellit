@@ -62,4 +62,8 @@ class ApplicationPolicy
   def good_project_member?(object: record)
     user.has_project_membership?(object) && user.project_invite_accepted?(object)
   end
+
+  def redirect_pending_user(object: record)
+    user.has_project_membership?(object)
+  end
 end
