@@ -4,10 +4,15 @@ class PostPolicy < ApplicationPolicy
   end
 
   def edit?
-    good_project_member?(object: record.project)
+    allow_pending_users_but_redirect
   end
 
   def update?
-    edit?
+    good_project_member?(object: record.project)
+  end
+
+  private
+  def allow_pending_users_but_redirect
+    user.has_project_membership?(record.project)
   end
 end

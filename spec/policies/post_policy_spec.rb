@@ -24,7 +24,8 @@ RSpec.describe PostPolicy, type: :policy do
     context "being a pending member" do
       let(:membership) { create(:project_membership, :pending_owner) }
 
-      it { is_expected.to forbid_actions(%i(edit update)) }
+      it { is_expected.to permit_actions(%i(edit)) }
+      it { is_expected.to forbid_actions(%i(update)) }
     end
   end
 

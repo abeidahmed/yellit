@@ -8,7 +8,11 @@ class App::PostsController < App::BaseController
   end
 
   def edit
-    skip_authorization
+    @post = Post.find(params[:id])
+
+    @project = @post.project
+    authorize @post, policy_class: PostPolicy
+    check_member_tenancy
   end
 
   def update
