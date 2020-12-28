@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   belongs_to :project
   has_many :sections, inverse_of: :post
 
-  accepts_nested_attributes_for :sections, reject_if: :body_is_blank?
+  accepts_nested_attributes_for :sections, reject_if: :body_is_blank?, allow_destroy: true
 
   before_save :check_draft_status
 

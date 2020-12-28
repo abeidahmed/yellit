@@ -43,6 +43,21 @@ RSpec.describe "App::Posts", type: :request do
       expect { Section.find(post.sections.first) }.to raise_error(ActiveRecord::RecordNotFound)
     end
 
+    it "should be able to destroy inner sections" do
+      patch app_post_path(post), params: {
+        post: {
+          title: "Test post",
+          sections_attributes: [
+            { body: "Hello world" },
+            { body: "Another body", _destroy: 1 }
+          ]
+        }
+      }
+
+      post.reload
+      expect(post.sections.size).to eq(1)
+    end
+
     it "should throw error if fields are invalid" do
       patch app_post_path(post), params: { post: { title: "" } }
 
