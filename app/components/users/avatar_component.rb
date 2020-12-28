@@ -7,6 +7,8 @@ class Users::AvatarComponent < ApplicationComponent
 
   def avatar_size
     case size
+    when "xs"
+      "avatar-2"
     when "sm"
       "avatar-4"
     when "md"
