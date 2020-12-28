@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :filter_memberships, only: %i(index), module: :project_memberships
       resources :labels, only: %i(create)
       resources :filter_labels, only: %i(index), module: :labels
+      resources :posts, only: %i(new)
     end
 
     resources :project_invitations, only: %i(show update destroy)
