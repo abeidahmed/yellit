@@ -23,6 +23,9 @@
   <% end %>
 <% end %>
 <section class="container-sm-custom mx-auto mt-5 px-3">
+  <% @project.posts.each do |post| %>
+    <%= link_to post.title, edit_app_post_path(post) %>
+  <% end %>
   <article>
     <header class="d-flex flex-justify-between flex-items-center">
       <h3 class="h3 d-flex flex-items-center" style="min-width: 0;">
