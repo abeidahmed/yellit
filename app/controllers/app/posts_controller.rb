@@ -9,9 +9,9 @@ class App::PostsController < App::BaseController
 
   def edit
     @post = Post.find(params[:id])
+    authorize @post, policy_class: PostPolicy
 
     @project = @post.project
-    authorize @post, policy_class: PostPolicy
     check_member_tenancy
 
     @post.sections.build if @post.sections.blank?
