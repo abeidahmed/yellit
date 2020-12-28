@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_28_104237) do
+ActiveRecord::Schema.define(version: 2020_12_28_120450) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -58,6 +58,14 @@ ActiveRecord::Schema.define(version: 2020_12_28_104237) do
     t.index ["subdomain"], name: "index_projects_on_subdomain"
   end
 
+  create_table "sections", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.text "body"
+    t.uuid "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_sections_on_post_id"
+  end
+
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "full_name"
     t.string "email_address", default: "", null: false
@@ -72,4 +80,5 @@ ActiveRecord::Schema.define(version: 2020_12_28_104237) do
   add_foreign_key "posts", "projects"
   add_foreign_key "project_memberships", "projects"
   add_foreign_key "project_memberships", "users"
+  add_foreign_key "sections", "posts"
 end
