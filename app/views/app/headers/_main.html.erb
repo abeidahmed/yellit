@@ -7,9 +7,9 @@
         </a>
       </div>
       <nav class="d-none d-md-flex flex-items-center ml-6">
-        <%= link_to "Posts", app_project_path, class: "Header-link" %>
+        <%= link_to "Posts", app_project_path(@project), class: "Header-link" %>
         <a href="#" class="Header-link ml-4">Subscribers</a>
-        <%= link_to "Settings", app_root_path, class: "Header-link ml-4" %>
+        <%= link_to "Settings", app_root_path(@project), class: "Header-link ml-4" %>
       </nav>
     </div>
     <div class="d-md-none">
@@ -35,9 +35,9 @@
   </div>
   <div data-toggle-target="content" class="bg-gray-dark py-1 d-md-none px-3 px-sm-4" hidden>
     <nav>
-      <%= link_to "Posts", app_project_path, class: "Header-link d-block py-2" %>
+      <%= link_to "Posts", app_project_path(@project), class: "Header-link d-block py-2" %>
       <a href="#" class="Header-link d-block py-2">Subscribers</a>
-      <%= link_to "Settings", app_root_path, class: "Header-link d-block py-2" %>
+      <%= link_to "Settings", app_root_path(@project), class: "Header-link d-block py-2" %>
     </nav>
     <hr class="border-white-fade-15">
     <div>
