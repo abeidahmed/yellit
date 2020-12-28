@@ -1,0 +1,217 @@
+<%= render PageHeads::WithMultiActionComponent.new do |component| %>
+  <% component.with(:header) do %>
+    <h1 class="h3">Applog space's changelogs</h1>
+  <% end %>
+  <% component.with(:actions) do %>
+    <a href="#" class="btn d-none d-md-block">
+      <%= octicon "link-external" %>
+      <span>View posts</span>
+    </a>
+    <button class="btn ml-2 d-none d-md-block">Filters</button>
+    <div class="mt-2 mt-sm-0 d-flex">
+      <details class="dropdown details-reset details-overlay d-inline-block d-md-none">
+        <summary class="btn" aria-haspopup="true">
+          <%= octicon "kebab-horizontal" %>
+        </summary>
+        <ul class="dropdown-menu dropdown-menu-se">
+          <li><a class="dropdown-item" href="#url">View post</a></li>
+          <li><a class="dropdown-item" href="#url">Filters</a></li>
+        </ul>
+      </details>
+      <a href="#" class="btn btn-primary ml-2">New post</a>
+    </div>
+  <% end %>
+<% end %>
+<section class="container-sm-custom mx-auto mt-5 px-3">
+  <article>
+    <header class="d-flex flex-justify-between flex-items-center">
+      <h3 class="h3 d-flex flex-items-center" style="min-width: 0;">
+        <span class="mr-2 css-truncate css-truncate-overflow">Version 1.0.0</span>
+        <span class="Label Label--yellow">Draft</span>
+      </h3>
+      <time datetime="" class="flex-shrink-0 f6 text-gray ml-2">2 hours from now</time>
+    </header>
+    <div class="mt-3 markdown-body">
+      <div>
+        <div class="mb-2">
+          <span class="IssueLabel bg-blue text-white mr-1">Primer</span>
+          <span class="IssueLabel bg-red text-white mr-1">bug 🐛</span>
+        </div>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi amet at, molestiae voluptate explicabo,
+          doloribus ea quia excepturi labore ullam tempore sint enim, voluptates minima velit tenetur cumque omnis
+          distinctio earum hic placeat quo culpa ducimus rem. Officia, ut. Optio, fugiat mollitia. Saepe, pariatur ab.
+          Molestias quas sequi magni totam!
+        </p>
+      </div>
+      <div>
+        <div class="mb-2">
+          <span class="IssueLabel bg-blue text-white mr-1">Primer</span>
+          <span class="IssueLabel bg-red text-white mr-1">bug 🐛</span>
+        </div>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi amet at, molestiae voluptate explicabo,
+          doloribus ea quia excepturi labore ullam tempore sint enim, voluptates minima velit tenetur cumque omnis
+          distinctio earum hic placeat quo culpa ducimus rem. Officia, ut. Optio, fugiat mollitia. Saepe, pariatur ab.
+          Molestias quas sequi magni totam!
+        </p>
+      </div>
+    </div>
+    <div class="d-flex flex-items-center flex-justify-between">
+      <div class="AvatarStack AvatarStack--three-plus">
+        <div class="AvatarStack-body">
+          <img
+            class="avatar avatar-2 circle"
+            height="20"
+            alt="@octocat"
+            src="https://user-images.githubusercontent.com/334891/29999089-2837c968-9009-11e7-92c1-6a7540a594d5.png"
+          />
+          <img
+            class="avatar avatar-2 circle"
+            height="20"
+            alt="@octocat"
+            src="https://user-images.githubusercontent.com/334891/29999089-2837c968-9009-11e7-92c1-6a7540a594d5.png"
+          />
+          <img
+            class="avatar avatar-2 circle"
+            height="20"
+            alt="@octocat"
+            src="https://user-images.githubusercontent.com/334891/29999089-2837c968-9009-11e7-92c1-6a7540a594d5.png"
+          />
+        </div>
+      </div>
+      <div class="d-flex flex-items-center">
+        <button class="btn-octicon btn-octicon-danger"><%= octicon "trashcan" %></button>
+        <a href="#" class="btn-octicon"><%= octicon "pencil" %></a>
+      </div>
+    </div>
+  </article>
+  <hr>
+  <article>
+    <header class="d-flex flex-justify-between flex-items-center">
+      <h3 class="h3 d-flex flex-items-center" style="min-width: 0;">
+        <span class="mr-2 css-truncate css-truncate-overflow">Beta-release v0.5</span>
+        <span class="Label Label--green">Published</span>
+      </h3>
+      <time datetime="" class="flex-shrink-0 f6 text-gray ml-2">an hour ago</time>
+    </header>
+    <div class="mt-3 markdown-body">
+      <div>
+        <div class="mb-2">
+          <span class="IssueLabel bg-blue text-white mr-1">Primer</span>
+          <span class="IssueLabel bg-red text-white mr-1">bug 🐛</span>
+        </div>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi amet at, molestiae voluptate explicabo,
+          doloribus ea quia excepturi labore ullam tempore sint enim, voluptates minima velit tenetur cumque omnis
+          distinctio earum hic placeat quo culpa ducimus rem. Officia, ut. Optio, fugiat mollitia. Saepe, pariatur ab.
+          Molestias quas sequi magni totam!
+        </p>
+      </div>
+      <div>
+        <div class="mb-2">
+          <span class="IssueLabel bg-blue text-white mr-1">Primer</span>
+          <span class="IssueLabel bg-red text-white mr-1">bug 🐛</span>
+        </div>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi amet at, molestiae voluptate explicabo,
+          doloribus ea quia excepturi labore ullam tempore sint enim, voluptates minima velit tenetur cumque omnis
+          distinctio earum hic placeat quo culpa ducimus rem. Officia, ut. Optio, fugiat mollitia. Saepe, pariatur ab.
+          Molestias quas sequi magni totam!
+        </p>
+      </div>
+    </div>
+    <div class="d-flex flex-items-center flex-justify-between">
+      <div class="AvatarStack AvatarStack--three-plus">
+        <div class="AvatarStack-body">
+          <img
+            class="avatar avatar-2 circle"
+            height="20"
+            alt="@octocat"
+            src="https://user-images.githubusercontent.com/334891/29999089-2837c968-9009-11e7-92c1-6a7540a594d5.png"
+          />
+          <img
+            class="avatar avatar-2 circle"
+            height="20"
+            alt="@octocat"
+            src="https://user-images.githubusercontent.com/334891/29999089-2837c968-9009-11e7-92c1-6a7540a594d5.png"
+          />
+          <img
+            class="avatar avatar-2 circle"
+            height="20"
+            alt="@octocat"
+            src="https://user-images.githubusercontent.com/334891/29999089-2837c968-9009-11e7-92c1-6a7540a594d5.png"
+          />
+        </div>
+      </div>
+      <div class="d-flex flex-items-center">
+        <button class="btn-octicon btn-octicon-danger"><%= octicon "trashcan" %></button>
+        <a href="#" class="btn-octicon"><%= octicon "pencil" %></a>
+      </div>
+    </div>
+  </article>
+  <hr>
+  <article>
+    <header class="d-flex flex-justify-between flex-items-center">
+      <h3 class="h3 d-flex flex-items-center" style="min-width: 0;">
+        <span class="mr-2 css-truncate css-truncate-overflow">Pre-release</span>
+        <span class="Label Label--pink">Scheduled</span>
+      </h3>
+      <time datetime="" class="flex-shrink-0 f6 text-gray ml-2">2 hours from now</time>
+    </header>
+    <div class="mt-3 markdown-body">
+      <div>
+        <div class="mb-2">
+          <span class="IssueLabel bg-blue text-white mr-1">Primer</span>
+          <span class="IssueLabel bg-red text-white mr-1">bug 🐛</span>
+        </div>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi amet at, molestiae voluptate explicabo,
+          doloribus ea quia excepturi labore ullam tempore sint enim, voluptates minima velit tenetur cumque omnis
+          distinctio earum hic placeat quo culpa ducimus rem. Officia, ut. Optio, fugiat mollitia. Saepe, pariatur ab.
+          Molestias quas sequi magni totam!
+        </p>
+      </div>
+      <div>
+        <div class="mb-2">
+          <span class="IssueLabel bg-blue text-white mr-1">Primer</span>
+          <span class="IssueLabel bg-red text-white mr-1">bug 🐛</span>
+        </div>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi amet at, molestiae voluptate explicabo,
+          doloribus ea quia excepturi labore ullam tempore sint enim, voluptates minima velit tenetur cumque omnis
+          distinctio earum hic placeat quo culpa ducimus rem. Officia, ut. Optio, fugiat mollitia. Saepe, pariatur ab.
+          Molestias quas sequi magni totam!
+        </p>
+      </div>
+    </div>
+    <div class="d-flex flex-items-center flex-justify-between">
+      <div class="AvatarStack AvatarStack--three-plus">
+        <div class="AvatarStack-body">
+          <img
+            class="avatar avatar-2 circle"
+            height="20"
+            alt="@octocat"
+            src="https://user-images.githubusercontent.com/334891/29999089-2837c968-9009-11e7-92c1-6a7540a594d5.png"
+          />
+          <img
+            class="avatar avatar-2 circle"
+            height="20"
+            alt="@octocat"
+            src="https://user-images.githubusercontent.com/334891/29999089-2837c968-9009-11e7-92c1-6a7540a594d5.png"
+          />
+          <img
+            class="avatar avatar-2 circle"
+            height="20"
+            alt="@octocat"
+            src="https://user-images.githubusercontent.com/334891/29999089-2837c968-9009-11e7-92c1-6a7540a594d5.png"
+          />
+        </div>
+      </div>
+      <div class="d-flex flex-items-center">
+        <button class="btn-octicon btn-octicon-danger"><%= octicon "trashcan" %></button>
+        <a href="#" class="btn-octicon"><%= octicon "pencil" %></a>
+      </div>
+    </div>
+  </article>
+</section>
