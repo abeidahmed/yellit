@@ -1,4 +1,7 @@
-<%= render Dropdowns::DetailsComponent.new(button_title: "Filter", title: "Filter people") do |component| %>
+<%= render Dropdowns::DetailsComponent.new(title: "Filter people") do |component| %>
+  <%= component.with(:trigger) do %>
+    Filter <span class="dropdown-caret"></span>
+  <% end %>
   <% component.with(:body) do %>
     <div data-controller="active-param" data-active-param-key-value="role" class="SelectMenu-list">
       <button
