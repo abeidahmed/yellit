@@ -5,6 +5,10 @@ RSpec.describe Label, type: :model do
 
   describe "associations" do
     it { should belong_to(:project) }
+
+    it { should have_many(:taggables) }
+
+    it { should have_many(:sections) }
   end
 
   describe "validations" do
