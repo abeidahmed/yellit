@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :taggable do
-    post
+    section
     label
   end
 end

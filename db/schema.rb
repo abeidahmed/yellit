@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_29_053023) do
+ActiveRecord::Schema.define(version: 2020_12_29_053231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -18,8 +18,8 @@ ActiveRecord::Schema.define(version: 2020_12_29_053023) do
 
   create_table "labels", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
-    t.string "bg_color", default: "#f6f8fa", null: false
-    t.string "text_color", default: "#24292e", null: false
+    t.string "bg_color", default: "#0e8a16", null: false
+    t.string "text_color", default: "#ffffff", null: false
     t.uuid "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -67,12 +67,12 @@ ActiveRecord::Schema.define(version: 2020_12_29_053023) do
   end
 
   create_table "taggables", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "post_id", null: false
+    t.uuid "section_id", null: false
     t.uuid "label_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["label_id"], name: "index_taggables_on_label_id"
-    t.index ["post_id"], name: "index_taggables_on_post_id"
+    t.index ["section_id"], name: "index_taggables_on_section_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -91,5 +91,5 @@ ActiveRecord::Schema.define(version: 2020_12_29_053023) do
   add_foreign_key "project_memberships", "users"
   add_foreign_key "sections", "posts"
   add_foreign_key "taggables", "labels"
-  add_foreign_key "taggables", "posts"
+  add_foreign_key "taggables", "sections"
 end
