@@ -1,0 +1,8 @@
+<%= render PageHeads::WithActionComponent.new do |component| %>
+  <% component.with(:header) do %>
+    <%= render Posts::StatusComponent.new(post: post) %>
+  <% end %>
+  <% component.with(:action) do %>
+    <button type="button" class="btn btn-danger">Delete post</button>
+  <% end %>
+<% end %>
