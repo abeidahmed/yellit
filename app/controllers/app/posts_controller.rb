@@ -32,6 +32,6 @@ class App::PostsController < App::BaseController
 
   private
   def post_params
-    params.require(:post).permit(:title, :draft, :published_at, sections_attributes: [:id, :body, :_destroy])
+    params.require(:post).permit(:title, :draft, :published_at, sections_attributes: [:id, :body, :_destroy, label_ids: []])
   end
 end

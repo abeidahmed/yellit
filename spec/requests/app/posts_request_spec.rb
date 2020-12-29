@@ -9,13 +9,15 @@ RSpec.describe "App::Posts", type: :request do
     before { login(membership.user) }
 
     it "should update the post to draft mode if fields are valid" do
+      label = create(:label, project: project)
+
       patch app_post_path(post), params: {
         post: {
           title: "Test post",
           draft: 1,
           published_at: Time.zone.now,
           sections_attributes: [
-            { body: "Hello world" },
+            { body: "Hello world", label_ids: [label.id] },
             { body: "Another body" }
           ]
         }
@@ -25,6 +27,7 @@ RSpec.describe "App::Posts", type: :request do
       expect(post.title).to eq("Test post")
       expect(post.published_at).to be_nil
       expect(post.sections.first.body).to eq("Hello world")
+      expect(post.sections.first.labels.size).to eq(1)
       expect(post.sections.last.body).to eq("Another body")
     end
 
