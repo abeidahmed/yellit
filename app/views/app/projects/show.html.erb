@@ -18,7 +18,7 @@
           <li><a class="dropdown-item" href="#url">Filters</a></li>
         </ul>
       </details>
-      <a href="#" class="btn btn-primary ml-2">New post</a>
+      <%= link_to "New post", new_app_project_post_path(@project), class: "btn btn-primary ml-2" %>
     </div>
   <% end %>
 <% end %>
