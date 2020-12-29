@@ -10,11 +10,11 @@
         <div data-controller="nested-form">
           <template data-nested-form-target="template">
             <%= form.fields_for :sections, Section.new, child_index: "NEW_RECORD" do |section| %>
-              <%= render "section_field", form: section, labels: @labels %>
+              <%= render "section_field", form: section, labels: @labels, project: @project %>
             <% end %>
           </template>
           <%= form.fields_for :sections do |section| %>
-            <%= render "section_field", form: section, labels: @labels %>
+            <%= render "section_field", form: section, labels: @labels, project: @project %>
           <% end %>
           <div data-nested-form-target="insertAbove" class="d-flex flex-items-center flex-justify-between pt-2">
             <a href="#" class="f6 text-gray d-none d-md-block">

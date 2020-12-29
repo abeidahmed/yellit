@@ -1,0 +1,6 @@
+<% @labels.each do |label| %>
+  <%= render Labels::IssueComponent.new(
+    title: label.name,
+    style: "background-color: #{label.bg_color}; color: #{label.text_color}"
+  ) %>
+<% end %>

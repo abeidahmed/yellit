@@ -1,9 +1,6 @@
 <div data-new-record="<%= form.object.new_record? %>" class="nested-field">
-  <div data-controller="checker-fetch" class="d-lg-flex flex-items-center flex-justify-between bg-gray ml-n2 mr-n2 p-2 mt-2">
-    <div data-checker-fetch-target="publishElement">
-      <span class="IssueLabel bg-green text-white mr-1">Feature</span>
-      <span class="IssueLabel bg-red text-white mr-1">Bug</span>
-    </div>
+  <div data-controller="checker-fetch" data-checker-fetch-url-value="<%= app_project_section_labels_path(project) %>" class="d-lg-flex flex-items-center flex-justify-between bg-gray ml-n2 mr-n2 p-2 mt-2">
+    <div data-checker-fetch-target="publishElement"></div>
     <div class="mt-2 mt-lg-0">
       <%= render Posts::MarkdownToolbarComponent.new(form: form, labels: labels) %>
     </div>

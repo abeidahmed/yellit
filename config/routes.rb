@@ -6,10 +6,13 @@ Rails.application.routes.draw do
   namespace :app do
     resources :projects, only: %i(index show update) do
       resources :project_memberships, only: %i(create)
-      resources :filter_memberships, only: %i(index), module: :project_memberships
       resources :labels, only: %i(create)
-      resources :filter_labels, only: %i(index), module: :labels
       resources :posts, only: %i(new)
+
+      # renders without layout
+      resources :filter_memberships, only: %i(index), module: :project_memberships
+      resources :filter_labels, only: %i(index), module: :labels
+      resources :section_labels, only: %i(index), module: :labels
     end
 
     resources :project_invitations, only: %i(show update destroy)
