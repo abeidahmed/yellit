@@ -35,21 +35,13 @@
             <input class="SelectMenu-input form-control" type="text" placeholder="Find or create label..." aria-label="Find or create label" />
           </div>
           <div class="SelectMenu-list">
-            <button type="button" class="SelectMenu-item" role="menuitemcheckbox" aria-checked="true">
-              <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
-              <div class="p-1 bg-blue circle mr-2"></div>
-              Improvement
-            </button>
-            <button type="button" class="SelectMenu-item" role="menuitemcheckbox">
-              <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
-              <div class="p-1 bg-green circle mr-2"></div>
-              Feature
-            </button>
-            <button type="button" class="SelectMenu-item" role="menuitemcheckbox">
-              <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
-              <div class="p-1 bg-yellow circle mr-2"></div>
-              Warning
-            </button>
+            <% labels.each do |label| %>
+              <button type="button" class="SelectMenu-item" role="menuitemcheckbox">
+                <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+                <div class="p-1 circle mr-2" style="background-color: <%= label.bg_color %>"></div>
+                <%= label.name %>
+              </button>
+            <% end %>
           </div>
         <% end %>
       <% end %>

@@ -1,8 +1,9 @@
 class Posts::MarkdownToolbarComponent < ApplicationComponent
-  attr_reader :form
+  attr_reader :form, :labels
 
-  def initialize(form:)
-    @form = form
+  def initialize(form:, labels:)
+    @form   = form
+    @labels = labels
   end
 
   def textarea_id

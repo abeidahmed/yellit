@@ -14,6 +14,8 @@ class App::PostsController < App::BaseController
     @project = @post.project
     check_member_tenancy
 
+    @labels = policy_scope(@project, policy_scope_class: LabelPolicy::Scope).sort_asc_by_name
+
     @post.sections.build if @post.sections.blank?
   end
 
