@@ -83,28 +83,30 @@
         </div>
       </div>
       <hr>
-      <div>
-        <div class="mb-2">
-          <h6 class="text-gray">Settings</h6>
+      <div data-controller="checker-toggle">
+        <div>
+          <div class="mb-2">
+            <h6 class="text-gray">Settings</h6>
+          </div>
+          <div class="form-checkbox my-0">
+            <label>
+              <%= form.check_box :status, checked: @post.published_at ? false : true, data: { action: "checker-toggle#hideContent", checker_toggle_target: "checkbox" } %>
+              Save as draft
+            </label>
+          </div>
         </div>
-        <div class="form-checkbox my-0">
-          <label>
-            <input type="checkbox" checked="checked" />
-            Save as draft
-          </label>
-        </div>
-      </div>
-      <hr>
-      <div>
-        <div class="mb-2">
-          <h6 class="text-gray">Publish on</h6>
-        </div>
-        <div class="subnav-search ml-0">
-          <input type="text" class="form-control subnav-search-input width-full">
-          <%= octicon "clock", class: "subnav-search-icon", style: "top: 8px" %>
-          <p class="note">
-            <a href="#">Learn more</a> about time formats.
-          </p>
+        <div data-checker-toggle-target="content">
+          <hr>
+          <div class="mb-2">
+            <h6 class="text-gray">Publish on</h6>
+          </div>
+          <div class="subnav-search ml-0">
+            <%= form.datetime_field :published_at, class: "form-control subnav-search-input width-full" %>
+            <%= octicon "clock", class: "subnav-search-icon", style: "top: 8px" %>
+            <p class="note">
+              <a href="#">Learn more</a> about time formats.
+            </p>
+          </div>
         </div>
       </div>
     </aside>
