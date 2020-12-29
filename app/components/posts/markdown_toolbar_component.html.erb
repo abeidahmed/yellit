@@ -35,12 +35,13 @@
             <input class="SelectMenu-input form-control" type="text" placeholder="Find or create label..." aria-label="Find or create label" />
           </div>
           <div class="SelectMenu-list">
-            <% labels.each do |label| %>
-              <button type="button" class="SelectMenu-item" role="menuitemcheckbox">
+            <% form.collection_check_boxes :label_ids, labels, :id, :name do |b| %>
+              <label class="SelectMenu-item text-normal" role="menuitemcheckbox" aria-checked="false">
+                <%= b.check_box data: { checker_fetch_target: "checkbox", action: "checker-fetch#check" } %>
                 <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
-                <div class="p-1 circle mr-2" style="background-color: <%= label.bg_color %>"></div>
-                <%= label.name %>
-              </button>
+                <div class="p-1 circle" style="background-color: <%= b.object.bg_color %>"></div>
+                <span class="ml-2"><%= b.object.name %></span>
+              </label>
             <% end %>
           </div>
         <% end %>
