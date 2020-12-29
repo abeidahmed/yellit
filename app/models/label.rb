@@ -1,6 +1,6 @@
 class Label < ApplicationRecord
   belongs_to :project
-  has_many :taggables
+  has_many :taggables, dependent: :destroy
   has_many :sections, through: :taggables
 
   before_validation :normalize_hex_code
