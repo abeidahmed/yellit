@@ -1,5 +1,5 @@
 <%= render "page_head", post: @post %>
-<section class="container-xl px-3 px-sm-4 px-lg-5 mt-5">
+<section data-controller="post--draft-status" class="container-xl px-3 px-sm-4 px-lg-5 mt-5">
   <%= form_with model: [:app, @post], class: "d-md-flex gutter-condensed gutter-lg" do |form| %>
     <div class="d-flex col-12 col-md-9">
       <div class="mr-3 d-none d-md-block">
@@ -25,7 +25,7 @@
               <button type="button" data-action="click->nested-form#addField" class="btn mr-2">
                 Add section
               </button>
-              <button class="btn btn-primary d-none d-md-block">
+              <button data-post--draft-status-target="publishBtn" class="btn btn-primary d-none d-md-block">
                 Save draft
               </button>
             </div>
@@ -34,7 +34,7 @@
       </div>
     </div>
     <aside class="col-12 col-md-3 mt-4 mt-md-0">
-      <div>
+      <section>
         <%= render Dropdowns::DetailsComponent.new(title: "Assign authors to this post") do |component| %>
           <% component.with(:trigger) do %>
             <summary aria-haspopup="true" class="d-flex post-sidebar-toggler flex-items-center flex-justify-between mb-2">
@@ -75,37 +75,35 @@
             <h5 class="ml-2">Abeid Ahmed</h5>
           </div>
         </div>
-      </div>
+      </section>
       <hr>
-      <div data-controller="checker-toggle">
-        <div>
-          <div class="mb-2">
-            <h6 class="text-gray">Settings</h6>
-          </div>
-          <div class="form-checkbox my-0">
-            <label>
-              <%= form.check_box :draft, checked: !@post.published_at?, data: { action: "checker-toggle#hideContent", checker_toggle_target: "checkbox" } %>
-              Save as draft
-            </label>
-          </div>
+      <section>
+        <div class="mb-2">
+          <h6 class="text-gray">Settings</h6>
         </div>
-        <div data-checker-toggle-target="content">
-          <hr>
-          <div class="mb-2">
-            <h6 class="text-gray">Publish on</h6>
-          </div>
-          <div class="subnav-search ml-0">
-            <%= form.datetime_field :published_at, class: "form-control subnav-search-input width-full" %>
-            <%= octicon "clock", class: "subnav-search-icon", style: "top: 8px" %>
-            <p class="note">
-              <a href="#">Learn more</a> about time formats.
-            </p>
-          </div>
+        <div class="form-checkbox my-0">
+          <label>
+            <%= form.check_box :draft, checked: !@post.published_at?, data: { action: "post--draft-status#updateStatus", post__draft_status_target: "checkbox" } %>
+            Save as draft
+          </label>
         </div>
-      </div>
+      </section>
+      <section data-post--draft-status-target="dateTime">
+        <hr>
+        <div class="mb-2">
+          <h6 class="text-gray">Publish on</h6>
+        </div>
+        <div class="subnav-search ml-0">
+          <%= form.datetime_field :published_at, class: "form-control subnav-search-input width-full" %>
+          <%= octicon "clock", class: "subnav-search-icon", style: "top: 8px" %>
+          <p class="note">
+            <a href="#">Learn more</a> about time formats.
+          </p>
+        </div>
+      </section>
     </aside>
     <div class="mt-4 px-2 d-md-none">
-      <button class="btn btn-primary btn-block">Save draft</button>
+      <button data-post--draft-status-target="publishBtn" class="btn btn-primary btn-block">Save draft</button>
     </div>
   <% end %>
 </section>
