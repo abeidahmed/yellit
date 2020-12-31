@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.1"
+ruby "3.0.0"
 
 gem "rails", "~> 6.1.0"
 gem "pg", "~> 1.1"
@@ -34,7 +34,7 @@ end
 group :development do
   gem "guard-rspec", "~> 4.7", ">= 4.7.3"
   gem "better_errors", "~> 2.8", ">= 2.8.3"
-  gem "binding_of_caller", "~> 0.8.0"
+  gem "binding_of_caller", "~> 1.0"
   gem "web-console", ">= 4.1.0"
   gem "rack-mini-profiler", "~> 2.0"
   gem "listen", "~> 3.3"
