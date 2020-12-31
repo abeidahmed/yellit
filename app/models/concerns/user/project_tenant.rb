@@ -17,7 +17,7 @@ class User
     end
 
     def find_project_membership(project)
-      project_memberships.find_by_project_id(project)
+      project_memberships.find_by(project_id: project)
     end
   end
 end

@@ -7,15 +7,13 @@ class Label < ApplicationRecord
 
   VALID_HEX_REGEX = /\A#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\z/i
 
-  validates_presence_of :name
-  validates_length_of :name, maximum: 255
-  validates_uniqueness_of :name, case_sensitive: false, scope: :project_id
-  validates_format_of :color, with: VALID_HEX_REGEX, message: "is not a valid hex code"
+  validates :name, presence: true, length: { maximum: 255 }, uniqueness: { case_sensitive: false, scope: :project_id } # rubocop:disable Rails/UniqueValidationWithoutIndex
+  validates :color, format: { with: VALID_HEX_REGEX, message: "is not a valid hex code" }
 
   scope :sort_asc_by_name, -> { order(name: :asc) }
 
   def color
-    self.bg_color
+    bg_color
   end
 
   def color=(value)
@@ -27,11 +25,12 @@ class Label < ApplicationRecord
     if query.present?
       where("name iLIKE :query", query: "%#{query}%")
     else
-      self.all
+      all
     end
   end
 
   private
+
   def normalize_hex_code
     self.color = Chroma.get_hex_from(color)
   end

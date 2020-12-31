@@ -8,17 +8,17 @@ class ProjectMembership < ApplicationRecord
 
   scope :users_with_role, ->(role) { where(role: role) }
 
-  validates_uniqueness_of :user, case_sensitive: false, scope: :project_id, message: "is already on the project team"
+  validates :user, uniqueness: { case_sensitive: false, scope: :project_id, message: "is already on the project team" } # rubocop:disable Rails/UniqueValidationWithoutIndex
 
   def self.humanized_role_keys
-    roles.map { |key, value| [key.humanize, key] }
+    roles.map { |key, _value| [key.humanize, key] }
   end
 
   def self.search(query)
     if query.present?
       where("users.email_address iLIKE :query OR users.full_name iLIKE :query", query: "%#{query}%").references(:users)
     else
-      self.all
+      all
     end
   end
 
@@ -30,7 +30,7 @@ class ProjectMembership < ApplicationRecord
         users_with_role(role.downcase)
       end
     else
-      self.all
+      all
     end
   end
 end
