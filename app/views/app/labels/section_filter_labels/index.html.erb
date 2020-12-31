@@ -1,0 +1,10 @@
+<%= turbo_frame_tag "label-list" do %>
+  <% self.form.collection_check_boxes :label_ids, @labels, :id, :name do |b| %>
+    <label data-controller="checker-active" class="SelectMenu-item text-normal" role="menuitemcheckbox" aria-checked="false">
+      <%= b.check_box hidden: "", data: { checker_fetch_target: "checkbox", action: "checker-fetch#check checker-active#setActive", checker_active_target: "checkbox" } %>
+      <%= octicon "check", class: "SelectMenu-icon SelectMenu-icon--check" %>
+      <div class="p-1 circle" style="background-color: <%= b.object.bg_color %>"></div>
+      <span class="ml-2"><%= b.object.name %></span>
+    </label>
+  <% end %>
+<% end %>

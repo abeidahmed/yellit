@@ -1,5 +1,6 @@
 class ApplicationComponent < ViewComponent::Base
   include SvgHelper
+  include Turbo::FramesHelper
 
   attr_reader :data, :options, :style
 

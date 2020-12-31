@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :filter_memberships, only: %i(index), module: :project_memberships
       resources :filter_labels, only: %i(index), module: :labels
       resources :section_labels, only: %i(index), module: :labels
+      resources :section_filter_labels, only: %i(index), module: :labels
     end
 
     resources :project_invitations, only: %i(show update destroy)
