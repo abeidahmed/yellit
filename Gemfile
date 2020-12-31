@@ -25,6 +25,9 @@ group :development, :test do
   gem "shoulda-matchers", "~> 4.4", ">= 4.4.1"
   gem "factory_bot_rails", "~> 6.1"
   gem "pundit-matchers", "~> 1.6"
+  gem "rubocop", "~> 1.7"
+  gem "rubocop-rspec", "~> 2.1"
+  gem "rubocop-rails", "~> 2.9", ">= 2.9.1"
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
 end
 

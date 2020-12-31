@@ -1,0 +1,322 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - bin/**/*
+    - db/schema.rb
+    - db/migrate/*.rb
+    - node_modules/**/*
+    - tmp/**/*
+    - vendor/**/*
+  DisplayStyleGuide: true
+  ExtraDetails: true
+  NewCops: enable
+  TargetRubyVersion: 2.7.1
+
+#################### Bundler ###########################
+
+Bundler/OrderedGems:
+  Description: Gems within groups in the Gemfile should be alphabetically sorted.
+  Enabled: false
+  ConsiderPunctuation: true
+
+#################### Layout ###########################
+Layout/EmptyLinesAroundAttributeAccessor:
+  Description: 'Keep blank lines around attribute accessors.'
+  StyleGuide: '#empty-lines-around-attribute-accessor'
+  Enabled: true
+
+Layout/LineLength:
+Description: 'Checks that line length does not exceed the configured limit.'
+AutoCorrect: true # this is false by default
+Exclude:
+  - docs/Gemfile
+  - Gemfile
+  - app/lib/constants/site_config.rb
+
+Layout/MultilineOperationIndentation:
+  Description: Checks indentation of binary operations that span more than one line.
+  Enabled: true
+  EnforcedStyle: indented
+
+Layout/MultilineMethodCallIndentation:
+  Description: Checks indentation of method calls with the dot operator that span more than one line.
+  Enabled: true
+  EnforcedStyle: indented
+
+Layout/SpaceAroundMethodCallOperator:
+  Description: Checks method call operators to not have spaces around them.
+  Enabled: true
+
+#################### Lint ##################################
+
+Lint/AmbiguousBlockAssociation:
+  Description: Checks for ambiguous block association with method when param passed without parentheses.
+  StyleGuide: '#syntax'
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
+
+Lint/DuplicateElsifCondition:
+  Description: Do not repeat conditions used in if `elsif`.
+  Enabled: true
+
+Lint/DuplicateRegexpCharacterClassElement:
+  Description: Checks for duplicate elements in Regexp character classes.
+  Enabled: true
+
+Lint/EmptyConditionalBody:
+  Description: This cop checks for the presence of `if`, `elsif` and `unless` branches without a body.
+  Enabled: true
+
+Lint/EmptyBlock:
+  Description: This cop checks for blocks without a body.
+  Enabled: true
+
+Lint/EmptyClass:
+  Description: Checks for classes and metaclasses without a body.
+  Enabled: true
+
+Lint/FloatComparison:
+  Description: Checks for the presence of precise comparison of floating point numbers.
+  StyleGuide: '#float-comparison'
+  Enabled: true
+
+Lint/SelfAssignment:
+  Description: Checks for self-assignments.
+  Enabled: true
+
+Lint/TopLevelReturnWithArgument:
+  Description: This cop detects top level return statements with argument.
+  Enabled: true
+
+#################### Metrics ###############################
+
+Metrics/AbcSize:
+  Description: A calculated magnitude based on number of assignments, branches, and conditions.
+  Enabled: false
+
+Metrics/BlockLength:
+  Description: Avoid long blocks with many lines.
+  Enabled: true
+  Exclude:
+    - 'db/seeds.rb'
+    - 'Guardfile'
+    - 'spec/**/*'
+
+Metrics/ClassLength:
+  Description: Avoid classes longer than 100 lines of code.
+  Enabled: false
+
+Metrics/MethodLength:
+  Description: Avoid methods longer than 10 lines of code.
+  StyleGuide: '#short-methods'
+  Enabled: false
+
+Metrics/ModuleLength:
+  Description: Avoid modules longer than 100 lines of code.
+  Enabled: false
+
+Metrics/ParameterLists:
+  Description: Avoid parameter lists longer than three or four parameters.
+  StyleGuide: '#too-many-params'
+  Enabled: false
+
+#################### Naming ##############################
+Naming/PredicateName:
+  Description: Check the names of predicate methods.
+  StyleGuide: '#bool-methods-qmark'
+  Enabled: true
+  ForbiddenPrefixes:
+    - is_
+  Exclude:
+    - spec/**/*
+
+#################### Style ###############################
+Style/Documentation:
+  Description: Document classes and non-namespace modules.
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Description: Add the frozen_string_literal comment to the top of file to help transition to frozen string literals by default.
+  Enabled: false
+
+Style/HashAsLastArrayItem:
+  Description: Checks for presence or absence of braces around hash literal as a last array item depending on configuration.
+  StyleGuide: '#hash-literal-as-last-array-item'
+  Enabled: true
+  EnforcedStyle: no_braces
+
+Style/HashSyntax:
+  Description: Prefer Ruby 1.9 hash syntax.
+  StyleGuide: '#hash-literals'
+  Enabled: true
+  EnforcedStyle: ruby19_no_mixed_keys
+
+Style/RedundantFetchBlock:
+  Description: >-
+    Use `fetch(key, value)` instead of `fetch(key) { value }`
+    when value has Numeric, Rational, Complex, Symbol or String type, `false`, `true`, `nil` or is a constant.
+  Reference: 'https://github.com/JuanitoFatas/fast-ruby#hashfetch-with-argument-vs-hashfetch--block-code'
+  Enabled: true
+
+Style/RedundantFileExtensionInRequire:
+  Description: Checks for the presence of superfluous `.rb` extension in the filename provided to `require` and `require_relative`.
+  StyleGuide: '#no-explicit-rb-to-require'
+  Enabled: true
+
+Style/ReturnNil:
+  Description: 'Use return instead of return nil.'
+  Enabled: true
+
+Style/SingleArgumentDig:
+  Description: 'Avoid using single argument dig method.'
+  Enabled: true
+
+Style/StringLiterals:
+  Description: 'Checks if uses of quotes match the configured preference.'
+  StyleGuide: '#consistent-string-literals'
+  Enabled: true
+  EnforcedStyle: double_quotes
+  ConsistentQuotesInMultiline: true
+
+Style/TrailingCommaInArguments:
+  Description: 'Checks for trailing comma in argument lists.'
+  StyleGuide: '#no-trailing-params-comma'
+  Enabled: true
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  Description: 'Checks for trailing comma in array literals.'
+  StyleGuide: '#no-trailing-array-commas'
+  Enabled: true
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInBlockArgs:
+  Description: 'Checks for useless trailing commas in block arguments.'
+  Enabled: true
+
+# Rails cops from rubocop-rails
+# https://github.com/rubocop-hq/rubocop-rails/blob/master/config/default.yml
+Rails/ActiveRecordCallbacksOrder:
+  Description: 'Order callback declarations in the order in which they will be executed.'
+  StyleGuide: 'https://rails.rubystyle.guide/#callbacks-order'
+  Enabled: true
+
+Rails/DefaultScope:
+  Description: 'Avoid use of `default_scope`.'
+  StyleGuide: 'https://rails.rubystyle.guide#avoid-default-scope'
+  Enabled: true
+
+Rails/FilePath:
+  EnforcedStyle: slashes
+
+Rails/FindById:
+  Description: >-
+    Favor the use of `find` over `where.take!`, `find_by!`, and `find_by_id!` when you
+    need to retrieve a single record by primary key when you expect it to be found.
+  StyleGuide: 'https://rails.rubystyle.guide/#find'
+  Enabled: true
+
+Rails/Inquiry:
+  Description: "Prefer Ruby's comparison operators over Active Support's `Array#inquiry` and `String#inquiry`."
+  StyleGuide: 'https://rails.rubystyle.guide/#inquiry'
+  Enabled: true
+
+Rails/MailerName:
+  Description: 'Mailer should end with `Mailer` suffix.'
+  StyleGuide: 'https://rails.rubystyle.guide/#mailer-name'
+  Enabled: true
+
+Rails/MatchRoute:
+  Description: >-
+    Don't use `match` to define any routes unless there is a need to map multiple request types
+    among [:get, :post, :patch, :put, :delete] to a single action using the `:via` option.
+  StyleGuide: 'https://rails.rubystyle.guide/#no-match-routes'
+  Enabled: true
+
+Rails/NegateInclude:
+  Description: 'Prefer `collection.exclude?(obj)` over `!collection.include?(obj)`.'
+  Enabled: true
+
+Rails/Pluck:
+  Description: 'Prefer `pluck` over `map { ... }`.'
+  Enabled: true
+
+Rails/PluckId:
+  Description: 'Use `ids` instead of `pluck(:id)` or `pluck(primary_key)`.'
+  StyleGuide: 'https://rails.rubystyle.guide/#ids'
+  Enabled: true
+
+Rails/PluckInWhere:
+  Description: 'Use `select` instead of `pluck` in `where` query methods.'
+  Enabled: true
+
+Rails/RenderInline:
+  Description: 'Prefer using a template over inline rendering.'
+  StyleGuide: 'https://rails.rubystyle.guide/#inline-rendering'
+  Enabled: true
+
+Rails/RenderPlainText:
+  Description: 'Prefer `render plain:` over `render text:`.'
+  StyleGuide: 'https://rails.rubystyle.guide/#plain-text-rendering'
+  Enabled: true
+
+Rails/ShortI18n:
+  Description: 'Use the short form of the I18n methods: `t` instead of `translate` and `l` instead of `localize`.'
+  StyleGuide: 'https://rails.rubystyle.guide/#short-i18n'
+  Enabled: true
+
+Rails/SkipsModelValidations:
+  Description: >-
+    Use methods that skips model validations with caution.
+    See reference for more information.
+  Reference: 'https://guides.rubyonrails.org/active_record_validations.html#skipping-validations'
+  Enabled: false
+
+Rails/SquishedSQLHeredocs:
+  Enabled: false
+
+Rails/WhereExists:
+  Description: 'Prefer `exists?(...)` over `where(...).exists?`.'
+  Enabled: true
+
+# RSpec cops from rubocop-rspec
+# https://github.com/rubocop-hq/rubocop-rspec/blob/master/config/default.yml
+RSpec/DescribeClass:
+  Description: Check that the first argument to the top level describe is a constant.
+  Enabled: true
+  StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/DescribeClass
+  Exclude:
+    - 'spec/requests/**/*'
+    - 'spec/system/**/*'
+    - 'spec/tasks/**/*'
+
+RSpec/DescribedClassModuleWrapping:
+  Description: Avoid opening modules and defining specs within them.
+  Enabled: true
+  StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/DescribedClassModuleWrapping
+
+RSpec/ExampleLength:
+  Description: Checks for long examples.
+  Enabled: true
+  Max: 15
+  StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ExampleLength
+
+RSpec/MessageExpectation:
+  Description: Checks for consistent message expectation style.
+  Enabled: true
+  EnforcedStyle: allow
+
+RSpec/MultipleMemoizedHelpers:
+  Description: Checks if example groups contain too many `let` and `subject` calls.
+  Enabled: false
+  StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/MultipleMemoizedHelpers
+
+RSpec/MultipleExpectations:
+  Description: Checks if examples contain too many `expect` calls.
+  Enabled: true
+  Max: 8
+  StyleGuide: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/MultipleExpectations
